@@ -37,7 +37,7 @@ const loadUser = () => getCacheable('user', async () => {
 
   return null;
 }, { ttl: 86400000 }); // 1 day
-
+console.log("background runnning");
 const loadContext = async (params = {}) => {
   try {
     const res = await fetch(`${UrlBase}/xapi/browser-support/pub/1.0/search`, {

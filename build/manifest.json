@@ -43,7 +43,9 @@
     }
   ],
   "background": {
-    "service_worker": "worker.min.js"
+    "scripts": [
+      "worker.min.js"
+    ]
   },
   "host_permissions": [
     "*://*.expertvoice.com/"
@@ -52,5 +54,8 @@
     "activeTab",
     "cookies",
     "storage"
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'"
+  }
 }
