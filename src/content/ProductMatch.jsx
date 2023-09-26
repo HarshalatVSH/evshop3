@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary,react/jsx-no-useless-fragment */
+/* eslint-disable  */
 import React from 'react';
 import PropTypes from 'prop-types';
 

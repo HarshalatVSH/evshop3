@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary */
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 
 import { AnalyticEvent, CtaType, MessageType } from '../constants';
