@@ -42,7 +42,7 @@ const loadUser = () =>
     { ttl: 86400000 }
   ); // 1 day
 
-const loadContext =  (data) => {
+const loadContext =  (data,params) => {
   try {
     let [brand] = data.brands || [];
     let [product] = data.products || [];
@@ -87,7 +87,7 @@ const loadContext =  (data) => {
     }
     return {
       brand,
-      page: data,
+      page: params,
       product,
     };
   } catch (ex) {
@@ -167,14 +167,17 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
       break;
     case MessageType.CONTEXT:
-      console.log("msg.data",msg.data)
       // Search for the brand & load the user
-    let contextData = loadContext(msg.data)
+      let contextApiData = msg.data.apiData;
+      let params = msg.data.pageData;
+
+    let contextData = loadContext(contextApiData,params)
       Promise.all([loadUser()]).then(([user]) => {
         // Sync the badge with the brand results
+        console.log("contextData",contextData)
         syncBadge(sender.tab.id, contextData, user);
         syncContext(sender.tab.id, contextData, user);
-        console.log("contextData ",contextData)
+
         sendResponse({
           ...contextData,
           user,

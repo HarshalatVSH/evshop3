@@ -22,9 +22,13 @@ function Content() {
     const data = await loadContext(pageData);
     
     if(data !== null){
+    const paramsData = {
+      apiData : data ,
+      pageData : pageData
+    }
     const { user: u, ...c } = await browser.runtime.sendMessage({
       type: MessageType.CONTEXT,
-      data: data,
+      data: paramsData,
     });
 
     setContext(c);
