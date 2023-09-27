@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AnalyticEvent, MessageType } from "../constants";
 import extractor from "../extractor";
 import { sendAC } from "../helper";
+import { loadContext, sendEvent } from "./helperApi";
 
 /**
  * Main Content Script - responsible for scrapping page and setting context
@@ -18,19 +19,9 @@ function Content() {
       // No page data, nothing to do
       return;
     }
-    // Bind the message listener to respond to the background worker
-    const res = await fetch(`https://www.expertvoice.com/xapi/browser-support/pub/1.0/search`, {
-      method: "POST",
-      body: JSON.stringify({
-        ...pageData,
-        maxResults: 1,
-      }),
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
+    const data = await loadContext(pageData);
+    
+    if(data !== null){
     const { user: u, ...c } = await browser.runtime.sendMessage({
       type: MessageType.CONTEXT,
       data: data,
@@ -44,7 +35,7 @@ function Content() {
       product: c.product || null,
       request: pageData,
     });
-
+  }
     // eslint-disable-next-line consistent-return
     return c;
   }, [pageData]);

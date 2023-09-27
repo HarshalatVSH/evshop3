@@ -167,13 +167,14 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
       break;
     case MessageType.CONTEXT:
+      console.log("msg.data",msg.data)
       // Search for the brand & load the user
     let contextData = loadContext(msg.data)
       Promise.all([loadUser()]).then(([user]) => {
         // Sync the badge with the brand results
         syncBadge(sender.tab.id, contextData, user);
         syncContext(sender.tab.id, contextData, user);
-
+        console.log("contextData ",contextData)
         sendResponse({
           ...contextData,
           user,

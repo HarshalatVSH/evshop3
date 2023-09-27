@@ -6,20 +6,24 @@ import {
   UrlBase,
   UtmPlacement,
 } from './constants';
+import { sendEvent } from './content/helperApi';
 
 // ----------------------------------
 // Analytics Helpers
 // ----------------------------------
 
+export const sendAC = (action, data = {}) => {
+  sendEvent(action,data)
+}
 
-export const sendAC = (action, data = {}) => browser.runtime.sendMessage({
-  action,
-  data: {
-    ...data,
-    url: document.location.href,
-  },
-  type: MessageType.AC,
-});
+// export const sendAC = (action, data = {}) => browser.runtime.sendMessage({
+//   action,
+//   data: {
+//     ...data,
+//     url: document.location.href,
+//   },
+//   type: MessageType.AC,
+// });
 
 // ----------------------------------
 // Auth Helpers
