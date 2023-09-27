@@ -41,9 +41,9 @@ function Inline() {
       }
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   }, [context]);
 
@@ -113,7 +113,7 @@ function Inline() {
           className="btn btn-primary"
           onClick={() => {
             sendCtaClickEvent(CtaType.LOGIN);
-            chrome.runtime.sendMessage({ type: MessageType.LOGIN_START });
+            browser.runtime.sendMessage({ type: MessageType.LOGIN_START });
           }}
           type="button"
         >

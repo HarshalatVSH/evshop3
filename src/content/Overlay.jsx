@@ -76,9 +76,9 @@ function Overlay() {
       }
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   }, [context]);
 
@@ -123,12 +123,12 @@ function Overlay() {
           }}
           onLogin={async (u) => {
             setUser(u);
-            await chrome.runtime.sendMessage({ type: MessageType.RESET, user: u });
+            await browser.runtime.sendMessage({ type: MessageType.RESET, user: u });
           }}
           onLogout={async () => {
             setUser(null);
-            await chrome.runtime.sendMessage({ type: MessageType.LOGOUT });
-            await chrome.runtime.sendMessage({ type: MessageType.RESET, user: null });
+            await browser.runtime.sendMessage({ type: MessageType.LOGOUT });
+            await browser.runtime.sendMessage({ type: MessageType.RESET, user: null });
           }}
           product={context.product}
           page={context.page}

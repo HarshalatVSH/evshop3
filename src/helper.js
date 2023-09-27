@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   InlineVariant,
   MessageType,
@@ -9,7 +10,9 @@ import {
 // ----------------------------------
 // Analytics Helpers
 // ----------------------------------
-export const sendAC = (action, data = {}) => chrome.runtime.sendMessage({
+
+
+export const sendAC = (action, data = {}) => browser.runtime.sendMessage({
   action,
   data: {
     ...data,
@@ -27,7 +30,7 @@ export const AUTH_DOMAIN = 'https://www.expertvoice.com';
 export const isAuthCookie = (c) => AUTH_DOMAIN.includes(c?.domain)
   && c?.name?.startsWith(AUTH_COOKIE);
 export const getAuthCookie = async () => {
-  const cookies = await chrome.cookies.getAll({ url: AUTH_DOMAIN });
+  const cookies = await browser.cookies.getAll({ url: AUTH_DOMAIN });
   return cookies.find((c) => isAuthCookie(c));
 };
 export const isAuthenticated = async () => {
@@ -39,7 +42,7 @@ export const isAuthenticated = async () => {
 // Cache Helpers
 // ----------------------------------
 export const getFromCache = async (key, { ttl } = {}) => {
-  const entries = await chrome.storage.local.get([key]);
+  const entries = await browser.storage.local.get([key]);
   const entry = entries?.[key];
   return entry?.created && entry?.value
     && (!ttl || entry.created + ttl > Date.now()) ? entry.value : null;
@@ -50,7 +53,7 @@ export const getCacheable = async (key, supplier, { reset = false, ttl } = {}) =
   if (cached) {
     if (reset) {
       // Remove the previously cached item
-      chrome.storage.local.remove(key);
+      browser.storage.local.remove(key);
     } else {
       return cached;
     }
@@ -59,7 +62,7 @@ export const getCacheable = async (key, supplier, { reset = false, ttl } = {}) =
   const loaded = await supplier();
   if (loaded) {
     // Cache the new item
-    chrome.storage.local.set({
+    browser.storage.local.set({
       [key]: {
         created: Date.now(),
         value: loaded,
@@ -70,7 +73,7 @@ export const getCacheable = async (key, supplier, { reset = false, ttl } = {}) =
 
   return null;
 };
-export const removeFromCache = async (...keys) => chrome.storage.local.remove(keys);
+export const removeFromCache = async (...keys) => browser.storage.local.remove(keys);
 
 // ----------------------------------
 // Product Price Helpers

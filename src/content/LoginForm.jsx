@@ -61,7 +61,7 @@ function LoginForm(props) {
             setError(null);
             setSubmitting(true);
 
-            const res = await chrome.runtime
+            const res = await browser.runtime
               .sendMessage({ identifier, password, type: MessageType.LOGIN });
             setSubmitting(false);
 

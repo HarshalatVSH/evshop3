@@ -32,9 +32,9 @@ function Popup(props) {
       return true;
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   });
 
@@ -117,7 +117,7 @@ function Popup(props) {
                 <img
                   alt="Example"
                   className="sample-image"
-                  src={chrome.runtime.getURL('assets/images/preview.png')}
+                  src={browser.runtime.getURL('assets/images/preview.png')}
                 />
                 <p className="small-text">An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
