@@ -1,8 +1,8 @@
-/* eslint-disable no-nested-ternary,react/jsx-no-useless-fragment */
+/* eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CtaType } from '../constants';
+import { CtaType, StarIcon } from '../constants';
 import {
   formatInteger,
   formatPrice,
@@ -22,24 +22,142 @@ function ProductMatch(props) {
 
   const productName = formatProductName(props.product.name);
 
+  const titleStyle = {
+    fontSize: "18px",
+    fontWeight: 600,
+    lineHeight: "24px",
+    margin: "0px",
+  };
+
+  const headerAnchorStyle = {
+    border: "none",
+    color: "inherit",
+    outline: "none",
+    textDecoration: "none",
+  };
+
+  const pillAnchorStyles = {
+    borderRadius: "30px",
+    fontWeight: 600,
+    padding: "3px 16px",
+    backgroundColor: "rgb(82, 179, 130)",
+  };
+
+  const combinedStyles = { ...headerAnchorStyle, ...pillAnchorStyles };
+
+  const matchDetailsStyles = {
+    alignItems: "center",
+    display: "flex",
+    flexFlow: "column",
+    marginBottom: "18px",
+  };
+
+  const reviewSummaryStyles = {
+    marginTop: "18px",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+  };
+
+  const averageStarsStyles = {
+    alignItems: "center",
+    display: "inline-flex",
+    marginRight: "8px",
+    fontSize: "18px",
+    fontWeight: 600,
+    lineHeight: "24px",
+    textDecoration: "none",
+    color: "black"
+  };
+
+  const smallTextStyles = {
+    lineHeight: "19px",
+    textDecoration: "underline",
+    fontSize: "13px",
+    fontWeight: 400,
+    color: "rgb(117, 117, 117)",
+  };
+
+  const subtextStyles = {
+    marginTop: "18px",
+    fontSize: "12px",
+    fontWeight: 400,
+    lineHeight: "18px",
+    color: "rgb(77, 77, 77)",
+  };
+
+  const pillsSuccessStyle = {
+    borderRadius: '30px',
+    fontWeight: 600,
+    padding: '3px 16px',
+    backgroundColor: 'rgb(82, 179, 130)',
+    color: "black",
+    textDecoration: "none"
+  };
+
+  const productLink = {
+    background: "rgb(252, 69, 64)",
+    color: "rgb(255, 255, 255)",
+    textDecoration: "none",
+    margin: '18px 0px',
+    borderRadius: '3px',
+    display: 'block',
+    fontFamily: 'inherit',
+    fontSize: '15px',
+    fontWeight: 600,
+    padding: '12px',
+    textAlign: 'center',
+    width: '90%',
+  };
+
+  const unlockTextStyle = {
+    color: "rgb(117, 117, 117)",
+    fontSize: "12px"
+  }
+
+  const StarIconStyle = {
+    marginRight: "4px",
+    height: "25px",
+    width: "20px"
+  }
+
+  const btnStyle = {
+    borderRadius: "3px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "15px",
+    fontWeight: 600,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    background: "rgb(252, 69, 64)",
+    border: "1px solid lightGray",
+    color: "lightGray",
+    margin: "18px 0",
+    margin: "6px 0 18px 0"
+  }
+
   const renderReviewSummary = () => {
     if (!props.product.reviewCount) return null;
 
     const roundedStars = getRoundedStar(props.product.reviewStars);
     return (
-      <div className="review-summary">
+      <div className="review-summary" style={reviewSummaryStyles}>
         <a
           className="average-stars type-title"
+          style={averageStarsStyles}
           href={productUrls.reviews}
           onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-stars')}
           rel="noopener noreferrer"
           target="_blank"
         >
-          <i className="exp-ux-starFilled exp-ux-small" />
+          {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
+          <img src={StarIcon} alt="" style={StarIconStyle} />
           {roundedStars}
         </a>
         <a
           className="tertiary-text small-text link"
+          style={smallTextStyles}
           href={productUrls.reviews}
           onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-count')}
           rel="noopener noreferrer"
@@ -55,7 +173,7 @@ function ProductMatch(props) {
 
   return (
     <>
-      <div className="match-details">
+      <div className="match-details" style={matchDetailsStyles}>
         {props.product.imageUrl ? (
           <a
             href={productUrls.pdp}
@@ -71,9 +189,10 @@ function ProductMatch(props) {
             />
           </a>
         ) : null}
-        <h1 className="type-title match-name">
+        <h1 className="type-title match-name" style={titleStyle}>
           <a
             href={productUrls.pdp}
+            style={headerAnchorStyle}
             onClick={props.sendCtaClickEvent(CtaType.PDP, 'name')}
             rel="noopener noreferrer"
             target="_blank"
@@ -93,6 +212,7 @@ function ProductMatch(props) {
                 href={productUrls.pdp}
                 onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
                 rel="noopener noreferrer"
+                style={combinedStyles}
                 target="_blank"
               >
                 Found on ExpertVoice
@@ -101,7 +221,7 @@ function ProductMatch(props) {
 
             {renderReviewSummary()}
 
-            <p className="subtext secondary-text small-text">
+            <p className="subtext secondary-text small-text" style={subtextStyles}>
               Sign in to find out if you qualify for discounts.
             </p>
           </>
@@ -113,6 +233,7 @@ function ProductMatch(props) {
                 <a
                   className="pill pill-secondary"
                   href={productUrls.pdp}
+                  style={pillAnchorStyles}
                   onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -123,13 +244,14 @@ function ProductMatch(props) {
 
               {renderReviewSummary()}
 
-              <p className="subtext secondary-text small-text">
+              <p className="subtext secondary-text small-text" style={subtextStyles}>
                 No savings for this item, but you may qualify for great discounts on similar
                 products.
               </p>
               <a
                 className="btn btn-primary product-link"
                 href={productUrls.pdp}
+                style={productLink}
                 onClick={props.sendCtaClickEvent(CtaType.PDP)}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -144,6 +266,7 @@ function ProductMatch(props) {
                 <div className="status-indicator">
                   <a
                     className="pill pill-secondary"
+                    style={pillAnchorStyles}
                     href={productUrls.pdp}
                     onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
                     rel="noopener noreferrer"
@@ -158,13 +281,14 @@ function ProductMatch(props) {
 
                 {renderReviewSummary()}
 
-                <p className="subtext secondary-text small-text">
+                <p className="subtext secondary-text small-text" style={subtextStyles}>
                   Visit ExpertVoice to view details and sign up to get notified when
                   it’s back in stock.
                 </p>
                 <a
                   className="btn btn-outline product-link"
                   href={productUrls.pdp}
+                  style={btnStyle}
                   onClick={props.sendCtaClickEvent(CtaType.PDP)}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -172,7 +296,7 @@ function ProductMatch(props) {
                   View on ExpertVoice
                 </a>
 
-                <p className="subtext secondary-text small-text">
+                <p className="subtext secondary-text small-text" style={subtextStyles}>
                   {props.brand.discount > 0 ? (
                     <>
                       Save up to <strong>{props.brand.discount}% off</strong>
@@ -181,6 +305,7 @@ function ProductMatch(props) {
                 </p>
                 <a
                   className="btn btn-primary brand-products-link"
+                  style={btnStyle}
                   href={brandUrls.plp}
                   onClick={props.sendCtaClickEvent(CtaType.BRAND_PLP)}
                   rel="noopener noreferrer"
@@ -197,6 +322,7 @@ function ProductMatch(props) {
                     <a
                       className="pill pill-success"
                       href={productUrls.pdp}
+                      style={pillsSuccessStyle}
                       onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
                       rel="noopener noreferrer"
                       target="_blank"
@@ -207,12 +333,13 @@ function ProductMatch(props) {
 
                   {renderReviewSummary()}
 
-                  <p className="subtext secondary-text small-text">
+                  <p className="subtext secondary-text small-text" style={unlockTextStyle}>
                     Don’t miss out on your expert discount.
                   </p>
                   <a
                     className="btn btn-primary product-link"
                     href={productUrls.pdp}
+                    style={productLink}
                     onClick={props.sendCtaClickEvent(CtaType.PDP)}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -227,6 +354,7 @@ function ProductMatch(props) {
                     <a
                       className="pill pill-success"
                       href={productUrls.pdp}
+                      style={pillsSuccessStyle}
                       onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
                       rel="noopener noreferrer"
                       target="_blank"
@@ -239,12 +367,13 @@ function ProductMatch(props) {
 
                   {renderReviewSummary()}
 
-                  <p className="subtext secondary-text small-text">
+                  <p className="subtext secondary-text small-text" style={unlockTextStyle}>
                     Unlock your discounted price on ExpertVoice.
                   </p>
                   <a
                     className="btn btn-primary product-link"
                     href={productUrls.pdp}
+                    style={productLink}
                     onClick={props.sendCtaClickEvent(CtaType.PDP)}
                     rel="noopener noreferrer"
                     target="_blank"

@@ -1,7 +1,7 @@
-/* eslint-disable no-nested-ternary */
+/* eslint-disable*/
 import React, { useEffect, useState } from 'react';
 
-import { AnalyticEvent, CtaType, MessageType } from '../constants';
+import { AnalyticEvent, CtaType, ImageUrlBase, MessageType, StarIcon } from '../constants';
 import {
   formatInteger,
   formatPrice,
@@ -22,6 +22,108 @@ function Inline() {
   const [productUrls, setProductUrls] = useState({});
   const [user, setUser] = useState(null);
   const [variant, setVariant] = useState(null);
+
+  const btnStyle = {
+    alignItems: "center",
+    display: "flex",
+    height: "40px",
+    lineHeight: "14px",
+    padding: "0 18px 0 12px",
+    width: "unset",
+    background: "rgb(252, 69, 64)",
+    color: "rgb(255, 255, 255)",
+    borderRadius: "6px",
+    fontWeight: "bold",
+    cursor : "pointer",
+    border : "medium"
+  };
+
+  const inlineStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "6px 18px",
+    margin: "18px 0px",
+  };
+
+
+  const reviewSummary = {
+    height: "40px",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    border: "none",
+    color: "inherit",
+    outline: "none",
+    textDecoration: "none",
+  };
+
+  const averageStars = {
+    fontSize: "18px",
+    fontWeight: 600,
+    lineHeight: "24px",
+    alignItems: "center",
+    display: "inline-flex",
+    marginRight: "8px",
+  };
+
+  const linkStyle = {
+    lineHeight: "19px",
+    fontWeight: 600,
+    textDecoration: "underline",
+    fontSize: "13px",
+    fontWeight: 400,
+    lineHeight: "18px",
+    color: "rgb(77, 77, 77)",
+  };
+
+  
+  const DiscountsBtn = {
+    alignItems: 'center',
+    display: 'flex',
+    height: '40px',
+    lineHeight: '14px',
+    padding: '0px 18px 0px 12px',
+    width: 'unset',
+    background: "rgb(252, 69, 64)",
+    color: 'rgb(255, 255, 255)',
+    borderRadius: '3px',
+    fontFamily: 'inherit',
+    fontSize: '15px',
+    fontWeight: 600,
+    textAlign: 'center',
+    outline: 'none',
+    textDecoration: 'none',
+    border: 'none',
+    cursor : "pointer"
+  };
+
+  const ImageUrlBaseStyle = {
+    marginRight: "12px",
+    height : "20px",
+    width : "20px"
+  }
+
+  const StarIconStyle = {
+    marginRight: "4px",
+    height : "25px",
+    width : "20px"
+  }
+////////////////////////////////////////////////////////////////////////////////////////////
+  const reviewPrompt = {
+    color: "lightGray",
+    marginRight:" 8px"
+  }
+  
+  const reviewPromptSumm = {...reviewSummary, ...reviewPrompt}
+
+  const tertiSmallLinkStyle = {
+    lineHeight: "19px",
+    fontSize: "13px",
+    fontWeight: 600,
+    lineHeight: "18px",
+    color: "lightGray",
+    textDecoration: "underline"
+  }
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker
@@ -62,18 +164,20 @@ function Inline() {
       const roundedStars = getRoundedStar(context.product.reviewStars);
       return (
         <a
-          className="review-summary"
+          className="review-summary" 
+          style={reviewSummary}
           href={productUrls.reviews}
           onClick={sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-summary')}
           rel="noopener noreferrer"
           target="_blank"
         >
-          <div className="average-stars type-title">
-            <i className="exp-ux-starFilled exp-ux-small" />
+          <div className="average-stars type-title" style={averageStars}>
+            {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
+            <img src={StarIcon} alt="" style={StarIconStyle} />
             {roundedStars}
           </div>
 
-          <div className="secondary-text small-text link">
+          <div className="secondary-text small-text link" style={linkStyle}>
             {context.product.reviewCount > 1
               ? `${formatInteger(context.product.reviewCount)} expert reviews`
               : '1 expert review'}
@@ -85,13 +189,15 @@ function Inline() {
       return (
         <a
           className="review-summary review-prompt"
+          style={reviewPromptSumm}
           href={productUrls.reviewPrompt}
           onClick={sendCtaClickEvent(CtaType.PDP_REVIEW_PROMPT, 'review-prompt')}
           rel="noopener noreferrer"
           target="_blank"
         >
           <i className="exp-ux-starFilled exp-ux-small" />
-          <span className="tertiary-text small-text link">
+          <span className="tertiary-text small-text link"
+          style={tertiSmallLinkStyle}>
             Leave an expert review
           </span>
         </a>
@@ -106,18 +212,20 @@ function Inline() {
   }
 
   return (
-    <section id="inline">
+    <section id="inline" style={inlineStyle}>
       {!user ? (
         // Logged out state
         <button
           className="btn btn-primary"
+          style={btnStyle}
           onClick={() => {
             sendCtaClickEvent(CtaType.LOGIN);
             browser.runtime.sendMessage({ type: MessageType.LOGIN_START });
           }}
           type="button"
         >
-          <i className="exp-ux-bolt exp-ux-small" />
+          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
+          <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
           Sign in for discounts
         </button>
       ) : (
@@ -126,11 +234,13 @@ function Inline() {
           <a
             className="btn btn-gray"
             href={productUrls.pdp}
+            style={{ background: "red" }}
             onClick={sendCtaClickEvent(CtaType.PDP)}
             rel="noopener noreferrer"
             target="_blank"
           >
-            <i className="exp-ux-bolt exp-ux-small" />
+            {/* <i className="exp-ux-bolt exp-ux-small" /> */}
+            <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
             No savings
           </a>
         ) : (
@@ -154,6 +264,7 @@ function Inline() {
             <a
               className="btn btn-primary"
               href={productUrls.pdp}
+              style={DiscountsBtn}
               onClick={sendCtaClickEvent(CtaType.PDP)}
               rel="noopener noreferrer"
               target="_blank"

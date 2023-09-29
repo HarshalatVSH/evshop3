@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 
-import { AnalyticEvent, MessageType, NotificationType, PopupMode } from '../constants';
+import { AnalyticEvent, ImageUrlBase, MessageType, NotificationType, PopupMode } from '../constants';
 import { sendAC, getNotificationType } from '../helper';
 import Popup from './Popup';
 
@@ -16,6 +17,38 @@ function Overlay() {
   const [popupMode, setPopupMode] = useState(null);
 
   const openRequested = useRef(false);
+
+  const toggleButton = {
+    '--bg-color': '#FFF',
+    '--bg-hover-color': '#FFF',
+    '--text-color': '#757575',
+    '--text-hover-color': '#4D4D4D',
+    alignItems: 'center',
+    border: 'none',
+    borderRadius: '3px 0px 0px 3px',
+    boxShadow: 'rgba(0, 0, 0, 0.18) 0px 2px 11px',
+    color: 'var(--text-color)',
+    display: 'flex',
+    height: '48px',
+    justifyContent: 'center',
+    position: 'fixed',
+    outline: 'none',
+    right: '0px',
+    top: '250px',
+    transition: 'background-color 50ms ease-in 0s, color 50ms ease-in 0s, right 150ms ease-out 0s',
+    width: '48px',
+    zIndex: '2147483646',
+    padding: '0px',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    margin: '0px',
+    background: 'rgb(252, 69, 64)',
+  };
+
+  const ImageUrlBaseStyle = {
+    height: "18px",
+    width: "18px"
+  }
 
   useEffect(() => {
     if (!context) {
@@ -90,10 +123,8 @@ function Overlay() {
     <>
       {notification ? (
         <button
-          className={`toggle-button${
-            notification === NotificationType.ACTIVE ? ' rewarded' : ''}${
-            open ? ' hidden' : ''}${
-            !open && visible ? ' visible' : ''}`}
+          className={`toggle-button${notification === NotificationType.ACTIVE ? ' rewarded' : ''}${open ? ' hidden' : ''}${!open && visible ? ' visible' : ''}`}
+          style={toggleButton}
           onClick={() => {
             setOpen(true);
             sendAC(AnalyticEvent.OPEN, {
@@ -104,7 +135,8 @@ function Overlay() {
           }}
           type="button"
         >
-          <i className="exp-ux-bolt exp-ux-small" />
+          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
+          <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}/>
         </button>
       ) : null}
 

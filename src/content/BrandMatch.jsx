@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary,react/jsx-no-useless-fragment */
+/* eslint-disable  */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,11 +14,96 @@ function BrandMatch(props) {
     ctaType = CtaType.BRAND_PLP;
   }
 
+  const matchDetailsStyles = {
+    alignItems: "center",
+    display: "flex",
+    flexFlow: "column",
+    marginBottom: "18px",
+  };
+
+  const headerAnchorStyle = {
+    border: "none",
+    color: "inherit",
+    outline: "none",
+    textDecoration: "none",
+  };
+
+  const imgStyle = {
+    height: "48px",
+    width: "48px",
+    borderRadius: "3px",
+    marginBottom: "6px",
+  };
+
+  const titleStyle = {
+    fontSize: "18px",
+    fontWeight: 600,
+    lineHeight: "24px",
+    margin: "0px",
+  };
+
+  const pillsSuccessStyle = {
+    borderRadius: '30px',
+    fontWeight: 600,
+    padding: '3px 16px',
+    backgroundColor: 'rgb(82, 179, 130)',
+    cursor: "pointer"
+  };
+
+  const viewAllBtn = {
+    margin: "12px 0px",
+    background: "rgb(252, 69, 64)",
+    color: "rgb(255, 255, 255)",
+    borderRadius: "8px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "15px",
+    fontWeight: 600,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    textDecoration: "none"
+  };
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  const subtextStyles = {
+    marginTop: "18px",
+    color: "darkGray",
+    fontSize: "12px"
+  }
+
+  const btnbrandLinkStyles = {
+    border: 'none',
+    cursor: 'pointer',
+    margin: '0px',
+    outline: 'none',
+    padding: '0px',
+    textDecoration: 'none',
+    background: "rgb(252, 69, 64)",
+    color: "rgb(255, 255, 255)",
+    margin: " 18px 0"
+  };
+
+  const pillStyle = {
+    bordradius: "30px",
+    fontWeight: "bold",
+    padding: "3px 16px",
+  }
+
+  const pillOutline = {
+    border: "1px solid lightGray",
+    color: "lightGray"
+  }
+
+  const pillOutlineStyle = { ...pillStyle, ...pillOutline }
+
   return (
     <>
-      <div className="match-details">
+      <div className="match-details"
+        style={matchDetailsStyles}>
         {props.brand.avatar ? (
           <a
+            style={headerAnchorStyle}
             href={cta}
             onClick={props.sendCtaClickEvent(ctaType, 'image')}
             rel="noopener noreferrer"
@@ -32,9 +117,10 @@ function BrandMatch(props) {
             />
           </a>
         ) : null}
-        <h1 className="type-title match-name">
+        <h1 className="type-title match-name" style={titleStyle}>
           <a
             href={cta}
+            style={headerAnchorStyle}
             onClick={props.sendCtaClickEvent(ctaType, 'name')}
             rel="noopener noreferrer"
             target="_blank"
@@ -57,18 +143,20 @@ function BrandMatch(props) {
                   onClick={props.sendCtaClickEvent(ctaType, 'pill')}
                   rel="noopener noreferrer"
                   target="_blank"
+                  style={pillsSuccessStyle}
                 >
                   {props.brand.discount > 0
                     ? `Up to ${props.brand.discount}% off`
                     : 'Discounts Available'}
                 </a>
               </div>
-              <p className="subtext secondary-text small-text">
+              <p className="subtext secondary-text small-text" style={subtextStyles}>
                 Don&apos;t miss out on exclusive discounts from <span className="brand-name">{props.brand.name}</span> on ExpertVoice.
               </p>
               <a
                 className="btn btn-primary brand-link"
                 href={cta}
+                style={btnbrandLinkStyles}
                 onClick={props.sendCtaClickEvent(ctaType)}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -83,6 +171,7 @@ function BrandMatch(props) {
                 <a
                   className="pill pill-secondary"
                   href={cta}
+                  style={pillsSuccessStyle}
                   onClick={props.sendCtaClickEvent(ctaType, 'pill')}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -90,12 +179,13 @@ function BrandMatch(props) {
                   Insider Access
                 </a>
               </div>
-              <p className="subtext secondary-text small-text">
+              <p className="subtext secondary-text small-text" style={subtextStyles}>
                 You have exclusive access to content from <span className="brand-name">{props.brand.name}</span> that may include opportunities to preview or sample new products, provide feedback to their team, and much more.
               </p>
               <a
                 className="btn btn-primary brand-link"
                 href={cta}
+                style={viewAllBtn}
                 onClick={props.sendCtaClickEvent(ctaType)}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -112,6 +202,7 @@ function BrandMatch(props) {
             <a
               className="pill pill-success"
               href={cta}
+              style={pillsSuccessStyle}
               onClick={props.sendCtaClickEvent(ctaType, 'pill')}
               rel="noopener noreferrer"
               target="_blank"
@@ -119,7 +210,7 @@ function BrandMatch(props) {
               Found on ExpertVoice
             </a>
           </div>
-          <p className="subtext secondary-text small-text">
+          <p className="subtext secondary-text small-text" style={subtextStyles}>
             Sign in to find out if you qualify for
             discounts, education, or other exclusive offers.
           </p>
@@ -128,17 +219,18 @@ function BrandMatch(props) {
         // The brand was found, but it's either inactive or not targeting the user
         <>
           <div className="status-indicator">
-            <span className="pill pill-outline">Not Available</span>
+            <span className="pill pill-outline" style={pillOutlineStyle}>Not Available</span>
           </div>
 
           {props.user ? (
             <>
-              <p className="subtext secondary-text small-text">
+              <p className="subtext secondary-text small-text" style={subtextStyles}>
                 <span className="brand-name">{props.brand.name}</span> is not available to you on ExpertVoice.
               </p>
               <a
                 className="btn btn-outline brand-link"
                 href={getEVBrandsUrl()}
+                style={btnbrandLinkStyles}
                 onClick={props.sendCtaClickEvent(CtaType.EV_BRANDS)}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -147,7 +239,7 @@ function BrandMatch(props) {
               </a>
             </>
           ) : (
-            <p className="subtext secondary-text small-text">
+            <p className="subtext secondary-text small-text" style={subtextStyles}>
               <span className="brand-name">{props.brand.name}</span> is not available on ExpertVoice.
               Sign in to see the brands you have access to.
             </p>
