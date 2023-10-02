@@ -45,9 +45,11 @@ function Popup(props) {
       <LoginForm
         onCancel={() => setMode(null)}
         onClose={props.onClose}
-        onLogin={async (u) => {
-          await props.onLogin(u);
-          setMode(null);
+        onLogin={(u) => {
+          if (u) {
+            props.onLogin(u);
+            setMode(null); 
+          }
         }}
       />
     );
