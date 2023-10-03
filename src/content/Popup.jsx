@@ -23,6 +23,9 @@ import { getEVHomeUrl, sendAC } from '../helper';
  */
 function Popup(props) {
   const [mode, setMode] = useState(props.mode);
+  // const [isSignIn , setSignIn] = useState(false);
+
+  console.log(props,"props>>>>");
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker
@@ -39,7 +42,6 @@ function Popup(props) {
       browser.runtime.onMessage.removeListener(listener);
     };
   });
-
   if (mode === PopupMode.LOGIN) {
     return (
       <LoginForm
@@ -94,14 +96,14 @@ function Popup(props) {
 
   const titleText = {
     color: "rgb(37, 37, 37)",
-    fontWeight: 600,
+    fontWeight: 401,
     margin: "0px 6px",
   };
 
   const badgeSuccess = {
     backgroundColor: props.notification === NotificationType.ACTIVE ? "rgb(82, 179, 130)" : "rgb(227, 227, 227)",
     borderRadius: "6px",
-    fontWeight: 600,
+    fontWeight: 401,
     height: "22px",
     textAlign: "center",
     width: "22px",
@@ -140,7 +142,7 @@ function Popup(props) {
     margin: "12px 0px",
     background: "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
-    borderRadius: "8px",
+    borderRadius: "3px",
     display: "block",
     fontFamily: "inherit",
     fontSize: "15px",
@@ -160,8 +162,8 @@ function Popup(props) {
   };
 
   const reportIssueStyles = {
-    marginTop: "18px",
-    fontSize: "13px",
+    margin: "18px 0px 0px",
+    fontSize: "12px",
     fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(117, 117, 117)",
@@ -183,7 +185,9 @@ function Popup(props) {
     border: "medium",
     textDecoration: "underline",
     color: "rgb(117, 117, 117)",
-    cursor: "pointer"
+    cursor: "pointer",
+    fontSize: "12px",
+    fontWeight: "400"
   };
 
   const ExpertVoiceIconStyle = {
@@ -196,30 +200,33 @@ function Popup(props) {
   }
 
   const typetitle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    lineHeight: "24px"
+    fontSize: "17px",
+    fontWeight: "400",
+    lineHeight: "24px",
+    color:"rgb(38,40,39)",
+    marginTop : props.user ? "0px" : "-14px"
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   const subtextStyle = {
     marginTop: "18px",
-    color: "rgb(117, 117, 117)",
-    fontSize: "13px",
-    fontWeight: 600,
+    color: "rgb(141, 137, 137)",
+    fontSize: "12px",
+    fontWeight: 400,
     lineHeight: "18px",
   }
 
   const samplepanelStyle = {
-    backgroundColor: "lightGray",
-    borderRadius: "3px",
-    margin: "24px 0",
-    padding: "12px"
+    backgroundColor: "rgb(242,242,242)",
+    margin: "23px 0",
+    padding: "7px"
   }
 
   const smallTextStyle = {
-    fontSize: "13px",
-    fontWeight: 600,
+    fontSize: "12px",
+    fontWeight: "410",
     lineHeight: "18px",
+    marginTop:"-2px",
+    color:"rgb(102,99,99)"
   }
 
   const tertiSmallLinkStyle = {
@@ -231,7 +238,7 @@ function Popup(props) {
     textDecoration: "underline"
   }
 
-
+  console.log(mode,"modee>>");
   return (
     <section className="panel" id="popup" style={popupStyle}>
       <header className="panel-header" style={panelHeaderStyle}>
@@ -257,7 +264,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-        {props.product && props.brand?.active ? (
+        {/* {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -267,13 +274,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-          props.brand ? (
+          props.brand ? ( */}
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-          ) : (
+           {/* ) : (  */}
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -290,12 +297,12 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          )
-        )}
+           {/* )
+        )}  */}
 
         <div className="learn-more">
           {props.user ? (
-            <p className="tertiary-text small-text" style={{ color: "rgb(117, 117, 117)" }}>
+            <p className="tertiary-text small-text" style={{ color: "rgb(117, 117, 117)" , fontSize:"12px" , fontWeight: "400" }}>
               Signed in as {props.user.firstName} {props.user.lastName}.
               <button
                 className="btn-logout link tertiary-text small-text"

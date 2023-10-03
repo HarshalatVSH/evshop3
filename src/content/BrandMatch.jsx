@@ -18,7 +18,7 @@ function BrandMatch(props) {
     alignItems: "center",
     display: "flex",
     flexFlow: "column",
-    marginBottom: "18px",
+    marginBottom: "10px",
   };
 
   const headerAnchorStyle = {
@@ -26,7 +26,10 @@ function BrandMatch(props) {
     color: "inherit",
     outline: "none",
     textDecoration: "none",
-  };
+    fontWeight:"400",
+    margin:"5px 0px 4px 0px",
+    display:"block"
+    };
 
   const imgStyle = {
     height: "48px",
@@ -44,20 +47,22 @@ function BrandMatch(props) {
 
   const pillsSuccessStyle = {
     borderRadius: '30px',
-    fontWeight: 600,
+    fontWeight: 450,
     padding: '3px 16px',
-    backgroundColor: 'rgb(82, 179, 130)',
-    cursor: "pointer"
+    backgroundColor: props.user ? 'rgb(227, 227, 227)' : "rgb(82, 179, 130)",
+    color:'rgb(45, 44, 44)',
+    cursor: "pointer",
+    textDecoration:'none'
   };
 
   const viewAllBtn = {
     margin: "12px 0px",
     background: "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
-    borderRadius: "8px",
+    borderRadius: "3px",
     display: "block",
     fontFamily: "inherit",
-    fontSize: "15px",
+    fontSize: "14px",
     fontWeight: 600,
     padding: "12px",
     textAlign: "center",
@@ -67,9 +72,12 @@ function BrandMatch(props) {
 
   /////////////////////////////////////////////////////////////////////////////////////////////
   const subtextStyles = {
-    marginTop: "18px",
-    color: "darkGray",
-    fontSize: "12px"
+    marginTop: "15px",
+    color: "rgb(125, 121, 121)",
+    fontSize: "12px",
+    fontWeight:"498",
+    fontFamily:"inherit",
+    lineHeight:"20px"
   }
 
   const btnbrandLinkStyles = {
@@ -113,7 +121,7 @@ function BrandMatch(props) {
               alt={props.brand.name}
               className="match-image"
               src={`${props.brand.avatar}${props.brand.avatar.includes('?') ? '&' : '?'}s=96x96`}
-              style={{ height: '48px', width: '48px' }}
+              style={{ height: '48px', width: '48px' , borderRadius: "2px" }}
             />
           </a>
         ) : null}
