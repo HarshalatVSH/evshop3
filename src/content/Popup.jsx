@@ -25,8 +25,6 @@ function Popup(props) {
   const [mode, setMode] = useState(props.mode);
   // const [isSignIn , setSignIn] = useState(false);
 
-  console.log(props,"props>>>>");
-
   useEffect(() => {
     // Bind the message listener to respond to the background worker
     const listener = (msg) => {
@@ -238,7 +236,6 @@ function Popup(props) {
     textDecoration: "underline"
   }
 
-  console.log(mode,"modee>>");
   return (
     <section className="panel" id="popup" style={popupStyle}>
       <header className="panel-header" style={panelHeaderStyle}>

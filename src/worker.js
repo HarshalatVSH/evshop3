@@ -174,7 +174,6 @@ browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     let contextData = loadContext(contextApiData,params)
       Promise.all([loadUser()]).then(([user]) => {
         // Sync the badge with the brand results
-        console.log("contextData",contextData)
         syncBadge(sender.tab.id, contextData, user);
         syncContext(sender.tab.id, contextData, user);
 
