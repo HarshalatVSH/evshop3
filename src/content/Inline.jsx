@@ -22,7 +22,6 @@ function Inline() {
   const [productUrls, setProductUrls] = useState({});
   const [user, setUser] = useState(null);
   const [variant, setVariant] = useState(null);
-
   const btnStyle = {
     alignItems: "center",
     display: "flex",
@@ -38,6 +37,24 @@ function Inline() {
     border : "medium"
   };
 
+  const NoSavingBtn = {
+    height: "40px",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    border: "none",
+    color: "rgb(77, 77, 77)",
+    outline: "none",
+    textDecoration: "none",
+    background: "rgb(242, 242, 242)",
+    borderRadius: "3px",
+    textAlign: "center",
+    fontFamily: "inherit",
+    fontSize: "15px",
+    padding: "0px 18px 0px 12px",
+    width: "unset"
+  };
+  
   const inlineStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -234,10 +251,10 @@ function Inline() {
           <a
             className="btn btn-gray"
             href={productUrls.pdp}
-            style={{ background: "red" }}
             onClick={sendCtaClickEvent(CtaType.PDP)}
             rel="noopener noreferrer"
             target="_blank"
+            style={NoSavingBtn}
           >
             {/* <i className="exp-ux-bolt exp-ux-small" /> */}
             <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
@@ -245,15 +262,17 @@ function Inline() {
           </a>
         ) : (
           !context.product.inStock && context.product.accessConfirmed ? (
-            // Product is out of stock on EV
+          // Product is out of stock on EV
             <a
               className="btn btn-gray"
               href={productUrls.pdp}
               onClick={sendCtaClickEvent(CtaType.PDP)}
               rel="noopener noreferrer"
               target="_blank"
+              style={NoSavingBtn}
             >
-              <i className="exp-ux-bolt exp-ux-small" />
+              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
+              <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
               {evIsCheaper ? (
                 <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
               ) : null}
@@ -269,8 +288,9 @@ function Inline() {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <i className="exp-ux-bolt exp-ux-small" />
-              {evIsCheaper
+              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
+              <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
+              {evIsCheaper 
                 ? `Buy for ${formattedBestPrice}`
                 : context.brand.discount > 0
                   ? `Up to ${context.brand.discount}% off`

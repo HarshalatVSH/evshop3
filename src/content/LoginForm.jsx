@@ -229,14 +229,12 @@ function LoginForm(props) {
               .then((res) => res.json())
               .then((res) => {
                 // sendResponse(data);
-                console.log("res ", res)
                 setSubmitting(false);
 
                 if (res?.error) {
                   setError(res.error);
                   sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
                 } else if (res?.user) {
-                  console.log(res, "response");
                   props.onLogin(res.user);
                   sendAC(AnalyticEvent.LOGIN);
                 }
