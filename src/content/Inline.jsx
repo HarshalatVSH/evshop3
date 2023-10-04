@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import React, { useEffect, useState } from 'react';
 
-import { AnalyticEvent, CtaType, ImageUrlBase, MessageType, StarIcon } from '../constants';
+import { AnalyticEvent, CtaType, ImageUrlBase, MessageType, StarIcon, grayIconImg } from '../constants';
 import {
   formatInteger,
   formatPrice,
@@ -52,7 +52,8 @@ function Inline() {
     fontFamily: "inherit",
     fontSize: "15px",
     padding: "0px 18px 0px 12px",
-    width: "unset"
+    width: "unset",
+    fontWeight : 500
   };
   
   const inlineStyle = {
@@ -117,7 +118,14 @@ function Inline() {
   const ImageUrlBaseStyle = {
     marginRight: "12px",
     height : "20px",
-    width : "20px"
+    width : "20px",
+  }
+
+  const grayBtnUrlStyle = {
+    marginRight: "12px",
+    height : "20px",
+    width : "20px",
+    opacity: 0.7  
   }
 
   const StarIconStyle = {
@@ -141,7 +149,7 @@ function Inline() {
     color: "lightGray",
     textDecoration: "underline"
   }
-
+  
   useEffect(() => {
     // Bind the message listener to respond to the background worker
     const listener = (msg) => {
@@ -257,7 +265,7 @@ function Inline() {
             style={NoSavingBtn}
           >
             {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-            <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
+            <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
             No savings
           </a>
         ) : (
@@ -272,7 +280,7 @@ function Inline() {
               style={NoSavingBtn}
             >
               {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-              <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
+              <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
               {evIsCheaper ? (
                 <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
               ) : null}

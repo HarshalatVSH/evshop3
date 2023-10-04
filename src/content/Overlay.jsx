@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 
-import { AnalyticEvent, ImageUrlBase, MessageType, NotificationType, PopupMode } from '../constants';
+import { AnalyticEvent, ImageUrlBase, MessageType, NotificationType, PopupMode, grayIconImg } from '../constants';
 import { sendAC, getNotificationType } from '../helper';
 import Popup from './Popup';
 
@@ -42,12 +42,12 @@ function Overlay() {
     textDecoration: 'none',
     cursor: 'pointer',
     margin: '0px',
-    background: 'rgb(252, 69, 64)',
+    background: notification === "passive" ? "white" :'rgb(252, 69, 64)',
   };
 
   const ImageUrlBaseStyle = {
-    height: "18px",
-    width: "18px"
+    height: notification === "passive" ? "20px" : "18px",
+    width: notification === "passive" ? "20px" : "18px"
   }
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function Overlay() {
   if (!context) {
     return null;
   }
-
+  
   return (
     <>
       {notification ? (
@@ -136,7 +136,8 @@ function Overlay() {
           type="button"
         >
           {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-          <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}/>
+          <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle}/>
+          {/* <img src={grayIconImg} alt="" style={ImageUrlBaseStyle}/> */}
         </button>
       ) : null}
 
