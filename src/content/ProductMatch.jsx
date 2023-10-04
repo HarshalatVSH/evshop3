@@ -385,7 +385,7 @@ function ProductMatch(props) {
               Shop more {props.brand.name}
             </a>
           </>
-        ) : evIsCheaper !== null ? (
+        ) : evIsCheaper ? (
           // EV offers lower or equal price
           <>
             <div className="status-indicator">
@@ -432,7 +432,7 @@ function ProductMatch(props) {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {evIsCheaper === null 
+                {props.brand.discount > 0
                   ? `Up to ${props.brand.discount}% off`
                   : "Discounts Available"}
               </a>

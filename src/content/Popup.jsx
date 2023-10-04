@@ -325,6 +325,7 @@ function Popup(props) {
                 }}
                 style={btnLoginStyles}
                 type="button"
+                onMouseEnter={() => this.handleMouseEnter()} onMouseLeave={() => this.handleMouseLeave()}
               >
                 Sign in
               </button>
