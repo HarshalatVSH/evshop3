@@ -234,7 +234,7 @@ const addUTMParams = (url, placement) => (
   addQueryParams(url, [
     ['ac_tracking', 'extension'],
     ['utm_source', 'amazon'],
-    ['utm_medium', 'chrome'],
+    ['utm_medium', 'firefox'],
     ['utm_placement', placement],
   ])
 );
