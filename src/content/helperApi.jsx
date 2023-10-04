@@ -6,7 +6,7 @@ export const sendEvent = (action, data = {}) => {
       action,
       appName: "ev-shop-plugin",
       data: {
-        version: chrome.runtime.getManifest().version,
+        version: browser.runtime.getManifest().version,
         ...data,
       },
       mfgId: data?.mfgId || data?.orgId || undefined,

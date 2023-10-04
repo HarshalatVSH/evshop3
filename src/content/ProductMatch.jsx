@@ -1,8 +1,8 @@
 /* eslint-disable*/
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { CtaType, StarIcon } from '../constants';
+import { CtaType, StarIcon } from "../constants";
 import {
   formatInteger,
   formatPrice,
@@ -11,7 +11,7 @@ import {
   getProductUrls,
   getRoundedStar,
   isComparablePrice,
-} from '../helper';
+} from "../helper";
 
 function ProductMatch(props) {
   const brandUrls = getBrandUrls(props.brand);
@@ -34,9 +34,9 @@ function ProductMatch(props) {
     color: "inherit",
     outline: "none",
     textDecoration: "none",
-    fontSize:"17px",
-    fontWeight:402,
-    lineHeight:"28px"
+    fontSize: "17px",
+    fontWeight: 402,
+    lineHeight: "28px",
   };
 
   const pillAnchorStyles = {
@@ -52,10 +52,52 @@ function ProductMatch(props) {
     outline: "none",
     textDecoration: "none",
     padding: "3px 16px",
-    fontWeight:400,
+    fontWeight: 400,
     borderRadius: "30px",
-    backgroundColor:"rgb(82, 179, 130)"
-  }
+    backgroundColor: "rgb(82, 179, 130)",
+  };
+
+  const NoSavingHeader = {
+    borderRadius: "30px",
+    fontWeight: 500,
+    padding: "3px 16px",
+    backgroundColor: "rgb(227, 227, 227)",
+    textDecoration: "none",
+    color: "rgb(37, 37, 37)",
+  };
+
+  const btnProductLink = {
+    borderRadius: "3px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "14px",
+    fontWeight: 500,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    background: "white",
+    border: "1px solid rgb(117, 117, 117)",
+    color: "rgb(117, 117, 117)",
+    margin: "6px 0px 18px",
+    textDecoration: "none",
+  };
+
+  const shopMoreBtn = {
+    borderRadius: "5px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "15px",
+    fontWeight: 600,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    background: "rgb(252, 69, 64)",
+    border: "1px solid lightGray",
+    color: "rgb(255, 255, 255)",
+    margin: "18px 0",
+    margin: "6px 0 18px 0",
+    textDecoration: "none",
+  };
 
   const combinedStyles = { ...headerAnchorStyle, ...pillAnchorStyles };
 
@@ -81,7 +123,7 @@ function ProductMatch(props) {
     fontWeight: 400,
     lineHeight: "24px",
     textDecoration: "none",
-    color: "inherit"
+    color: "inherit",
   };
 
   const smallTextStyles = {
@@ -101,39 +143,39 @@ function ProductMatch(props) {
   };
 
   const pillsSuccessStyle = {
-    borderRadius: '30px',
+    borderRadius: "30px",
     fontWeight: 400,
-    padding: '3px 16px',
-    backgroundColor: 'rgb(82, 179, 130)',
+    padding: "3px 16px",
+    backgroundColor: "rgb(82, 179, 130)",
     color: "black",
-    textDecoration: "none"
+    textDecoration: "none",
   };
 
   const productLink = {
     background: "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
     textDecoration: "none",
-    margin: '18px 0px',
-    borderRadius: '3px',
-    display: 'block',
-    fontFamily: 'inherit',
-    fontSize: '14px',
+    margin: "18px 0px",
+    borderRadius: "3px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "14px",
     fontWeight: 600,
-    padding: '12px',
-    textAlign: 'center',
-    width: '90%',
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
   };
 
   const unlockTextStyle = {
     color: "rgb(117, 117, 117)",
-    fontSize: "12px"
-  }
+    fontSize: "12px",
+  };
 
   const StarIconStyle = {
     marginRight: "4px",
     height: "25px",
-    width: "20px"
-  }
+    width: "20px",
+  };
 
   const btnStyle = {
     borderRadius: "3px",
@@ -148,8 +190,8 @@ function ProductMatch(props) {
     border: "1px solid lightGray",
     color: "lightGray",
     margin: "18px 0",
-    margin: "6px 0 18px 0"
-  }
+    margin: "6px 0 18px 0",
+  };
 
   const renderReviewSummary = () => {
     if (!props.product.reviewCount) return null;
@@ -161,7 +203,7 @@ function ProductMatch(props) {
           className="average-stars type-title"
           style={averageStarsStyles}
           href={productUrls.reviews}
-          onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-stars')}
+          onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, "review-stars")}
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -173,13 +215,13 @@ function ProductMatch(props) {
           className="tertiary-text small-text link"
           style={smallTextStyles}
           href={productUrls.reviews}
-          onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-count')}
+          onClick={props.sendCtaClickEvent(CtaType.PDP_REVIEWS, "review-count")}
           rel="noopener noreferrer"
           target="_blank"
         >
           {props.product.reviewCount > 1
             ? `${formatInteger(props.product.reviewCount)} reviews`
-            : '1 review'}
+            : "1 review"}
         </a>
       </div>
     );
@@ -191,7 +233,7 @@ function ProductMatch(props) {
         {props.product.imageUrl ? (
           <a
             href={productUrls.pdp}
-            onClick={props.sendCtaClickEvent(CtaType.PDP, 'image')}
+            onClick={props.sendCtaClickEvent(CtaType.PDP, "image")}
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -199,7 +241,7 @@ function ProductMatch(props) {
               alt={props.product.name}
               className="match-image"
               src={props.product.imageUrl}
-              style={{ height: '48px', width: '48px' }}
+              style={{ height: "48px", width: "48px" }}
             />
           </a>
         ) : null}
@@ -207,7 +249,7 @@ function ProductMatch(props) {
           <a
             href={productUrls.pdp}
             style={headerAnchorStyle}
-            onClick={props.sendCtaClickEvent(CtaType.PDP, 'name')}
+            onClick={props.sendCtaClickEvent(CtaType.PDP, "name")}
             rel="noopener noreferrer"
             target="_blank"
           >
@@ -224,7 +266,7 @@ function ProductMatch(props) {
               <a
                 className="pill pill-success"
                 href={productUrls.pdp}
-                onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
+                onClick={props.sendCtaClickEvent(CtaType.PDP, "pill")}
                 rel="noopener noreferrer"
                 style={FoundOnExpert}
                 target="_blank"
@@ -235,169 +277,186 @@ function ProductMatch(props) {
 
             {renderReviewSummary()}
 
-            <p className="subtext secondary-text small-text" style={subtextStyles}>
+            <p
+              className="subtext secondary-text small-text"
+              style={subtextStyles}
+            >
               Sign in to find out if you qualify for discounts.
             </p>
           </>
-        ) : (
-          evIsCheaper === false ? (
-            // No savings available
-            <>
-              <div className="status-indicator">
-                <a
-                  className="pill pill-secondary"
-                  href={productUrls.pdp}
-                  style={pillAnchorStyles}
-                  onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  No savings
-                </a>
-              </div>
-
-              {renderReviewSummary()}
-
-              <p className="subtext secondary-text small-text" style={subtextStyles}>
-                No savings for this item, but you may qualify for great discounts on similar
-                products.
-              </p>
+        ) : evIsCheaper === false ? (
+          // No savings available
+          <>
+            <div className="status-indicator">
               <a
-                className="btn btn-primary product-link"
+                className="pill pill-secondary"
                 href={productUrls.pdp}
-                style={productLink}
-                onClick={props.sendCtaClickEvent(CtaType.PDP)}
+                style={NoSavingHeader}
+                onClick={props.sendCtaClickEvent(CtaType.PDP, "pill")}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                View on ExpertVoice
+                No savings
               </a>
-            </>
-          ) : (
-            !props.product.inStock && props.product.accessConfirmed ? (
-              // Product is out of stock on EV
-              <>
-                <div className="status-indicator">
-                  <a
-                    className="pill pill-secondary"
-                    style={pillAnchorStyles}
-                    href={productUrls.pdp}
-                    onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {evIsCheaper ? (
-                      <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
-                    ) : null}
-                    Out of Stock
-                  </a>
-                </div>
+            </div>
 
-                {renderReviewSummary()}
+            {renderReviewSummary()}
 
-                <p className="subtext secondary-text small-text" style={subtextStyles}>
-                  Visit ExpertVoice to view details and sign up to get notified when
-                  it’s back in stock.
-                </p>
-                <a
-                  className="btn btn-outline product-link"
-                  href={productUrls.pdp}
-                  style={btnStyle}
-                  onClick={props.sendCtaClickEvent(CtaType.PDP)}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  View on ExpertVoice
-                </a>
+            <p
+              className="subtext secondary-text small-text"
+              style={subtextStyles}
+            >
+              No savings for this item, but you may qualify for great discounts
+              on similar products.
+            </p>
+            <a
+              className="btn btn-primary product-link"
+              href={productUrls.pdp}
+              style={productLink}
+              onClick={props.sendCtaClickEvent(CtaType.PDP)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View on ExpertVoice
+            </a>
+          </>
+        ) : 
+        !props.product.inStock && props.product.accessConfirmed ? (
+          // Product is out of stock on EV
+          <>
+            <div className="status-indicator">
+              <a
+                className="pill pill-secondary"
+                // style={NoSavingHeader}
+                href={productUrls.pdp}
+                onClick={props.sendCtaClickEvent(CtaType.PDP, "pill")}
+                rel="noopener noreferrer"
+                target="_blank"
+                style={NoSavingHeader}
+              >
+                {evIsCheaper ? (
+                  <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
+                ) : null}
+                Out of Stock
+              </a>
+            </div>
 
-                <p className="subtext secondary-text small-text" style={subtextStyles}>
-                  {props.brand.discount > 0 ? (
-                    <>
-                      Save up to <strong>{props.brand.discount}% off</strong>
-                    </>
-                  ) : 'Discounts available'} on other products
-                </p>
-                <a
-                  className="btn btn-primary brand-products-link"
-                  style={btnStyle}
-                  href={brandUrls.plp}
-                  onClick={props.sendCtaClickEvent(CtaType.BRAND_PLP)}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Shop more {props.brand.name}
-                </a>
-              </>
-            ) : (
-              evIsCheaper ? (
-                // EV offers lower or equal price
+            {renderReviewSummary()}
+
+            <p
+              className="subtext secondary-text small-text"
+              style={subtextStyles}
+            >
+              Visit ExpertVoice to view details and sign up to get notified when
+              it’s back in stock.
+            </p>
+            <a
+              className="btn btn-outline product-link"
+              href={productUrls.pdp}
+              style={btnProductLink}
+              onClick={props.sendCtaClickEvent(CtaType.PDP)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View on ExpertVoice
+            </a>
+
+            <p
+              className="subtext secondary-text small-text"
+              style={subtextStyles}
+            >
+              {props.brand.discount > 0 ? (
                 <>
-                  <div className="status-indicator">
-                    <a
-                      className="pill pill-success"
-                      href={productUrls.pdp}
-                      style={pillsSuccessStyle}
-                      onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      {`Lowest price ${formattedBestPrice}`}
-                    </a>
-                  </div>
-
-                  {renderReviewSummary()}
-
-                  <p className="subtext secondary-text small-text" style={unlockTextStyle}>
-                    Don’t miss out on your expert discount.
-                  </p>
-                  <a
-                    className="btn btn-primary product-link"
-                    href={productUrls.pdp}
-                    style={productLink}
-                    onClick={props.sendCtaClickEvent(CtaType.PDP)}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    Buy on ExpertVoice
-                  </a>
+                  Save up to <strong>{props.brand.discount}% off</strong>
                 </>
               ) : (
-                // EV offers discount but price unknown
-                <>
-                  <div className="status-indicator">
-                    <a
-                      className="pill pill-success"
-                      href={productUrls.pdp}
-                      style={pillsSuccessStyle}
-                      onClick={props.sendCtaClickEvent(CtaType.PDP, 'pill')}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      {props.brand.discount > 0
-                        ? `Up to ${props.brand.discount}% off`
-                        : 'Discounts Available'}
-                    </a>
-                  </div>
+                "Discounts available"
+              )}{" "}
+              on other products
+            </p>
+            <a
+              className="btn btn-primary brand-products-link"
+              style={shopMoreBtn}
+              href={brandUrls.plp}
+              onClick={props.sendCtaClickEvent(CtaType.BRAND_PLP)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Shop more {props.brand.name}
+            </a>
+          </>
+        ) : evIsCheaper !== null ? (
+          // EV offers lower or equal price
+          <>
+            <div className="status-indicator">
+              <a
+                className="pill pill-success"
+                href={productUrls.pdp}
+                style={pillsSuccessStyle}
+                onClick={props.sendCtaClickEvent(CtaType.PDP, "pill")}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {`Lowest price ${formattedBestPrice}`}
+              </a>
+            </div>
 
-                  {renderReviewSummary()}
+            {renderReviewSummary()}
 
-                  <p className="subtext secondary-text small-text" style={unlockTextStyle}>
-                    Unlock your discounted price on ExpertVoice.
-                  </p>
-                  <a
-                    className="btn btn-primary product-link"
-                    href={productUrls.pdp}
-                    style={productLink}
-                    onClick={props.sendCtaClickEvent(CtaType.PDP)}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    View on ExpertVoice
-                  </a>
-                </>
-              )
-            )
-          )
+            <p
+              className="subtext secondary-text small-text"
+              style={unlockTextStyle}
+            >
+              Don’t miss out on your expert discount.
+            </p>
+            <a
+              className="btn btn-primary product-link"
+              href={productUrls.pdp}
+              style={productLink}
+              onClick={props.sendCtaClickEvent(CtaType.PDP)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Buy on ExpertVoice
+            </a>
+          </>
+        ) : (
+          // EV offers discount but price unknown
+          <>
+            <div className="status-indicator">
+              <a
+                className="pill pill-success"
+                href={productUrls.pdp}
+                style={pillsSuccessStyle}
+                onClick={props.sendCtaClickEvent(CtaType.PDP, "pill")}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {evIsCheaper === null 
+                  ? `Up to ${props.brand.discount}% off`
+                  : "Discounts Available"}
+              </a>
+            </div>
+
+            {renderReviewSummary()}
+
+            <p
+              className="subtext secondary-text small-text"
+              style={unlockTextStyle}
+            >
+              Unlock your discounted price on ExpertVoice.
+            </p>
+            <a
+              className="btn btn-primary product-link"
+              href={productUrls.pdp}
+              style={productLink}
+              onClick={props.sendCtaClickEvent(CtaType.PDP)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View on ExpertVoice
+            </a>
+          </>
         )}
       </>
     </>
