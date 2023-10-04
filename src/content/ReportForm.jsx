@@ -29,7 +29,7 @@ function ReportForm(props) {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '12px',
+    padding: '10px',
   };
 
   const btn = {
@@ -50,8 +50,8 @@ function ReportForm(props) {
   const backBtnStyle = {...btn,...backBtn}
 
   const panelTitle = {
-    color: 'rgb(37, 37, 37)',
-    fontWeight: 600,
+    color: 'rgb(70, 68, 68)',
+    fontWeight: 401,
     margin: '0px 6px',
   };
 
@@ -69,8 +69,9 @@ function ReportForm(props) {
 
   const formLabel = {
     display: 'block',
-    fontWeight: 600,
+    fontWeight: 401,
     marginBottom: '6px',
+    color: '#444'
   };
 
   const radioInput = {
@@ -91,12 +92,14 @@ function ReportForm(props) {
     flex: '1 1 auto',
     fontWeight: 400,
     marginBottom: '0px',
+    color:'#646464'
   };
 
   const textAreaTitle = {
     display: 'block',
-    fontWeight: 600,
+    fontWeight: 401,
     marginBottom: '6px',
+    color:'#444'
   };
 
   const textAreaStyle = {
@@ -162,11 +165,11 @@ function ReportForm(props) {
   const reportDoneBtn = {...submitBtn , ...reportDone}
 
   const ClosebtnIconStyle = {
-    height : "14px"
+    height : "16px"
   }
 
   const BackbtnIconStyle = {
-    height: "23px",
+    height: "24px",
     position: "relative",
     top: "2px"
   }

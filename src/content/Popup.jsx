@@ -202,7 +202,8 @@ function Popup(props) {
     fontWeight: "400",
     lineHeight: "24px",
     color:"rgb(38,40,39)",
-    marginTop : props.user ? "0px" : "-14px"
+    // marginTop : props.user ? "0px" : "-14px"
+    marginTop : "0px"
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   const subtextStyle = {
@@ -229,11 +230,11 @@ function Popup(props) {
 
   const tertiSmallLinkStyle = {
     lineHeight: "19px",
-    fontSize: "13px",
-    fontWeight: 600,
+    fontSize: "12px",
+    fontWeight: 400,
     lineHeight: "18px",
-    color: "lightGray",
-    textDecoration: "underline"
+    color: "rgb(117, 117, 117)",
+    textDecoration: "none"
   }
 
   return (
@@ -261,7 +262,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-        {/* {props.product && props.brand?.active ? (
+         {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -271,13 +272,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-          props.brand ? ( */}
+          props.brand ? ( 
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-           {/* ) : (  */}
+            ) : (   
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -294,8 +295,8 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-           {/* )
-        )}  */}
+             )
+        )} 
 
         <div className="learn-more">
           {props.user ? (

@@ -2,26 +2,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import {
-  AnalyticEvent,
-  BackbtnIcon,
-  ClosebtnIcon,
-  MessageType,
-} from "../constants";
+import { AnalyticEvent, BackbtnIcon, ClosebtnIcon, MessageType } from "../constants";
 import { sendAC } from "../helper";
 import { ErrorAlert } from "../components/Alert";
-import { loginStatus } from "./helperApi";
+
 
 const Errors = {
   "signIn.invalid": "Oops. this account information was not recognized.",
-  "signIn.locked":
-    "Looks like it's time to change your password. Give it a quick update and try logging in again.",
-  "signIn.unauthorized":
-    "Uh oh, the account information you entered is incorrect.",
-  "signIn.restricted":
-    "Uh oh, looks like your access to ExpertVoice has been disabled. Contact your store manager or HR department to find out why.",
-  "signIn.serviceError":
-    "Sorry, we can't log you in right now. Please come back in a few minutes and try again.",
+  "signIn.locked": "Looks like it's time to change your password. Give it a quick update and try logging in again.",
+  "signIn.unauthorized": "Uh oh, the account information you entered is incorrect.",
+  "signIn.restricted": "Uh oh, looks like your access to ExpertVoice has been disabled. Contact your store manager or HR department to find out why.",
+  "signIn.serviceError": "Sorry, we can't log you in right now. Please come back in a few minutes and try again.",
 };
 
 /**
@@ -50,14 +41,14 @@ function LoginForm(props) {
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    padding: "12px",
+    padding: "8px",
   };
 
   const btnIconStyles = {
     marginRight: "6px",
     color: "rgb(117, 117, 117)",
     background: "none",
-    border: "medium",
+    border: "medium"
   };
 
   const backBtnStyles = {
@@ -68,8 +59,9 @@ function LoginForm(props) {
 
   const titleTextStyles = {
     color: "rgb(37, 37, 37)",
-    fontWeight: 600,
-    margin: "0px 6px",
+    fontWeight: 400,
+    margin: "0px 0px -1px",
+    fontSize: "14px"
   };
 
   const panelActionsStyles = {
@@ -82,8 +74,8 @@ function LoginForm(props) {
   const closeBtnStyles = {
     color: "rgb(117, 117, 117)",
     background: "none",
-    border: "medium",
-  };
+    border: "medium"
+  }
 
   const closeIconStyles = {
     position: "relative",
@@ -91,10 +83,11 @@ function LoginForm(props) {
     fontSize: "18px",
   };
 
+
   const panelBody = {
     padding: "18px",
-    textAlign: "center",
-  };
+    textAlign: "center"
+  }
 
   const formDivStyles = {
     position: "relative",
@@ -165,12 +158,12 @@ function LoginForm(props) {
   };
 
   const subTextStyles = {
-    marginTop: "18px",
-    fontSize: "13px",
+    margin: "17px 0px 0px",
+    fontSize: "12px",
     fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(117, 117, 117)",
-    width: "90%",
+    width: "97%"
   };
 
   const signUpLinkStyles = {
@@ -180,43 +173,17 @@ function LoginForm(props) {
   };
 
   const ClosebtnIconStyle = {
-    height: "14px",
-  };
+    height: "16px"
+  }
 
   const BackbtnIconStyle = {
     height: "23px",
     position: "relative",
-    top: "2px",
-  };
-
-  const loginStatus = () => {
-    fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
-      method: "POST",
-      body: `identifier=${encodeURIComponent(
-        identifier
-      )}&password=${encodeURIComponent(password)}`,
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        // sendResponse(data);
-        setSubmitting(false);
-
-        if (res?.error) {
-          setError(res.error);
-          sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
-        } else if (res?.user) {
-          props.onLogin(res.user);
-          sendAC(AnalyticEvent.LOGIN);
-        }
-      });
-  };
+    top: "2px"
+  }
 
   return (
-    <section className="panel" id="popup" style={popupStyles}>
+    <section className="panel" id="popup" style={popupStyles} >
       <header className="panel-header" style={panelHeaderStyles}>
         {submitting ? null : (
           <>
@@ -231,19 +198,12 @@ function LoginForm(props) {
               {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
               <img src={BackbtnIcon} alt="" style={BackbtnIconStyle} />
             </button>
-            <span className="title-text" style={titleTextStyles}>
-              Sign into ExpertVoice
-            </span>
+            <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
           </>
         )}
 
         <div className="actions" style={panelActionsStyles}>
-          <button
-            className="btn-icon close-button"
-            style={closeBtnStyles}
-            onClick={props.onClose}
-            type="button"
-          >
+          <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
             {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} />
           </button>
@@ -259,14 +219,30 @@ function LoginForm(props) {
             setSubmitting(true);
 
             // const res = await browser.runtime.sendMessage({ identifier, password, type: MessageType.LOGIN });
-            loginStatus();
+            fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
+              method: "POST",
+              body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                // sendResponse(data);
+                setSubmitting(false);
+
+                if (res?.error) {
+                  setError(res.error);
+                  sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
+                } else if (res?.user) {
+                  props.onLogin(res.user);
+                  sendAC(AnalyticEvent.LOGIN);
+                }
+              });
           }}
         >
-          {error ? (
-            <ErrorAlert style={{ color: "red" }} className="form-error">
-              {Errors[error] || "Oops. Something went wrong. Please try again."}
-            </ErrorAlert>
-          ) : null}
+          {error ? <ErrorAlert style={{ color: "red" }} className="form-error">{Errors[error] || "Oops. Something went wrong. Please try again."}</ErrorAlert> : null}
 
           <div className="form-control" style={formDivStyles}>
             <input
@@ -285,18 +261,9 @@ function LoginForm(props) {
               type="text"
               value={identifier}
             />
-            <label htmlFor="identifier" style={userNameLabelStyles}>
-              Email or Username
-            </label>
+            <label htmlFor="identifier" style={userNameLabelStyles}>Email or Username</label>
 
-            {!identifier && interactions.identifier ? (
-              <div
-                style={{ color: "red", fontSize: "13px" }}
-                className="form-helper guidance warning"
-              >
-                You must provide an email or username to sign in.
-              </div>
-            ) : null}
+            {!identifier && interactions.identifier ? <div style={{ color: "red", fontSize: "13px" }} className="form-helper guidance warning">You must provide an email or username to sign in.</div> : null}
           </div>
           <div className="form-control" style={formDivStyles}>
             <input
@@ -313,26 +280,12 @@ function LoginForm(props) {
               value={password}
               style={passwordDivStyles}
             />
-            <label htmlFor="password" style={passwordLabelStyles}>
-              Password
-            </label>
+            <label htmlFor="password" style={passwordLabelStyles}>Password</label>
 
-            {!password && interactions.password ? (
-              <div
-                style={{ color: "red", fontSize: "13px" }}
-                className="form-helper guidance warning"
-              >
-                You must provide your password to sign in.
-              </div>
-            ) : null}
+            {!password && interactions.password ? <div style={{ color: "red", fontSize: "13px" }} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
           </div>
 
-          <button
-            className="btn btn-primary btn-report-submit"
-            style={btnDisableStyles}
-            disabled={!identifier || !password}
-            type="submit"
-          >
+          <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit">
             Sign in
           </button>
 
