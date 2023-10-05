@@ -200,47 +200,8 @@ function LoginForm(props) {
     textAlign: "left"
   }
 
-return (
-  <section className="panel" id="popup" style={popupStyles} >
-    <header className="panel-header" style={panelHeaderStyles}>
-      {submitting ? null : (
-        <>
-          <button
-            className="btn-icon back-button"
-            style={btnIconStyles}
-            onClick={() => {
-              props.onCancel();
-            }}
-            type="button"
-          >
-            {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
-            <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
-              onMouseEnter={() => setHoverValue("backIconBtn")}
-              onMouseLeave={() => setHoverValue("")} />
-          </button>
-          <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
-        </>
-      )}
-
-      <div className="actions" style={panelActionsStyles}>
-        <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
-          {/* <i className="exp-ux-close exp-ux-small" /> */}
-          <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
-            onMouseLeave={() => setHoverValue("")} />
-        </button>
-      </div>
-    </header>
-    <main className="panel-body" style={panelBody}>
-      <form
-        className="login-form exp-form"
-        onSubmit={async (e) => {
-          e.preventDefault();
-
-          setError(null);
-          setSubmitting(true);
-
-          // const res = await browser.runtime.sendMessage({ identifier, password, type: MessageType.LOGIN });
-          fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
+  const loginUser = () => {
+    fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
             method: "POST",
             body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
             credentials: "include",
@@ -261,6 +222,68 @@ return (
                 sendAC(AnalyticEvent.LOGIN);
               }
             });
+  }
+
+return (
+  <section className="panel" id="popup" style={popupStyles} >
+    <header className="panel-header" style={panelHeaderStyles}>
+      {submitting ? null : (
+        <>
+          <button
+            className="btn-icon back-button"
+            style={btnIconStyles}
+            onClick={() => {
+              props.onCancel();
+            }}
+            type="button"
+          >
+            <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
+              onMouseEnter={() => setHoverValue("backIconBtn")}
+              onMouseLeave={() => setHoverValue("")} />
+          </button>
+          <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
+        </>
+      )}
+
+      <div className="actions" style={panelActionsStyles}>
+        <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
+          <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
+            onMouseLeave={() => setHoverValue("")} />
+        </button>
+      </div>
+    </header>
+    <main className="panel-body" style={panelBody}>
+      <form
+        className="login-form exp-form"
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          setError(null);
+          setSubmitting(true);
+
+          // const res = await browser.runtime.sendMessage({ identifier, password, type: MessageType.LOGIN });
+          // fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
+          //   method: "POST",
+          //   body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
+          //   credentials: "include",
+          //   headers: {
+          //     "Content-Type": "application/x-www-form-urlencoded",
+          //   },
+          // })
+          //   .then((res) => res.json())
+          //   .then((res) => {
+          //     // sendResponse(data);
+          //     setSubmitting(false);
+
+          //     if (res?.error) {
+          //       setError(res.error);
+          //       sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
+          //     } else if (res?.user) {
+          //       props.onLogin(res.user);
+          //       sendAC(AnalyticEvent.LOGIN);
+          //     }
+          //   });
+          loginUser();
         }}
       >
         {error ? <ErrorAlert style={FormValidation} className="form-error">{Errors[error] || "Oops. Something went wrong. Please try again."}</ErrorAlert> : null}

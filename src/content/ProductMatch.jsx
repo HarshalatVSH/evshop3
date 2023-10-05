@@ -68,8 +68,6 @@ function ProductMatch(props) {
     backgroundColor: "rgb(82, 179, 130)"
   }
 
-  const combinedStyles = { ...headerAnchorStyle, ...pillAnchorStyles };
-
   const matchDetailsStyles = {
     alignItems: "center",
     display: "flex",
@@ -217,7 +215,6 @@ function ProductMatch(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
           <img src={StarIcon} alt="" style={StarIconStyle} />
           {roundedStars}
         </a>

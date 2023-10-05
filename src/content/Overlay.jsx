@@ -140,9 +140,7 @@ function Overlay() {
           onMouseEnter={() => setHoverValue("viewOnExpert")}
           onMouseLeave={() => setHoverValue("")}
         >
-          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
           <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
-          {/* <img src={grayIconImg} alt="" style={ImageUrlBaseStyle}/> */}
         </button>
       ) : null}
 

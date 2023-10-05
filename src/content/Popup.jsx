@@ -204,7 +204,8 @@ function Popup(props) {
     fontWeight: "400",
     lineHeight: "24px",
     color: "rgb(38,40,39)",
-    marginTop: "0px"
+    // marginTop: props.product && props.brand?.active ? "0px" : "-14px"
+    marginTop:"0px"
   }
   
   const subtextStyle = {
@@ -241,7 +242,6 @@ function Popup(props) {
   return (
     <section className="panel" id="popup" style={popupStyle}>
       <header className="panel-header" style={panelHeaderStyle}>
-        {/* <i className="exp-ux-bolt exp-ux-small ev-logo" /> */}
         <img src={ExpertVoiceIcon} alt="" style={ExpertVoiceIconStyle} />
         <span className="title-text" style={titleText}>Tips</span>
         {props.notification ? (
@@ -256,7 +256,6 @@ function Popup(props) {
             type="button"
             style={closeBtnStyles}
           >
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
             onMouseEnter={() => setHoverValue("closeIconBtn")}
             onMouseLeave={() => setHoverValue("")} 
@@ -299,7 +298,7 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          )
+           )
         )}
 
         <div className="learn-more">

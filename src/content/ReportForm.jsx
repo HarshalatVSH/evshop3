@@ -197,7 +197,6 @@ function ReportForm(props) {
               type="button"
               style={backBtnStyle}
             >
-              {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
               <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
                 onMouseEnter={() => setHoverValue("backBtn")}
                 onMouseLeave={() => setHoverValue("")} />
@@ -208,7 +207,6 @@ function ReportForm(props) {
 
         <div className="actions" style={panelCloseDiv}>
           <button className="btn-icon close-button" style={backBtnStyle} onClick={props.onClose} type="button">
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
               onMouseEnter={() => setHoverValue("closeIconBtn")}
               onMouseLeave={() => setHoverValue("")} />
@@ -219,7 +217,6 @@ function ReportForm(props) {
       {submitted ? (
         <main className="panel-body report-success" style={reportSuccess}>
           <div className="confirmation">
-            {/* <i className="confirmation-icon exp-ux-check-circle exp-ux-xlarge" style={{fontsize: "48px"}}/> */}
             <img src={SuccessbtnIcon} alt="" style={SuccessbtnIconStyle} />
             <h2 className="confirmation-title type-title" style={confirmationTitle}>Thank you</h2>
           </div>

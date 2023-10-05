@@ -24,7 +24,6 @@ function Alert(props) {
     <div className={`alert alert-${props.type}${props.className ? ` ${props.className}` : ''}`}>
       {props.icon ? (
         <div className="alert-before">
-          {/* <i className={`exp-ux-${props.icon} exp-ux-${props.iconSize}`} /> */}
           <img src={DangerMode} alt="" style={IconStyle} />
         </div>
       ) : null}
