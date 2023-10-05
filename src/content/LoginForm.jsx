@@ -96,14 +96,15 @@ function LoginForm(props) {
   };
 
   const usenameInputStyles = {
-    background: "rgb(247, 247, 247)",
+    background: hoverValue === "username" ? "rgb(237,237, 237)" : "rgb(247,247, 247)",
     borderTop: "none",
     borderRight: "none",
     borderLeft: "none",
     borderImage: "initial",
-    borderBottom: "1px solid rgb(197, 197, 197)",
+    borderBottom: hoverValue === "username" ? "1px solid black" :
+    (hoverValue === "user_change" && password) &&  "1px solid rgb(60, 152, 199)" ,
     borderRadius: "3px 3px 0px 0px",
-    color: "rgb(37, 37, 37)",
+    color: "rgb(79, 77, 77)",
     fontSize: "inherit",
     outline: "none",
     padding: "16px 12px 14px",
@@ -130,22 +131,23 @@ function LoginForm(props) {
     width: "100%",
     color: "rgb(255, 255, 255)",
     cursor: "pointer",
-    background: isDisabled  
-                    ?  "rgb(252, 191, 189)" 
-                    : 
-                    hoverValue ===  "signInBtn" ? 
-                    "rgb(227,62,56)": 
-                    "rgb(252, 69, 64)",
+    background: isDisabled
+      ? "rgb(252, 191, 189)"
+      :
+      hoverValue === "signInBtn" ?
+        "rgb(227,62,56)" :
+        "rgb(252, 69, 64)",
     border: "medium",
   };
 
   const passwordDivStyles = {
-    background: "rgb(247, 247, 247)",
+    background: hoverValue === "password" ? "rgb(237,237, 237)" : "rgb(247,247, 247)",
     borderTop: "none",
     borderRight: "none",
     borderLeft: "none",
     borderImage: "initial",
-    borderBottom: "1px solid rgb(197, 197, 197)",
+    borderBottom: hoverValue === "password" ? "1px solid black" :
+      (hoverValue === "pass_change" && password) &&  "1px solid rgb(60, 152, 199)" ,
     borderRadius: "3px 3px 0px 0px",
     color: "rgb(37, 37, 37)",
     fontSize: "inherit",
@@ -181,7 +183,7 @@ function LoginForm(props) {
   const ClosebtnIconStyle = {
     height: "27px",
     opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6",
-    cursor:"pointer"
+    cursor: "pointer"
   }
 
   const BackbtnIconStyle = {
@@ -189,7 +191,13 @@ function LoginForm(props) {
     opacity: hoverValue === "backIconBtn" ? "0.9" : "0.6",
     position: "relative",
     top: "2px",
-    cursor:"pointer"
+    cursor: "pointer"
+  }
+
+  const FormValidation = {
+    color : "rgb(234, 77, 75)",
+    fontSize:"12px",
+    textAlign:"left"
   }
 
   return (
@@ -206,9 +214,9 @@ function LoginForm(props) {
               type="button"
             >
               {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
-              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle} 
-              onMouseEnter={() => setHoverValue("backIconBtn")}
-              onMouseLeave={() => setHoverValue("")} />
+              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
+                onMouseEnter={() => setHoverValue("backIconBtn")}
+                onMouseLeave={() => setHoverValue("")} />
             </button>
             <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
           </>
@@ -269,14 +277,17 @@ function LoginForm(props) {
               }}
               onChange={(e) => {
                 setIdentifier(e.currentTarget.value);
+                setHoverValue("user_change")
               }}
               placeholder="Email or Username"
               type="text"
               value={identifier}
+              onMouseEnter={() => setHoverValue("username")}
+              onMouseLeave={() => setHoverValue("")}
             />
             <label htmlFor="identifier" style={userNameLabelStyles}>Email or Username</label>
 
-            {!identifier && interactions.identifier ? <div style={{ color: "red", fontSize: "13px" }} className="form-helper guidance warning">You must provide an email or username to sign in.</div> : null}
+            {!identifier && interactions.identifier ? <div style={FormValidation} className="form-helper guidance warning">You must provide an email or username to sign in.</div> : null}
           </div>
           <div className="form-control" style={formDivStyles}>
             <input
@@ -287,20 +298,23 @@ function LoginForm(props) {
               }}
               onChange={(e) => {
                 setPassword(e.currentTarget.value);
+                setHoverValue("pass_change")
               }}
               placeholder="Password"
               type="password"
               value={password}
               style={passwordDivStyles}
+              onMouseEnter={() => setHoverValue("password")}
+              onMouseLeave={() => setHoverValue("")}
             />
             <label htmlFor="password" style={passwordLabelStyles}>Password</label>
 
-            {!password && interactions.password ? <div style={{ color: "red", fontSize: "13px" }} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
+            {!password && interactions.password ? <div style={FormValidation} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
           </div>
 
           <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit"
-          onMouseEnter={() => setHoverValue("signInBtn")}
-          onMouseLeave={() => setHoverValue("")}>
+            onMouseEnter={() => setHoverValue("signInBtn")}
+            onMouseLeave={() => setHoverValue("")}>
             Sign in
           </button>
 
