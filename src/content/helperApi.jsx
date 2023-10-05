@@ -18,8 +18,8 @@ export const sendEvent = (action, data = {}) => {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => console.log("sendEvent", res))
-    .catch((err) => console.log("sendEventErr", err));
+    // .then((res) => console.log("sendEvent", res))
+    // .catch((err) => console.log("sendEventErr", err));
 };
 
 export const loadContext = async (pageData) => {

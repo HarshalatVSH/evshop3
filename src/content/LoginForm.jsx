@@ -102,7 +102,7 @@ function LoginForm(props) {
     borderLeft: "none",
     borderImage: "initial",
     borderBottom: hoverValue === "username" ? "1px solid black" :
-    (hoverValue === "user_change" && password) &&  "1px solid rgb(60, 152, 199)" ,
+      (hoverValue === "user_change" && password) && "1px solid rgb(60, 152, 199)",
     borderRadius: "3px 3px 0px 0px",
     color: "rgb(79, 77, 77)",
     fontSize: "inherit",
@@ -147,7 +147,7 @@ function LoginForm(props) {
     borderLeft: "none",
     borderImage: "initial",
     borderBottom: hoverValue === "password" ? "1px solid black" :
-      (hoverValue === "pass_change" && password) &&  "1px solid rgb(60, 152, 199)" ,
+      (hoverValue === "pass_change" && password) && "1px solid rgb(60, 152, 199)",
     borderRadius: "3px 3px 0px 0px",
     color: "rgb(37, 37, 37)",
     fontSize: "inherit",
@@ -195,146 +195,146 @@ function LoginForm(props) {
   }
 
   const FormValidation = {
-    color : "rgb(234, 77, 75)",
-    fontSize:"12px",
-    textAlign:"left"
+    color: "rgb(234, 77, 75)",
+    fontSize: "12px",
+    textAlign: "left"
   }
 
-  return (
-    <section className="panel" id="popup" style={popupStyles} >
-      <header className="panel-header" style={panelHeaderStyles}>
-        {submitting ? null : (
-          <>
-            <button
-              className="btn-icon back-button"
-              style={btnIconStyles}
-              onClick={() => {
-                props.onCancel();
-              }}
-              type="button"
-            >
-              {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
-              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
-                onMouseEnter={() => setHoverValue("backIconBtn")}
-                onMouseLeave={() => setHoverValue("")} />
-            </button>
-            <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
-          </>
-        )}
-
-        <div className="actions" style={panelActionsStyles}>
-          <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
-            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
+return (
+  <section className="panel" id="popup" style={popupStyles} >
+    <header className="panel-header" style={panelHeaderStyles}>
+      {submitting ? null : (
+        <>
+          <button
+            className="btn-icon back-button"
+            style={btnIconStyles}
+            onClick={() => {
+              props.onCancel();
+            }}
+            type="button"
+          >
+            {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
+            <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
+              onMouseEnter={() => setHoverValue("backIconBtn")}
               onMouseLeave={() => setHoverValue("")} />
           </button>
+          <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
+        </>
+      )}
+
+      <div className="actions" style={panelActionsStyles}>
+        <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
+          {/* <i className="exp-ux-close exp-ux-small" /> */}
+          <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
+            onMouseLeave={() => setHoverValue("")} />
+        </button>
+      </div>
+    </header>
+    <main className="panel-body" style={panelBody}>
+      <form
+        className="login-form exp-form"
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          setError(null);
+          setSubmitting(true);
+
+          // const res = await browser.runtime.sendMessage({ identifier, password, type: MessageType.LOGIN });
+          fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
+            method: "POST",
+            body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              // sendResponse(data);
+              setSubmitting(false);
+
+              if (res?.error) {
+                setError(res.error);
+                sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
+              } else if (res?.user) {
+                props.onLogin(res.user);
+                sendAC(AnalyticEvent.LOGIN);
+              }
+            });
+        }}
+      >
+        {error ? <ErrorAlert style={FormValidation} className="form-error">{Errors[error] || "Oops. Something went wrong. Please try again."}</ErrorAlert> : null}
+
+        <div className="form-control" style={formDivStyles}>
+          <input
+            autoCapitalize="off"
+            autoCorrect="off"
+            id="identifier"
+            name="identifier"
+            style={usenameInputStyles}
+            onBlur={() => {
+              setInteractions({ ...interactions, identifier: true });
+            }}
+            onChange={(e) => {
+              setIdentifier(e.currentTarget.value);
+              setHoverValue("user_change")
+            }}
+            placeholder="Email or Username"
+            type="text"
+            value={identifier}
+            onMouseEnter={() => setHoverValue("username")}
+            onMouseLeave={() => setHoverValue("")}
+          />
+          <label htmlFor="identifier" style={userNameLabelStyles}>Email or Username</label>
+
+          {!identifier && interactions.identifier ? <div style={FormValidation} className="form-helper guidance warning">You must provide an email or username to sign in.</div> : null}
         </div>
-      </header>
-      <main className="panel-body" style={panelBody}>
-        <form
-          className="login-form exp-form"
-          onSubmit={async (e) => {
-            e.preventDefault();
+        <div className="form-control" style={formDivStyles}>
+          <input
+            id="password"
+            name="password"
+            onBlur={() => {
+              setInteractions({ ...interactions, password: true });
+            }}
+            onChange={(e) => {
+              setPassword(e.currentTarget.value);
+              setHoverValue("pass_change")
+            }}
+            placeholder="Password"
+            type="password"
+            value={password}
+            style={passwordDivStyles}
+            onMouseEnter={() => setHoverValue("password")}
+            onMouseLeave={() => setHoverValue("")}
+          />
+          <label htmlFor="password" style={passwordLabelStyles}>Password</label>
 
-            setError(null);
-            setSubmitting(true);
+          {!password && interactions.password ? <div style={FormValidation} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
+        </div>
 
-            // const res = await browser.runtime.sendMessage({ identifier, password, type: MessageType.LOGIN });
-            fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
-              method: "POST",
-              body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
-              credentials: "include",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-            })
-              .then((res) => res.json())
-              .then((res) => {
-                // sendResponse(data);
-                setSubmitting(false);
+        <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit"
+          onMouseEnter={() => setHoverValue("signInBtn")}
+          onMouseLeave={() => setHoverValue("")}>
+          Sign in
+        </button>
 
-                if (res?.error) {
-                  setError(res.error);
-                  sendAC(AnalyticEvent.LOGIN_ERROR, { error: res.error });
-                } else if (res?.user) {
-                  props.onLogin(res.user);
-                  sendAC(AnalyticEvent.LOGIN);
-                }
-              });
-          }}
-        >
-          {error ? <ErrorAlert style={{ color: "red" }} className="form-error">{Errors[error] || "Oops. Something went wrong. Please try again."}</ErrorAlert> : null}
-
-          <div className="form-control" style={formDivStyles}>
-            <input
-              autoCapitalize="off"
-              autoCorrect="off"
-              id="identifier"
-              name="identifier"
-              style={usenameInputStyles}
-              onBlur={() => {
-                setInteractions({ ...interactions, identifier: true });
-              }}
-              onChange={(e) => {
-                setIdentifier(e.currentTarget.value);
-                setHoverValue("user_change")
-              }}
-              placeholder="Email or Username"
-              type="text"
-              value={identifier}
-              onMouseEnter={() => setHoverValue("username")}
-              onMouseLeave={() => setHoverValue("")}
-            />
-            <label htmlFor="identifier" style={userNameLabelStyles}>Email or Username</label>
-
-            {!identifier && interactions.identifier ? <div style={FormValidation} className="form-helper guidance warning">You must provide an email or username to sign in.</div> : null}
-          </div>
-          <div className="form-control" style={formDivStyles}>
-            <input
-              id="password"
-              name="password"
-              onBlur={() => {
-                setInteractions({ ...interactions, password: true });
-              }}
-              onChange={(e) => {
-                setPassword(e.currentTarget.value);
-                setHoverValue("pass_change")
-              }}
-              placeholder="Password"
-              type="password"
-              value={password}
-              style={passwordDivStyles}
-              onMouseEnter={() => setHoverValue("password")}
-              onMouseLeave={() => setHoverValue("")}
-            />
-            <label htmlFor="password" style={passwordLabelStyles}>Password</label>
-
-            {!password && interactions.password ? <div style={FormValidation} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
-          </div>
-
-          <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit"
-            onMouseEnter={() => setHoverValue("signInBtn")}
-            onMouseLeave={() => setHoverValue("")}>
-            Sign in
-          </button>
-
-          <p className="subtext tertiary-text small-text" style={subTextStyles}>
-            Don&apos;t have an account?
-            <a
-              className="sign-up-link link"
-              href="https://www.expertvoice.com/?onb_autoShow=true"
-              onClick={() => {
-                sendAC(AnalyticEvent.SIGN_UP);
-              }}
-              style={signUpLinkStyles}
-            >
-              Sign up
-            </a>
-          </p>
-        </form>
-      </main>
-    </section>
-  );
+        <p className="subtext tertiary-text small-text" style={subTextStyles}>
+          Don&apos;t have an account?
+          <a
+            className="sign-up-link link"
+            href="https://www.expertvoice.com/?onb_autoShow=true"
+            onClick={() => {
+              sendAC(AnalyticEvent.SIGN_UP);
+            }}
+            style={signUpLinkStyles}
+          >
+            Sign up
+          </a>
+        </p>
+      </form>
+    </main>
+  </section>
+);
 }
 
 LoginForm.propTypes = {

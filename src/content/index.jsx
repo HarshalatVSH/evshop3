@@ -21,7 +21,7 @@ body.append(main);
 
 const mainRoot = createRoot(main);
 mainRoot.render(<Content />);
-console.log("content script is running ");
+
 /**
  * Set up overlay component
  */

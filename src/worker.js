@@ -96,29 +96,6 @@ const loadContext =  (data,params) => {
   return null;
 };
 
-  
-const sendEvent = (action, data = {}) => {
-  fetch(`${UrlBase}/xapi/ac/pub/1.0/event`, {
-    method: "POST",
-    body: JSON.stringify({
-      action,
-      appName: "ev-shop-plugin",
-      data: {
-        version: chrome.runtime.getManifest().version,
-        ...data,
-      },
-      mfgId: data?.mfgId || data?.orgId || undefined,
-      url: data?.url || undefined,
-      version: 1,
-    }),
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => console.log(res,"helperRes"))
-  .catch((err) => console.log(err,"helperErr"));;
-};
-
 const syncBadge = (tabId, context, user) => {
   if (context) {
     const notif = getNotificationType(context, user);
