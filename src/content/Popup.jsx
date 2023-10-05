@@ -24,6 +24,7 @@ import { getEVHomeUrl, sendAC } from '../helper';
 function Popup(props) {
   const [mode, setMode] = useState(props.mode);
   // const [isSignIn , setSignIn] = useState(false);
+  const [hoverValue, setHoverValue] = useState("")
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker
@@ -48,7 +49,7 @@ function Popup(props) {
         onLogin={(u) => {
           if (u) {
             props.onLogin(u);
-            setMode(null); 
+            setMode(null);
           }
         }}
       />
@@ -88,7 +89,7 @@ function Popup(props) {
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    padding: "12px",
+    padding: "8px",
     borderBottom: "1px solid rgb(227, 227, 227)",
   };
 
@@ -138,7 +139,7 @@ function Popup(props) {
 
   const btnLoginStyles = {
     margin: "12px 0px",
-    background: "rgb(252, 69, 64)",
+    background: hoverValue === "signInBtn" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
     borderRadius: "3px",
     display: "block",
@@ -194,18 +195,18 @@ function Popup(props) {
   }
 
   const ClosebtnIconStyle = {
-    height: "14px"
+    height: "27px",
+    opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6"
   }
 
   const typetitle = {
     fontSize: "17px",
     fontWeight: "400",
     lineHeight: "24px",
-    color:"rgb(38,40,39)",
-    // marginTop : props.user ? "0px" : "-14px"
-    marginTop : "0px"
+    color: "rgb(38,40,39)",
+    marginTop: "0px"
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   const subtextStyle = {
     marginTop: "18px",
     color: "rgb(141, 137, 137)",
@@ -224,8 +225,8 @@ function Popup(props) {
     fontSize: "12px",
     fontWeight: "410",
     lineHeight: "18px",
-    marginTop:"-2px",
-    color:"rgb(102,99,99)"
+    marginTop: "-2px",
+    color: "rgb(102,99,99)"
   }
 
   const tertiSmallLinkStyle = {
@@ -244,8 +245,8 @@ function Popup(props) {
         <img src={ExpertVoiceIcon} alt="" style={ExpertVoiceIconStyle} />
         <span className="title-text" style={titleText}>Tips</span>
         {props.notification ? (
-          <div className={`badge badge-${props.notification === NotificationType.ACTIVE ? 'success' : 'secondary'}`} 
-          style={badgeSuccess}>1</div>
+          <div className={`badge badge-${props.notification === NotificationType.ACTIVE ? 'success' : 'secondary'}`}
+            style={badgeSuccess}>1</div>
         ) : null}
 
         <div className="actions" style={actionStyle}>
@@ -256,13 +257,16 @@ function Popup(props) {
             style={closeBtnStyles}
           >
             {/* <i className="exp-ux-close exp-ux-small" /> */}
-            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} />
+            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
+            onMouseEnter={() => setHoverValue("closeIconBtn")}
+            onMouseLeave={() => setHoverValue("")} 
+            />
           </button>
         </div>
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-         {props.product && props.brand?.active ? (
+        {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -272,13 +276,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-          props.brand ? ( 
+          props.brand ? (
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-            ) : (   
+          ) : (
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -288,19 +292,19 @@ function Popup(props) {
               <div className="sample-panel" style={samplepanelStyle}>
                 <img
                   alt="Example"
-                  style={{marginBottom : "12px"}}
+                  style={{ marginBottom: "12px" }}
                   className="sample-image"
                   src={browser.runtime.getURL('assets/images/preview.png')}
                 />
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-             )
-        )} 
+          )
+        )}
 
         <div className="learn-more">
           {props.user ? (
-            <p className="tertiary-text small-text" style={{ color: "rgb(117, 117, 117)" , fontSize:"12px" , fontWeight: "400" }}>
+            <p className="tertiary-text small-text" style={{ color: "rgb(117, 117, 117)", fontSize: "12px", fontWeight: "400" }}>
               Signed in as {props.user.firstName} {props.user.lastName}.
               <button
                 className="btn-logout link tertiary-text small-text"
@@ -322,15 +326,17 @@ function Popup(props) {
                 className="btn btn-primary btn-login"
                 onClick={() => {
                   setMode(PopupMode.LOGIN);
+                  
                 }}
+                onMouseEnter={() => setHoverValue("signInBtn")}
+                onMouseLeave={() => setHoverValue("")}
                 style={btnLoginStyles}
                 type="button"
-                onMouseEnter={() => this.handleMouseEnter()} onMouseLeave={() => this.handleMouseLeave()}
               >
                 Sign in
               </button>
-              <p className="tertiary-text small-text" 
-              style={tertiaryTextStyles}>
+              <p className="tertiary-text small-text"
+                style={tertiaryTextStyles}>
                 Learn more about
                 <> </>
                 <a

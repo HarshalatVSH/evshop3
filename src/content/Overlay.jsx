@@ -15,6 +15,7 @@ function Overlay() {
   const [user, setUser] = useState(null);
   const [visible, setVisible] = useState(false);
   const [popupMode, setPopupMode] = useState(null);
+  const [hoverValue, setHoverValue] = useState("");
 
   const openRequested = useRef(false);
 
@@ -42,14 +43,16 @@ function Overlay() {
     textDecoration: 'none',
     cursor: 'pointer',
     margin: '0px',
-    background: notification === "passive" ? "white" :'rgb(252, 69, 64)',
+    background: notification === "passive" ? "white" : hoverValue === "viewOnExpert" 
+                                           ? "rgb(227, 62, 56)" 
+                                                     : 'rgb(252, 69, 64)',
   };
 
   const ImageUrlBaseStyle = {
     height: notification === "passive" ? "20px" : "18px",
-    width: notification === "passive" ? "20px" : "18px"
+    width: notification === "passive" ? "20px" : "18px",
+    filter:  notification === "passive" && hoverValue === "viewOnExpert" ? "contrast(3)" : "contrast(0.9)"
   }
-
   useEffect(() => {
     if (!context) {
       // No page data, nothing to do
@@ -118,7 +121,7 @@ function Overlay() {
   if (!context) {
     return null;
   }
-  
+
   return (
     <>
       {notification ? (
@@ -134,9 +137,11 @@ function Overlay() {
             });
           }}
           type="button"
+          onMouseEnter={() => setHoverValue("viewOnExpert")}
+          onMouseLeave={() => setHoverValue("")}
         >
           {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-          <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle}/>
+          <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
           {/* <img src={grayIconImg} alt="" style={ImageUrlBaseStyle}/> */}
         </button>
       ) : null}

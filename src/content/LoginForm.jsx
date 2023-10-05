@@ -24,6 +24,7 @@ function LoginForm(props) {
   const [interactions, setInteractions] = useState({});
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [hoverValue, setHoverValue] = useState("")
 
   const popupStyles = {
     backgroundColor: "rgb(255, 255, 255)",
@@ -128,8 +129,13 @@ function LoginForm(props) {
     textAlign: "center",
     width: "100%",
     color: "rgb(255, 255, 255)",
-    cursor: "default",
-    background: isDisabled ? "rgb(252, 191, 189)" : "rgb(252, 69, 64)",
+    cursor: "pointer",
+    background: isDisabled  
+                    ?  "rgb(252, 191, 189)" 
+                    : 
+                    hoverValue ===  "signInBtn" ? 
+                    "rgb(227,62,56)": 
+                    "rgb(252, 69, 64)",
     border: "medium",
   };
 
@@ -173,13 +179,17 @@ function LoginForm(props) {
   };
 
   const ClosebtnIconStyle = {
-    height: "16px"
+    height: "27px",
+    opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6",
+    cursor:"pointer"
   }
 
   const BackbtnIconStyle = {
     height: "23px",
+    opacity: hoverValue === "backIconBtn" ? "0.9" : "0.6",
     position: "relative",
-    top: "2px"
+    top: "2px",
+    cursor:"pointer"
   }
 
   return (
@@ -196,7 +206,9 @@ function LoginForm(props) {
               type="button"
             >
               {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
-              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle} />
+              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle} 
+              onMouseEnter={() => setHoverValue("backIconBtn")}
+              onMouseLeave={() => setHoverValue("")} />
             </button>
             <span className="title-text" style={titleTextStyles}>Sign into ExpertVoice</span>
           </>
@@ -205,7 +217,8 @@ function LoginForm(props) {
         <div className="actions" style={panelActionsStyles}>
           <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
             {/* <i className="exp-ux-close exp-ux-small" /> */}
-            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} />
+            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
+              onMouseLeave={() => setHoverValue("")} />
           </button>
         </div>
       </header>
@@ -285,7 +298,9 @@ function LoginForm(props) {
             {!password && interactions.password ? <div style={{ color: "red", fontSize: "13px" }} className="form-helper guidance warning">You must provide your password to sign in.</div> : null}
           </div>
 
-          <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit">
+          <button className="btn btn-primary btn-report-submit" style={btnDisableStyles} disabled={!identifier || !password} type="submit"
+          onMouseEnter={() => setHoverValue("signInBtn")}
+          onMouseLeave={() => setHoverValue("")}>
             Sign in
           </button>
 

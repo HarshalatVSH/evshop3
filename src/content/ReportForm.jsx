@@ -12,6 +12,7 @@ function ReportForm(props) {
   const [details, setDetails] = useState("");
   const [issue, setIssue] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [hoverValue, setHoverValue] = useState("")
 
   const reportPopupStyles = {
     backgroundColor: "rgb(255, 255, 255)",
@@ -25,7 +26,7 @@ function ReportForm(props) {
   };
 
   const panelHeader = {
-    borderBottom: submitted ? null : '1px solid rgb(227, 227, 227)' ,
+    borderBottom: submitted ? null : '1px solid rgb(227, 227, 227)',
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
@@ -47,7 +48,7 @@ function ReportForm(props) {
     color: 'rgb(117, 117, 117)',
   };
 
-  const backBtnStyle = {...btn,...backBtn}
+  const backBtnStyle = { ...btn, ...backBtn }
 
   const panelTitle = {
     color: 'rgb(70, 68, 68)',
@@ -92,21 +93,21 @@ function ReportForm(props) {
     flex: '1 1 auto',
     fontWeight: 400,
     marginBottom: '0px',
-    color:'#646464'
+    color: '#646464'
   };
 
   const textAreaTitle = {
     display: 'block',
     fontWeight: 401,
     marginBottom: '6px',
-    color:'#444'
+    color: '#444'
   };
 
   const textAreaStyle = {
     background: 'rgb(255, 255, 255)',
     border: '1px solid rgb(227, 227, 227)',
     borderRadius: '3px',
-    height: '90px',
+    height: '83px',
     outline: 'none',
     padding: '4px 6px',
     resize: 'none',
@@ -125,13 +126,16 @@ function ReportForm(props) {
   };
 
   const submit = {
-    background: !issue ? 'rgb(252, 191, 189)' : 'rgb(252, 69, 64)',
+    background: !issue ? 'rgb(252, 191, 189)' : 
+                          hoverValue === "submitBtn" ? 
+                          "rgb(227,62,56)" 
+                          :'rgb(252, 69, 64)',
     cursor: !issue ? 'default' : 'pointer',
     color: "rgb(255, 255, 255)",
-    border : "medium"
+    border: "medium"
   };
 
-  const submitBtnStyle = {...submitBtn,...submit}
+  const submitBtnStyle = { ...submitBtn, ...submit }
 
   const reportSuccess = {
     paddingTop: '0px',
@@ -162,20 +166,22 @@ function ReportForm(props) {
     cursor: 'pointer',
   };
 
-  const reportDoneBtn = {...submitBtn , ...reportDone}
+  const reportDoneBtn = { ...submitBtn, ...reportDone }
 
   const ClosebtnIconStyle = {
-    height : "16px"
+    height: "27px",
+    opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6"
   }
 
   const BackbtnIconStyle = {
     height: "24px",
     position: "relative",
-    top: "2px"
+    top: "2px",
+    opacity: hoverValue === "backBtn" ? "0.9" : "0.6"
   }
 
   const SuccessbtnIconStyle = {
-    height : "45px"
+    height: "45px"
   }
 
   return (
@@ -192,7 +198,9 @@ function ReportForm(props) {
               style={backBtnStyle}
             >
               {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
-              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}/>
+              <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
+                onMouseEnter={() => setHoverValue("backBtn")}
+                onMouseLeave={() => setHoverValue("")} />
             </button>
             <span className="title-text" style={panelTitle} >Report an issue</span>
           </>
@@ -201,7 +209,9 @@ function ReportForm(props) {
         <div className="actions" style={panelCloseDiv}>
           <button className="btn-icon close-button" style={backBtnStyle} onClick={props.onClose} type="button">
             {/* <i className="exp-ux-close exp-ux-small" /> */}
-            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}/>
+            <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
+              onMouseEnter={() => setHoverValue("closeIconBtn")}
+              onMouseLeave={() => setHoverValue("")} />
           </button>
         </div>
       </header>
@@ -210,7 +220,7 @@ function ReportForm(props) {
         <main className="panel-body report-success" style={reportSuccess}>
           <div className="confirmation">
             {/* <i className="confirmation-icon exp-ux-check-circle exp-ux-xlarge" style={{fontsize: "48px"}}/> */}
-            <img src={SuccessbtnIcon} alt="" style={SuccessbtnIconStyle}/>
+            <img src={SuccessbtnIcon} alt="" style={SuccessbtnIconStyle} />
             <h2 className="confirmation-title type-title" style={confirmationTitle}>Thank you</h2>
           </div>
           <p className="subtext secondary-text small-text" style={secondaryText}>Your issue has been submitted. Thank you for helping to make this extension better!</p>
@@ -229,7 +239,7 @@ function ReportForm(props) {
         <main className="panel-body" style={panelBody}>
           <form
             className="report-form"
-            style={{textAlign : "left"}}
+            style={{ textAlign: "left" }}
             onSubmit={async (e) => {
               e.preventDefault();
               setSubmitted(true);
@@ -328,7 +338,8 @@ function ReportForm(props) {
               />
             </div>
 
-            <button className="btn btn-primary btn-report-submit" style={submitBtnStyle} disabled={!issue} type="submit">
+            <button className="btn btn-primary btn-report-submit" style={submitBtnStyle} disabled={!issue} type="submit" onMouseEnter={() => setHoverValue("submitBtn")}
+              onMouseLeave={() => setHoverValue("")}>
               Submit
             </button>
           </form>

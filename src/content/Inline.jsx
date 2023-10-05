@@ -22,6 +22,8 @@ function Inline() {
   const [productUrls, setProductUrls] = useState({});
   const [user, setUser] = useState(null);
   const [variant, setVariant] = useState(null);
+  const [hoverValue, setHoverValue] = useState("")
+
   const btnStyle = {
     alignItems: "center",
     display: "flex",
@@ -29,12 +31,12 @@ function Inline() {
     lineHeight: "14px",
     padding: "0 18px 0 12px",
     width: "unset",
-    background: "rgb(252, 69, 64)",
+    background: hoverValue === "signInBtn" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
-    borderRadius: "6px",
+    borderRadius: "3px",
     fontWeight: "bold",
-    cursor : "pointer",
-    border : "medium"
+    cursor: "pointer",
+    border: "medium"
   };
 
   const NoSavingBtn = {
@@ -43,19 +45,20 @@ function Inline() {
     display: "flex",
     justifyContent: "center",
     border: "none",
-    color: "rgb(77, 77, 77)",
+    color: "rgb(117, 117, 117)",
     outline: "none",
     textDecoration: "none",
-    background: "rgb(242, 242, 242)",
+    // background: "rgb(242, 242, 242)",
+    background: hoverValue === "nosaving" ? "rgba(227, 223, 223, 0.93)" : "rgb(242, 242, 242)",
     borderRadius: "3px",
     textAlign: "center",
     fontFamily: "inherit",
     fontSize: "15px",
     padding: "0px 18px 0px 12px",
     width: "unset",
-    fontWeight : 500
+    fontWeight: 500
   };
-  
+
   const inlineStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -94,7 +97,7 @@ function Inline() {
     color: "rgb(77, 77, 77)",
   };
 
-  
+
   const DiscountsBtn = {
     alignItems: 'center',
     display: 'flex',
@@ -102,7 +105,7 @@ function Inline() {
     lineHeight: '14px',
     padding: '0px 18px 0px 12px',
     width: 'unset',
-    background: "rgb(252, 69, 64)",
+    background: hoverValue === "discount" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: 'rgb(255, 255, 255)',
     borderRadius: '3px',
     fontFamily: 'inherit',
@@ -112,34 +115,34 @@ function Inline() {
     outline: 'none',
     textDecoration: 'none',
     border: 'none',
-    cursor : "pointer"
+    cursor: "pointer"
   };
 
   const ImageUrlBaseStyle = {
     marginRight: "12px",
-    height : "20px",
-    width : "20px",
+    height: "20px",
+    width: "20px"
   }
 
   const grayBtnUrlStyle = {
     marginRight: "12px",
-    height : "20px",
-    width : "20px",
-    opacity: 0.7  
+    height: "20px",
+    width: "20px",
+    opacity: 0.7
   }
 
   const StarIconStyle = {
     marginRight: "4px",
-    height : "25px",
-    width : "20px"
-  }
-////////////////////////////////////////////////////////////////////////////////////////////
-  const reviewPrompt = {
-    color: "lightGray",
-    marginRight:" 8px"
+    height: "25px",
+    width: "20px"
   }
   
-  const reviewPromptSumm = {...reviewSummary, ...reviewPrompt}
+  const reviewPrompt = {
+    color: "lightGray",
+    marginRight: " 8px"
+  }
+
+  const reviewPromptSumm = { ...reviewSummary, ...reviewPrompt }
 
   const tertiSmallLinkStyle = {
     lineHeight: "19px",
@@ -149,7 +152,7 @@ function Inline() {
     color: "lightGray",
     textDecoration: "underline"
   }
-  
+
   useEffect(() => {
     // Bind the message listener to respond to the background worker
     const listener = (msg) => {
@@ -189,7 +192,7 @@ function Inline() {
       const roundedStars = getRoundedStar(context.product.reviewStars);
       return (
         <a
-          className="review-summary" 
+          className="review-summary"
           style={reviewSummary}
           href={productUrls.reviews}
           onClick={sendCtaClickEvent(CtaType.PDP_REVIEWS, 'review-summary')}
@@ -222,7 +225,7 @@ function Inline() {
         >
           <i className="exp-ux-starFilled exp-ux-small" />
           <span className="tertiary-text small-text link"
-          style={tertiSmallLinkStyle}>
+            style={tertiSmallLinkStyle}>
             Leave an expert review
           </span>
         </a>
@@ -248,9 +251,12 @@ function Inline() {
             browser.runtime.sendMessage({ type: MessageType.LOGIN_START });
           }}
           type="button"
+          onMouseEnter={() => setHoverValue("signInBtn")}
+          onMouseLeave={() => setHoverValue("")}
         >
           {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-          <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
+          <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}
+          />
           Sign in for discounts
         </button>
       ) : (
@@ -263,6 +269,8 @@ function Inline() {
             rel="noopener noreferrer"
             target="_blank"
             style={NoSavingBtn}
+            onMouseEnter={() => setHoverValue("nosaving")}
+            onMouseLeave={() => setHoverValue("")}
           >
             {/* <i className="exp-ux-bolt exp-ux-small" /> */}
             <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
@@ -270,7 +278,7 @@ function Inline() {
           </a>
         ) : (
           !context.product.inStock && context.product.accessConfirmed ? (
-          // Product is out of stock on EV
+            // Product is out of stock on EV
             <a
               className="btn btn-gray"
               href={productUrls.pdp}
@@ -278,6 +286,8 @@ function Inline() {
               rel="noopener noreferrer"
               target="_blank"
               style={NoSavingBtn}
+              onMouseEnter={() => setHoverValue("nosaving")}
+              onMouseLeave={() => setHoverValue("")}
             >
               {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
@@ -295,6 +305,8 @@ function Inline() {
               onClick={sendCtaClickEvent(CtaType.PDP)}
               rel="noopener noreferrer"
               target="_blank"
+              onMouseEnter={() => setHoverValue("discount")}
+              onMouseLeave={() => setHoverValue("")}
             >
               {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
