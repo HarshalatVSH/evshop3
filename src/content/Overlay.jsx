@@ -127,7 +127,6 @@ function Overlay() {
       {notification ? (
         <button
           className={`toggle-button${notification === NotificationType.ACTIVE ? ' rewarded' : ''}${open ? ' hidden' : ''}${!open && visible ? ' visible' : ''}`}
-          style={toggleButton}
           onClick={() => {
             setOpen(true);
             sendAC(AnalyticEvent.OPEN, {
@@ -139,11 +138,14 @@ function Overlay() {
           type="button"
           onMouseEnter={() => setHoverValue("viewOnExpert")}
           onMouseLeave={() => setHoverValue("")}
+          style={{
+            ...toggleButton,
+            transition: 'transform 0.2s', 
+            transform: `${open ? 'translateX(50px)' : 'translateX(0px)' }`
+          }}
         >
-          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
-          <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
-          {/* <img src={grayIconImg} alt="" style={ImageUrlBaseStyle}/> */}
-        </button>
+        <img src={notification === "passive" ? grayIconImg : ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
+      </button>
       ) : null}
 
       {open ? (
