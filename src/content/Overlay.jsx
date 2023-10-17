@@ -140,7 +140,7 @@ function Overlay() {
           onMouseLeave={() => setHoverValue("")}
           style={{
             ...toggleButton,
-            transition: 'transform 0.2s', 
+            transition: 'transform 0.1s', 
             transform: `${open ? 'translateX(50px)' : 'translateX(0px)' }`
           }}
         >
