@@ -11,6 +11,7 @@ import {
   isComparablePrice,
   sendAC,
 } from '../helper';
+import { ImageUrlBaseStyle, StarIconStyle, averageStars, grayBtnUrlStyle, inlineStyle, linkStyle, reviewPromptSumm, reviewSummary, tertiSmallLinkStyle } from './InlineCSS';
 
 /**
  * Main Inline Script - rendering inline best price label
@@ -59,43 +60,42 @@ function Inline() {
     fontWeight: 500
   };
 
-  const inlineStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "6px 18px",
-    margin: "18px 0px",
-  };
+  // const inlineStyle = {
+  //   display: "flex",
+  //   flexWrap: "wrap",
+  //   gap: "6px 18px",
+  //   margin: "18px 0px",
+  // };
 
+  // const reviewSummary = {
+  //   height: "40px",
+  //   alignItems: "center",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   border: "none",
+  //   color: "inherit",
+  //   outline: "none",
+  //   textDecoration: "none",
+  // };
 
-  const reviewSummary = {
-    height: "40px",
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    border: "none",
-    color: "inherit",
-    outline: "none",
-    textDecoration: "none",
-  };
+  // const averageStars = {
+  //   fontSize: "18px",
+  //   fontWeight: 600,
+  //   lineHeight: "24px",
+  //   alignItems: "center",
+  //   display: "inline-flex",
+  //   marginRight: "8px",
+  // };
 
-  const averageStars = {
-    fontSize: "18px",
-    fontWeight: 600,
-    lineHeight: "24px",
-    alignItems: "center",
-    display: "inline-flex",
-    marginRight: "8px",
-  };
-
-  const linkStyle = {
-    lineHeight: "19px",
-    fontWeight: 600,
-    textDecoration: "underline",
-    fontSize: "13px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(77, 77, 77)",
-  };
+  // const linkStyle = {
+  //   lineHeight: "19px",
+  //   fontWeight: 600,
+  //   textDecoration: "underline",
+  //   fontSize: "13px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  //   color: "rgb(77, 77, 77)",
+  // };
 
 
   const DiscountsBtn = {
@@ -118,40 +118,40 @@ function Inline() {
     cursor: "pointer"
   };
 
-  const ImageUrlBaseStyle = {
-    marginRight: "12px",
-    height: "20px",
-    width: "20px"
-  }
+  // const ImageUrlBaseStyle = {
+  //   marginRight: "12px",
+  //   height: "20px",
+  //   width: "20px"
+  // }
 
-  const grayBtnUrlStyle = {
-    marginRight: "12px",
-    height: "20px",
-    width: "20px",
-    opacity: 0.7
-  }
+  // const grayBtnUrlStyle = {
+  //   marginRight: "12px",
+  //   height: "20px",
+  //   width: "20px",
+  //   opacity: 0.7
+  // }
 
-  const StarIconStyle = {
-    marginRight: "4px",
-    height: "25px",
-    width: "20px"
-  }
+  // const StarIconStyle = {
+  //   marginRight: "4px",
+  //   height: "25px",
+  //   width: "20px"
+  // }
   
-  const reviewPrompt = {
-    color: "lightGray",
-    marginRight: " 8px"
-  }
+  // const reviewPrompt = {
+  //   color: "lightGray",
+  //   marginRight: " 8px"
+  // }
 
-  const reviewPromptSumm = { ...reviewSummary, ...reviewPrompt }
+  // const reviewPromptSumm = { ...reviewSummary, ...reviewPrompt }
 
-  const tertiSmallLinkStyle = {
-    lineHeight: "19px",
-    fontSize: "13px",
-    fontWeight: 600,
-    lineHeight: "18px",
-    color: "lightGray",
-    textDecoration: "underline"
-  }
+  // const tertiSmallLinkStyle = {
+  //   lineHeight: "19px",
+  //   fontSize: "13px",
+  //   fontWeight: 600,
+  //   lineHeight: "18px",
+  //   color: "lightGray",
+  //   textDecoration: "underline"
+  // }
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { AnalyticEvent, BackbtnIcon, ClosebtnIcon, MessageType } from "../constants";
 import { sendAC } from "../helper";
 import { ErrorAlert } from "../components/Alert";
+import { FormValidation, btnIconStyles, closeBtnStyles, formDivStyles, panelActionsStyles, panelBody, panelHeaderStyles, passwordLabelStyles, popupStyles, signUpLinkStyles, subTextStyles, titleTextStyles, userNameLabelStyles } from "./LoginFormCSS";
 
 
 const Errors = {
@@ -26,74 +27,61 @@ function LoginForm(props) {
   const [submitting, setSubmitting] = useState(false);
   const [hoverValue, setHoverValue] = useState("")
 
-  const popupStyles = {
-    backgroundColor: "rgb(255, 255, 255)",
-    borderRadius: "3px",
-    boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
-    position: "fixed",
-    right: "12px",
-    top: "12px",
-    width: "300px",
-    zIndex: 2147483647,
-  };
+  // const popupStyles = {
+  //   backgroundColor: "rgb(255, 255, 255)",
+  //   borderRadius: "3px",
+  //   boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
+  //   position: "fixed",
+  //   right: "12px",
+  //   top: "12px",
+  //   width: "300px",
+  //   zIndex: 2147483647,
+  // };
 
-  const panelHeaderStyles = {
-    borderBottom: "1px solid rgb(227, 227, 227)",
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "8px",
-  };
+  // const panelHeaderStyles = {
+  //   borderBottom: "1px solid rgb(227, 227, 227)",
+  //   alignItems: "center",
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   padding: "8px",
+  // };
 
-  const btnIconStyles = {
-    marginRight: "6px",
-    color: "rgb(117, 117, 117)",
-    background: "none",
-    border: "medium"
-  };
+  // const btnIconStyles = {
+  //   marginRight: "6px",
+  //   color: "rgb(117, 117, 117)",
+  //   background: "none",
+  //   border: "medium"
+  // };
 
-  const backBtnStyles = {
-    position: "relative",
-    top: "2px",
-    display: "inline-block",
-  };
+  // const titleTextStyles = {
+  //   color: "rgb(37, 37, 37)",
+  //   fontWeight: 400,
+  //   margin: "0px 0px -1px",
+  //   fontSize: "14px"
+  // };
 
-  const titleTextStyles = {
-    color: "rgb(37, 37, 37)",
-    fontWeight: 400,
-    margin: "0px 0px -1px",
-    fontSize: "14px"
-  };
+  // const panelActionsStyles = {
+  //   alignItems: "center",
+  //   display: "flex",
+  //   flex: "1 1 auto",
+  //   justifyContent: "flex-end",
+  // };
 
-  const panelActionsStyles = {
-    alignItems: "center",
-    display: "flex",
-    flex: "1 1 auto",
-    justifyContent: "flex-end",
-  };
+  // const closeBtnStyles = {
+  //   color: "rgb(117, 117, 117)",
+  //   background: "none",
+  //   border: "medium"
+  // }
 
-  const closeBtnStyles = {
-    color: "rgb(117, 117, 117)",
-    background: "none",
-    border: "medium"
-  }
+  // const panelBody = {
+  //   padding: "18px",
+  //   textAlign: "center"
+  // }
 
-  const closeIconStyles = {
-    position: "relative",
-    top: "2px",
-    fontSize: "18px",
-  };
-
-
-  const panelBody = {
-    padding: "18px",
-    textAlign: "center"
-  }
-
-  const formDivStyles = {
-    position: "relative",
-    marginBottom: "24px",
-  };
+  // const formDivStyles = {
+  //   position: "relative",
+  //   marginBottom: "24px",
+  // };
 
   const usenameInputStyles = {
     background: hoverValue === "username" ? "rgb(237,237, 237)" : "rgb(247,247, 247)",
@@ -102,7 +90,7 @@ function LoginForm(props) {
     borderLeft: "none",
     borderImage: "initial",
     borderBottom: hoverValue === "username" ? "1px solid black" :
-      (hoverValue === "user_change" && password) && "1px solid rgb(60, 152, 199)",
+      (hoverValue === "user_change" && identifier) && "1px solid rgb(60, 152, 199)",
     borderRadius: "3px 3px 0px 0px",
     color: "rgb(79, 77, 77)",
     fontSize: "inherit",
@@ -111,12 +99,12 @@ function LoginForm(props) {
     width: "90%",
   };
 
-  const userNameLabelStyles = {
-    display: "none",
-    pointerEvents: "none",
-    position: "absolute",
-    top: "4px",
-  };
+  // const userNameLabelStyles = {
+  //   display: "none",
+  //   pointerEvents: "none",
+  //   position: "absolute",
+  //   top: "4px",
+  // };
 
   const isDisabled = !identifier || !password;
 
@@ -158,27 +146,27 @@ function LoginForm(props) {
     marginBottom: "2px",
   };
 
-  const passwordLabelStyles = {
-    display: "none",
-    pointerEvents: "none",
-    position: "absolute",
-    top: "4px",
-  };
+  // const passwordLabelStyles = {
+  //   display: "none",
+  //   pointerEvents: "none",
+  //   position: "absolute",
+  //   top: "4px",
+  // };
 
-  const subTextStyles = {
-    margin: "17px 0px 0px",
-    fontSize: "12px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
-    width: "97%"
-  };
+  // const subTextStyles = {
+  //   margin: "17px 0px 0px",
+  //   fontSize: "12px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  //   color: "rgb(117, 117, 117)",
+  //   width: "97%"
+  // };
 
-  const signUpLinkStyles = {
-    marginLeft: "3px",
-    textDecoration: "underline",
-    color: "rgb(117, 117, 117)",
-  };
+  // const signUpLinkStyles = {
+  //   marginLeft: "3px",
+  //   textDecoration: "underline",
+  //   color: "rgb(117, 117, 117)",
+  // };
 
   const ClosebtnIconStyle = {
     height: "27px",
@@ -194,11 +182,11 @@ function LoginForm(props) {
     cursor: "pointer"
   }
 
-  const FormValidation = {
-    color: "rgb(234, 77, 75)",
-    fontSize: "12px",
-    textAlign: "left"
-  }
+  // const FormValidation = {
+  //   color: "rgb(234, 77, 75)",
+  //   fontSize: "12px",
+  //   textAlign: "left"
+  // }
 
 return (
   <section className="panel" id="popup" style={popupStyles} >

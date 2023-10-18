@@ -17,6 +17,7 @@ import {
   PopupMode,
 } from '../constants';
 import { getEVHomeUrl, sendAC } from '../helper';
+import { ExpertVoiceIconStyle, actionStyle, btnReport, closeBtnStyles, panelBodyStyle, panelHeaderStyle, popupStyle, reportIssueStyles, samplepanelStyle, signOutBtn, smallTextStyle, subtextStyle, tertiSmallLinkStyle, tertiaryTextStyles, titleText, typetitle } from './PopupCSS';
 
 /**
  * EV Shop Extension Popup
@@ -74,30 +75,30 @@ function Popup(props) {
     });
   };
 
-  const popupStyle = {
-    backgroundColor: "rgb(255, 255, 255)",
-    borderRadius: "3px",
-    boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
-    position: "fixed",
-    right: "12px",
-    top: "12px",
-    width: "300px",
-    zIndex: 2147483647,
-  };
+  // const popupStyle = {
+  //   backgroundColor: "rgb(255, 255, 255)",
+  //   borderRadius: "3px",
+  //   boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
+  //   position: "fixed",
+  //   right: "12px",
+  //   top: "12px",
+  //   width: "300px",
+  //   zIndex: 2147483647,
+  // };
 
-  const panelHeaderStyle = {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "8px",
-    borderBottom: "1px solid rgb(227, 227, 227)",
-  };
+  // const panelHeaderStyle = {
+  //   alignItems: "center",
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   padding: "8px",
+  //   borderBottom: "1px solid rgb(227, 227, 227)",
+  // };
 
-  const titleText = {
-    color: "rgb(37, 37, 37)",
-    fontWeight: 401,
-    margin: "0px 6px",
-  };
+  // const titleText = {
+  //   color: "rgb(37, 37, 37)",
+  //   fontWeight: 401,
+  //   margin: "0px 6px",
+  // };
 
   const badgeSuccess = {
     backgroundColor: props.notification === NotificationType.ACTIVE ? "rgb(82, 179, 130)" : "rgb(227, 227, 227)",
@@ -108,34 +109,34 @@ function Popup(props) {
     width: "22px",
   };
 
-  const actionStyle = {
-    alignItems: "center",
-    display: "flex",
-    flex: "1 1 auto",
-    justifyContent: "flex-end",
-  };
+  // const actionStyle = {
+  //   alignItems: "center",
+  //   display: "flex",
+  //   flex: "1 1 auto",
+  //   justifyContent: "flex-end",
+  // };
 
-  const closeBtnStyles = {
-    color: "rgb(117, 117, 117)",
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    margin: "0px",
-    outline: "none",
-    padding: "0px",
-    textDecoration: "none",
-  };
+  // const closeBtnStyles = {
+  //   color: "rgb(117, 117, 117)",
+  //   background: "none",
+  //   border: "none",
+  //   cursor: "pointer",
+  //   margin: "0px",
+  //   outline: "none",
+  //   padding: "0px",
+  //   textDecoration: "none",
+  // };
 
-  const closeIcon = {
-    position: "relative",
-    top: "2px",
-    fontSize: "18px",
-  };
+  // const closeIcon = {
+  //   position: "relative",
+  //   top: "2px",
+  //   fontSize: "18px",
+  // };
 
-  const panelBodyStyle = {
-    padding: "18px",
-    textAlign: "center",
-  };
+  // const panelBodyStyle = {
+  //   padding: "18px",
+  //   textAlign: "center",
+  // };
 
   const btnLoginStyles = {
     margin: "12px 0px",
@@ -153,90 +154,92 @@ function Popup(props) {
     border: "medium"
   };
 
-  const tertiaryTextStyles = {
-    fontSize: "13px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
-  };
+  // const tertiaryTextStyles = {
+  //   fontSize: "13px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  //   color: "rgb(117, 117, 117)",
+  // };
 
-  const reportIssueStyles = {
-    margin: "18px 0px 0px",
-    fontSize: "12px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
-  };
+  // const reportIssueStyles = {
+  //   margin: "18px 0px 0px",
+  //   fontSize: "12px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  //   color: "rgb(142, 137, 137)",
+  // };
 
-  const btnReport = {
-    textDecoration: "underline",
-    fontSize: "12px",
-    fontWeight: "400",
-    lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
-    background: "none",
-    border: "none",
-    cursor: "pointer"
-  };
+  // const btnReport = {
+  //   textDecoration: "underline",
+  //   fontSize: "12px",
+  //   fontWeight: "400",
+  //   lineHeight: "18px",
+  //   color: "rgb(117, 117, 117)",
+  //   background: "none",
+  //   border: "none",
+  //   cursor: "pointer"
+  // };
 
-  const signOutBtn = {
-    background: "none",
-    border: "medium",
-    textDecoration: "underline",
-    color: "rgb(117, 117, 117)",
-    cursor: "pointer",
-    fontSize: "12px",
-    fontWeight: "400"
-  };
+  // const signOutBtn = {
+  //   background: "none",
+  //   border: "medium",
+  //   textDecoration: "underline",
+  //   color: "rgb(117, 117, 117)",
+  //   cursor: "pointer",
+  //   fontSize: "12px",
+  //   fontWeight: "400"
+  // };
 
-  const ExpertVoiceIconStyle = {
-    height: "20px",
-    width: "20px"
-  }
+  // const ExpertVoiceIconStyle = {
+  //   height: "20px",
+  //   width: "20px"
+  // }
 
   const ClosebtnIconStyle = {
     height: "27px",
     opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6"
   }
 
-  const typetitle = {
-    fontSize: "17px",
-    fontWeight: "400",
-    lineHeight: "24px",
-    color: "rgb(38,40,39)",
-    marginTop: "0px"
-  }
-  
-  const subtextStyle = {
-    marginTop: "18px",
-    color: "rgb(141, 137, 137)",
-    fontSize: "12px",
-    fontWeight: 400,
-    lineHeight: "18px",
-  }
+  // const typetitle = {
+  //   fontSize: "17px",
+  //   fontWeight: 400,
+  //   lineHeight: "24px",
+  //   color: "rgb(38,40,39)",
+  //   marginTop: "0px"
+  // }
 
-  const samplepanelStyle = {
-    backgroundColor: "rgb(242,242,242)",
-    margin: "23px 0",
-    padding: "7px"
-  }
+  // const subtextStyle = {
+  //   marginTop: "18px",
+  //   color: "rgb(141, 137, 137)",
+  //   fontSize: "12px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  // }
 
-  const smallTextStyle = {
-    fontSize: "12px",
-    fontWeight: "410",
-    lineHeight: "18px",
-    marginTop: "-2px",
-    color: "rgb(102,99,99)"
-  }
+  // const samplepanelStyle = {
+  //   backgroundColor: "rgb(242,242,242)",
+  //   margin: "23px 0",
+  //   padding: "7px"
+  // }
 
-  const tertiSmallLinkStyle = {
-    lineHeight: "19px",
-    fontSize: "12px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
-    textDecoration: "none"
-  }
+  // const smallTextStyle = {
+  //   fontSize: "12px",
+  //   fontWeight:410,
+  //   lineHeight: "18px",
+  //   marginTop: "-2px",
+  //   color: "rgb(102,99,99)"
+  // }
+
+  // const tertiSmallLinkStyle = {
+  //   lineHeight: "19px",
+  //   fontSize: "12px",
+  //   fontWeight: 400,
+  //   lineHeight: "18px",
+  //   color: "rgb(117, 117, 117)",
+  //   textDecoration: "none"
+  // }
+
+  console.log(props.brand, "props.brand>>>>>>>>>>>>>");
 
   return (
     <section className="panel" id="popup" style={popupStyle}>
@@ -258,8 +261,8 @@ function Popup(props) {
           >
             {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
-            onMouseEnter={() => setHoverValue("closeIconBtn")}
-            onMouseLeave={() => setHoverValue("")} 
+              onMouseEnter={() => setHoverValue("closeIconBtn")}
+              onMouseLeave={() => setHoverValue("")}
             />
           </button>
         </div>
@@ -304,7 +307,7 @@ function Popup(props) {
 
         <div className="learn-more">
           {props.user ? (
-            <p className="tertiary-text small-text" style={{ color: "rgb(117, 117, 117)", fontSize: "12px", fontWeight: "400" }}>
+            <p className="tertiary-text small-text" style={{ color: "rgb(142, 137, 137)", fontSize: "12px", fontWeight: "400" }}>
               Signed in as {props.user.firstName} {props.user.lastName}.
               <button
                 className="btn-logout link tertiary-text small-text"
@@ -326,7 +329,7 @@ function Popup(props) {
                 className="btn btn-primary btn-login"
                 onClick={() => {
                   setMode(PopupMode.LOGIN);
-                  
+
                 }}
                 onMouseEnter={() => setHoverValue("signInBtn")}
                 onMouseLeave={() => setHoverValue("")}
