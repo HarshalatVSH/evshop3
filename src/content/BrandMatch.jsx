@@ -1,12 +1,15 @@
 /* eslint-disable  */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { CtaType } from '../constants';
 import { getBrandUrls, getEVBrandsUrl } from '../helper';
-import { btnbrandLinkStyles, headerAnchorStyle, matchDetailsStyles, pillOutlineStyle, subtextStyles, titleStyle, viewAllBtn } from './BrandMatchCSS';
+import { NotAvailableIcon, btnbrandLinkStyles, headerAnchorStyle, matchDetailsStyles, pillOutlineStyle, subtextStyles, titleStyle, viewAllBtn } from './BrandMatchCSS';
 
 function BrandMatch(props) {
+
+  const [hoverValue, setHoverValue] = useState("")
+
   const brandUrls = getBrandUrls(props.brand);
   let cta = brandUrls.brand;
   let ctaType = CtaType.BRAND;
@@ -51,10 +54,41 @@ function BrandMatch(props) {
     fontWeight: 450,
     padding: '3px 16px',
     backgroundColor: props.user ? 'rgb(227, 227, 227)' : "rgb(82, 179, 130)",
-    color:'rgb(45, 44, 44)',
+    color: 'rgb(45, 44, 44)',
     cursor: "pointer",
-    textDecoration:'none'
+    textDecoration: 'none'
   };
+
+  const btnProductLink = {
+    borderRadius: "3px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "14px",
+    fontWeight: 500,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    background: "white",
+    border: "1px solid rgb(117, 117, 117)",
+    color: hoverValue === "btnproduct" ? "rgb(91, 87, 87)" : "rgb(117, 117, 117)",
+    margin: "6px 0px 18px",
+    textDecoration: "none",
+  };
+
+  const viewAllBtn = {
+    margin: "12px 0px",
+    background: hoverValue === "viewOnExp" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
+    color: "rgb(255, 255, 255)",
+    borderRadius: "3px",
+    display: "block",
+    fontFamily: "inherit",
+    fontSize: "14px",
+    fontWeight: 600,
+    padding: "12px",
+    textAlign: "center",
+    width: "90%",
+    textDecoration: "none"
+};
 
   // const viewAllBtn = {
   //   margin: "12px 0px",
@@ -121,7 +155,7 @@ function BrandMatch(props) {
               alt={props.brand.name}
               className="match-image"
               src={`${props.brand.avatar}${props.brand.avatar.includes('?') ? '&' : '?'}s=96x96`}
-              style={{ height: '48px', width: '48px' , borderRadius: "2px" }}
+              style={{ height: '48px', width: '48px', borderRadius: "2px" }}
             />
           </a>
         ) : null}
@@ -151,7 +185,7 @@ function BrandMatch(props) {
                   onClick={props.sendCtaClickEvent(ctaType, 'pill')}
                   rel="noopener noreferrer"
                   target="_blank"
-                  style={pillsSuccessStyle}
+                  style={{ ...pillsSuccessStyle, backgroundColor: "rgb(82, 179, 130)" }}
                 >
                   {props.brand.discount > 0
                     ? `Up to ${props.brand.discount}% off`
@@ -164,10 +198,13 @@ function BrandMatch(props) {
               <a
                 className="btn btn-primary brand-link"
                 href={cta}
-                style={btnbrandLinkStyles}
+                // style={btnbrandLinkStyles}
+                style={viewAllBtn}
                 onClick={props.sendCtaClickEvent(ctaType)}
                 rel="noopener noreferrer"
                 target="_blank"
+                onMouseEnter={() => setHoverValue("viewOnExp")}
+                onMouseLeave={() => setHoverValue("")}
               >
                 View discounts
               </a>
@@ -197,6 +234,8 @@ function BrandMatch(props) {
                 onClick={props.sendCtaClickEvent(ctaType)}
                 rel="noopener noreferrer"
                 target="_blank"
+                onMouseEnter={() => setHoverValue("viewOnExp")}
+                onMouseLeave={() => setHoverValue("")}
               >
                 View all offers
               </a>
@@ -227,7 +266,7 @@ function BrandMatch(props) {
         // The brand was found, but it's either inactive or not targeting the user
         <>
           <div className="status-indicator">
-            <span className="pill pill-outline" style={pillOutlineStyle}>Not Available</span>
+            <span className="pill pill-outline" style={NotAvailableIcon}>Not Available</span>
           </div>
 
           {props.user ? (
@@ -238,10 +277,12 @@ function BrandMatch(props) {
               <a
                 className="btn btn-outline brand-link"
                 href={getEVBrandsUrl()}
-                style={btnbrandLinkStyles}
+                style={btnProductLink}
                 onClick={props.sendCtaClickEvent(CtaType.EV_BRANDS)}
                 rel="noopener noreferrer"
                 target="_blank"
+                onMouseEnter={() => setHoverValue("btnproduct")}
+                onMouseLeave={() => setHoverValue("")}
               >
                 View brands I have access to
               </a>

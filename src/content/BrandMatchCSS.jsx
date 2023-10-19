@@ -30,20 +30,7 @@ export const titleStyle = {
     margin: "0px",
 };
 
-export const viewAllBtn = {
-    margin: "12px 0px",
-    background: "rgb(252, 69, 64)",
-    color: "rgb(255, 255, 255)",
-    borderRadius: "3px",
-    display: "block",
-    fontFamily: "inherit",
-    fontSize: "14px",
-    fontWeight: 600,
-    padding: "12px",
-    textAlign: "center",
-    width: "90%",
-    textDecoration: "none"
-};
+
 
 export const subtextStyles = {
     marginTop: "15px",
@@ -78,3 +65,11 @@ export const pillOutline = {
 }
 
 export const pillOutlineStyle = { ...pillStyle, ...pillOutline }
+
+export const NotAvailableIcon = {
+    fontWeight: 410,
+    padding: "3px 16px",
+    border: "1px solid lightGray",
+    color: "#948e8e",
+    borderRadius: "21px"
+}

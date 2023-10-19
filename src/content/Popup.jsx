@@ -17,7 +17,7 @@ import {
   PopupMode,
 } from '../constants';
 import { getEVHomeUrl, sendAC } from '../helper';
-import { ExpertVoiceIconStyle, actionStyle, btnReport, closeBtnStyles, panelBodyStyle, panelHeaderStyle, popupStyle, reportIssueStyles, samplepanelStyle, signOutBtn, smallTextStyle, subtextStyle, tertiSmallLinkStyle, tertiaryTextStyles, titleText, typetitle } from './PopupCSS';
+import { ExpertVoiceIconStyle, actionStyle, btnReport, closeBtnStyles, panelBodyStyle, panelHeaderStyle, popupStyle, reportIssueStyles, samplepanelStyle, signOutBtn, smallTextStyle, subtextStyle, tertiSmallLinkStyle, tertiaryTextStyles, titleText } from './PopupCSS';
 
 /**
  * EV Shop Extension Popup
@@ -154,6 +154,14 @@ function Popup(props) {
     border: "medium"
   };
 
+  const typetitle = {
+    fontSize: "17px",
+    fontWeight: "400",
+    lineHeight: "24px",
+    color: "rgb(38,40,39)",
+    margin: props.user ? "19px 0px 0px 0px" : "-14px 0px 23px 0px"
+  }
+
   // const tertiaryTextStyles = {
   //   fontSize: "13px",
   //   fontWeight: 400,
@@ -269,7 +277,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-        {props.product && props.brand?.active ? (
+       {/* {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -279,13 +287,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-          props.brand ? (
+        props.brand ? ( */}
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-          ) : (
+        { /*  ) : ( */ }
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -302,8 +310,8 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          )
-        )}
+          { /*)
+      )} */}
 
         <div className="learn-more">
           {props.user ? (
