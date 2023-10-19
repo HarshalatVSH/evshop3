@@ -15,17 +15,6 @@ function ReportForm(props) {
   const [submitted, setSubmitted] = useState(false);
   const [hoverValue, setHoverValue] = useState("")
 
-  // const reportPopupStyles = {
-  //   backgroundColor: "rgb(255, 255, 255)",
-  //   borderRadius: "3px",
-  //   boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
-  //   position: "fixed",
-  //   right: "12px",
-  //   top: "12px",
-  //   width: "300px",
-  //   zIndex: "2147483647",
-  // };
-
   const panelHeader = {
     borderBottom: submitted ? null : '1px solid rgb(227, 227, 227)',
     alignItems: 'center',
@@ -33,87 +22,6 @@ function ReportForm(props) {
     justifyContent: 'space-between',
     padding: '10px',
   };
-
-  // const btn = {
-  //   background: 'none',
-  //   border: 'none',
-  //   cursor: 'pointer',
-  //   margin: '0px',
-  //   outline: 'none',
-  //   padding: '0px',
-  //   textDecoration: 'none',
-  // };
-
-  // const backBtn = {
-  //   marginRight: '6px',
-  //   color: 'rgb(117, 117, 117)',
-  // };
-
-  // const backBtnStyle = { ...btn, ...backBtn }
-
-  // const panelTitle = {
-  //   color: 'rgb(70, 68, 68)',
-  //   fontWeight: 401,
-  //   margin: '0px 6px',
-  // };
-
-  // const panelCloseDiv = {
-  //   alignItems: 'center',
-  //   display: 'flex',
-  //   flex: '1 1 auto',
-  //   justifyContent: 'flex-end',
-  // };
-
-  // const panelBody = {
-  //   padding: "18px",
-  //   textAlign: "center"
-  // }
-
-  // const formLabel = {
-  //   display: 'block',
-  //   fontWeight: 401,
-  //   marginBottom: '6px',
-  //   color: '#444'
-  // };
-
-  // const radioInput = {
-  //   marginTop: '12px',
-  //   alignItems: 'center',
-  //   display: 'flex',
-  // };
-
-  // const inputField = {
-  //   alignSelf: 'flex-start',
-  //   flex: '0 0 auto',
-  //   height: '18px',
-  //   marginRight: '8px',
-  //   width: '18px',
-  // };
-
-  // const radioInputLabel = {
-  //   flex: '1 1 auto',
-  //   fontWeight: 400,
-  //   marginBottom: '0px',
-  //   color: '#646464'
-  // };
-
-  // const textAreaTitle = {
-  //   display: 'block',
-  //   fontWeight: 401,
-  //   marginBottom: '6px',
-  //   color: '#444'
-  // };
-
-  // const textAreaStyle = {
-  //   background: 'rgb(255, 255, 255)',
-  //   border: '1px solid rgb(227, 227, 227)',
-  //   borderRadius: '3px',
-  //   height: '83px',
-  //   outline: 'none',
-  //   padding: '4px 6px',
-  //   resize: 'none',
-  //   width: '100%',
-  // };
 
   const submitBtn = {
     borderRadius: '3px',
@@ -138,27 +46,6 @@ function ReportForm(props) {
 
   const submitBtnStyle = { ...submitBtn, ...submit }
 
-  // const reportSuccess = {
-  //   paddingTop: '0px',
-  //   padding: '18px',
-  //   textAlign: 'center',
-  // };
-
-  // const confirmationTitle = {
-  //   margin: '6px 0px 0px',
-  //   fontSize: '18px',
-  //   fontWeight: 600,
-  //   lineHeight: '24px',
-  // };
-
-  // const secondaryText = {
-  //   fontSize: '13px',
-  //   fontWeight: 400,
-  //   lineHeight: '18px',
-  //   marginTop: '18px',
-  //   color: 'rgb(77, 77, 77)',
-  // };
-
   const reportDone = {
     marginTop: '24px',
     background: 'rgb(255, 255, 255)',
@@ -180,10 +67,6 @@ function ReportForm(props) {
     top: "2px",
     opacity: hoverValue === "backBtn" ? "0.9" : "0.6"
   }
-
-  // const SuccessbtnIconStyle = {
-  //   height: "45px"
-  // }
 
   return (
     <section className="panel" id="popup" style={reportPopupStyles}>

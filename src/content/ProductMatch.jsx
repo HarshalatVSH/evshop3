@@ -25,99 +25,6 @@ function ProductMatch(props) {
 
   const [hoverValue, setHoverValue] = useState("")
 
-  // const titleStyle = {
-  //   fontSize: "18px",
-  //   fontWeight: 600,
-  //   lineHeight: "24px",
-  //   margin: "0px",
-  // };
-
-  // const headerAnchorStyle = {
-  //   border: "none",
-  //   color: "inherit",
-  //   outline: "none",
-  //   textDecoration: "none",
-  //   fontSize: "17px",
-  //   fontWeight: 402,
-  //   lineHeight: "28px"
-  // };
-
-  // const pillAnchorStyles = {
-  //   borderRadius: "30px",
-  //   fontWeight: 600,
-  //   padding: "3px 16px",
-  //   backgroundColor: "rgb(82, 179, 130)",
-  // };
-
-  // const NoSavingHeader = {
-  //   borderRadius: "30px",
-  //   fontWeight: 500,
-  //   padding: "3px 16px",
-  //   backgroundColor: "rgb(227, 227, 227)",
-  //   textDecoration: "none",
-  //   color: "rgb(37, 37, 37)",
-  // };
-
-  // const FoundOnExpert = {
-  //   border: "medium",
-  //   color: "inherit",
-  //   outline: "none",
-  //   textDecoration: "none",
-  //   padding: "3px 16px",
-  //   fontWeight: 400,
-  //   borderRadius: "30px",
-  //   backgroundColor: "rgb(82, 179, 130)"
-  // }
-
-  // const matchDetailsStyles = {
-  //   alignItems: "center",
-  //   display: "flex",
-  //   flexFlow: "column",
-  //   marginBottom: "18px",
-  // };
-
-  // const reviewSummaryStyles = {
-  //   marginTop: "18px",
-  //   alignItems: "center",
-  //   display: "flex",
-  //   justifyContent: "center",
-  // };
-
-  // const averageStarsStyles = {
-  //   alignItems: "center",
-  //   display: "inline-flex",
-  //   marginRight: "8px",
-  //   fontSize: "16px",
-  //   fontWeight: 400,
-  //   lineHeight: "24px",
-  //   textDecoration: "none",
-  //   color: "inherit"
-  // };
-
-  // const smallTextStyles = {
-  //   lineHeight: "19px",
-  //   textDecoration: "underline",
-  //   fontSize: "13px",
-  //   fontWeight: 400,
-  //   color: "rgb(117, 117, 117)",
-  // };
-
-  // const subtextStyle = {
-  //   margin: "19px 0px 15px",
-  //   fontSize: "12px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(77, 77, 77)",
-  // };
-
-  // const subtextStyles = {
-  //   margin: "11px 0px 0px",
-  //   fontSize: "12px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(77, 77, 77)",
-  // };
-
   const btnProductLink = {
     borderRadius: "3px",
     display: "block",
@@ -134,15 +41,6 @@ function ProductMatch(props) {
     textDecoration: "none",
   };
 
-  // const pillsSuccessStyle = {
-  //   borderRadius: '30px',
-  //   fontWeight: 400,
-  //   padding: '3px 16px',
-  //   backgroundColor: 'rgb(82, 179, 130)',
-  //   color: "black",
-  //   textDecoration: "none"
-  // };
-
   const productLink = {
     background: hoverValue === "viewOnExp" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
@@ -157,17 +55,6 @@ function ProductMatch(props) {
     textAlign: 'center',
     width: '90%',
   };
-
-  // const unlockTextStyle = {
-  //   color: "rgb(117, 117, 117)",
-  //   fontSize: "12px"
-  // }
-
-  // const StarIconStyle = {
-  //   marginRight: "4px",
-  //   height: "25px",
-  //   width: "20px"
-  // }
 
   const btnStyle = {
     borderRadius: "3px",

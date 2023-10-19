@@ -75,31 +75,6 @@ function Popup(props) {
     });
   };
 
-  // const popupStyle = {
-  //   backgroundColor: "rgb(255, 255, 255)",
-  //   borderRadius: "3px",
-  //   boxShadow: "rgba(107, 101, 95, 0.2) 0px 1px 2px 1px",
-  //   position: "fixed",
-  //   right: "12px",
-  //   top: "12px",
-  //   width: "300px",
-  //   zIndex: 2147483647,
-  // };
-
-  // const panelHeaderStyle = {
-  //   alignItems: "center",
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   padding: "8px",
-  //   borderBottom: "1px solid rgb(227, 227, 227)",
-  // };
-
-  // const titleText = {
-  //   color: "rgb(37, 37, 37)",
-  //   fontWeight: 401,
-  //   margin: "0px 6px",
-  // };
-
   const badgeSuccess = {
     backgroundColor: props.notification === NotificationType.ACTIVE ? "rgb(82, 179, 130)" : "rgb(227, 227, 227)",
     borderRadius: "6px",
@@ -108,35 +83,6 @@ function Popup(props) {
     textAlign: "center",
     width: "22px",
   };
-
-  // const actionStyle = {
-  //   alignItems: "center",
-  //   display: "flex",
-  //   flex: "1 1 auto",
-  //   justifyContent: "flex-end",
-  // };
-
-  // const closeBtnStyles = {
-  //   color: "rgb(117, 117, 117)",
-  //   background: "none",
-  //   border: "none",
-  //   cursor: "pointer",
-  //   margin: "0px",
-  //   outline: "none",
-  //   padding: "0px",
-  //   textDecoration: "none",
-  // };
-
-  // const closeIcon = {
-  //   position: "relative",
-  //   top: "2px",
-  //   fontSize: "18px",
-  // };
-
-  // const panelBodyStyle = {
-  //   padding: "18px",
-  //   textAlign: "center",
-  // };
 
   const btnLoginStyles = {
     margin: "12px 0px",
@@ -162,92 +108,10 @@ function Popup(props) {
     margin: props.user ? "19px 0px 0px 0px" : "-14px 0px 23px 0px"
   }
 
-  // const tertiaryTextStyles = {
-  //   fontSize: "13px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(117, 117, 117)",
-  // };
-
-  // const reportIssueStyles = {
-  //   margin: "18px 0px 0px",
-  //   fontSize: "12px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(142, 137, 137)",
-  // };
-
-  // const btnReport = {
-  //   textDecoration: "underline",
-  //   fontSize: "12px",
-  //   fontWeight: "400",
-  //   lineHeight: "18px",
-  //   color: "rgb(117, 117, 117)",
-  //   background: "none",
-  //   border: "none",
-  //   cursor: "pointer"
-  // };
-
-  // const signOutBtn = {
-  //   background: "none",
-  //   border: "medium",
-  //   textDecoration: "underline",
-  //   color: "rgb(117, 117, 117)",
-  //   cursor: "pointer",
-  //   fontSize: "12px",
-  //   fontWeight: "400"
-  // };
-
-  // const ExpertVoiceIconStyle = {
-  //   height: "20px",
-  //   width: "20px"
-  // }
-
   const ClosebtnIconStyle = {
     height: "27px",
     opacity: hoverValue === "closeIconBtn" ? "0.9" : "0.6"
   }
-
-  // const typetitle = {
-  //   fontSize: "17px",
-  //   fontWeight: 400,
-  //   lineHeight: "24px",
-  //   color: "rgb(38,40,39)",
-  //   marginTop: "0px"
-  // }
-
-  // const subtextStyle = {
-  //   marginTop: "18px",
-  //   color: "rgb(141, 137, 137)",
-  //   fontSize: "12px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  // }
-
-  // const samplepanelStyle = {
-  //   backgroundColor: "rgb(242,242,242)",
-  //   margin: "23px 0",
-  //   padding: "7px"
-  // }
-
-  // const smallTextStyle = {
-  //   fontSize: "12px",
-  //   fontWeight:410,
-  //   lineHeight: "18px",
-  //   marginTop: "-2px",
-  //   color: "rgb(102,99,99)"
-  // }
-
-  // const tertiSmallLinkStyle = {
-  //   lineHeight: "19px",
-  //   fontSize: "12px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(117, 117, 117)",
-  //   textDecoration: "none"
-  // }
-
-  console.log(props.brand, "props.brand>>>>>>>>>>>>>");
 
   return (
     <section className="panel" id="popup" style={popupStyle}>
@@ -277,7 +141,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-       {/* {props.product && props.brand?.active ? (
+       {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -287,13 +151,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-        props.brand ? ( */}
+        props.brand ? (
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-        { /*  ) : ( */ }
+      ) : (
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -310,8 +174,8 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          { /*)
-      )} */}
+          )
+        )} 
 
         <div className="learn-more">
           {props.user ? (

@@ -49,7 +49,6 @@ function Inline() {
     color: "rgb(117, 117, 117)",
     outline: "none",
     textDecoration: "none",
-    // background: "rgb(242, 242, 242)",
     background: hoverValue === "nosaving" ? "rgba(227, 223, 223, 0.93)" : "rgb(242, 242, 242)",
     borderRadius: "3px",
     textAlign: "center",
@@ -59,44 +58,6 @@ function Inline() {
     width: "unset",
     fontWeight: 500
   };
-
-  // const inlineStyle = {
-  //   display: "flex",
-  //   flexWrap: "wrap",
-  //   gap: "6px 18px",
-  //   margin: "18px 0px",
-  // };
-
-  // const reviewSummary = {
-  //   height: "40px",
-  //   alignItems: "center",
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   border: "none",
-  //   color: "inherit",
-  //   outline: "none",
-  //   textDecoration: "none",
-  // };
-
-  // const averageStars = {
-  //   fontSize: "18px",
-  //   fontWeight: 600,
-  //   lineHeight: "24px",
-  //   alignItems: "center",
-  //   display: "inline-flex",
-  //   marginRight: "8px",
-  // };
-
-  // const linkStyle = {
-  //   lineHeight: "19px",
-  //   fontWeight: 600,
-  //   textDecoration: "underline",
-  //   fontSize: "13px",
-  //   fontWeight: 400,
-  //   lineHeight: "18px",
-  //   color: "rgb(77, 77, 77)",
-  // };
-
 
   const DiscountsBtn = {
     alignItems: 'center',
@@ -115,43 +76,8 @@ function Inline() {
     outline: 'none',
     textDecoration: 'none',
     border: 'none',
-    cursor: "pointer"
+    cursor: "pointer",
   };
-
-  // const ImageUrlBaseStyle = {
-  //   marginRight: "12px",
-  //   height: "20px",
-  //   width: "20px"
-  // }
-
-  // const grayBtnUrlStyle = {
-  //   marginRight: "12px",
-  //   height: "20px",
-  //   width: "20px",
-  //   opacity: 0.7
-  // }
-
-  // const StarIconStyle = {
-  //   marginRight: "4px",
-  //   height: "25px",
-  //   width: "20px"
-  // }
-  
-  // const reviewPrompt = {
-  //   color: "lightGray",
-  //   marginRight: " 8px"
-  // }
-
-  // const reviewPromptSumm = { ...reviewSummary, ...reviewPrompt }
-
-  // const tertiSmallLinkStyle = {
-  //   lineHeight: "19px",
-  //   fontSize: "13px",
-  //   fontWeight: 600,
-  //   lineHeight: "18px",
-  //   color: "lightGray",
-  //   textDecoration: "underline"
-  // }
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker

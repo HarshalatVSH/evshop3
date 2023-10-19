@@ -1,0 +1,31 @@
+   @font-face {
+    font-family: 'Experticity UX';
+    font-style: normal;
+    font-weight: normal;
+    src: url('moz-extension://__MSG_@@extension_id__/assets/fonts/experticity-ux.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url('moz-extension://__MSG_@@extension_id__/assets/fonts/source-sans-pro-v18-300.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('moz-extension://__MSG_@@extension_id__/assets/fonts/source-sans-pro-v18-400.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-display: swap;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url('moz-extension://__MSG_@@extension_id__/assets/fonts/source-sans-pro-v18-600.ttf') format('truetype');
+  }
+  
