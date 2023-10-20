@@ -143,7 +143,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-      {/* {props.product && props.brand?.active ? (
+       {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -153,13 +153,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-        props.brand ? ( */} 
+        props.brand ? (
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-      {/*  ) : (  */}
+      ) : ( 
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -176,8 +176,8 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          {/* )
-        )} */}
+          )
+        )}
 
         <div className="learn-more">
           {props.user ? (
