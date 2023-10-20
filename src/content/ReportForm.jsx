@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { AnalyticEvent, BackbtnIcon, ClosebtnIcon, SuccessbtnIcon } from "../constants";
 import { sendAC } from "../helper";
-import { SuccessbtnIconStyle, backBtnStyle, confirmationTitle, formLabel, inputField, panelBody, panelCloseDiv, panelTitle, radioInput, radioInputLabel, reportPopupStyles, reportSuccess, secondaryText, textAreaStyle, textAreaTitle } from "./ReportFormCSS";
+import { SuccessbtnIconStyle, backBtnStyle, confirmationTitle, formControlLabel, formLabel, inputField, panelBody, panelCloseDiv, panelTitle, radioInput, radioInputLabel, reportPopupStyles, reportSuccess, secondaryText, textAreaStyle, textAreaTitle } from "./ReportFormCSS";
 
 /**
  * Report an Issue Form
@@ -20,18 +20,18 @@ function ReportForm(props) {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
-    padding: '10px',
+    padding: '7px',
   };
 
   const submitBtn = {
     borderRadius: '3px',
     display: 'block',
-    fontFamily: 'inherit',
     fontSize: '15px',
     fontWeight: 600,
     padding: '12px',
     textAlign: 'center',
     width: '100%',
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
   };
 
   const submit = {
@@ -50,7 +50,7 @@ function ReportForm(props) {
     marginTop: '24px',
     background: 'rgb(255, 255, 255)',
     border: '1px solid rgb(117, 117, 117)',
-    color: 'rgb(117, 117, 117)',
+    color: hoverValue === "doneBtn" ? "rgb(37, 37, 37)" : 'rgb(117, 117, 117)',
     cursor: 'pointer',
   };
 
@@ -62,7 +62,7 @@ function ReportForm(props) {
   }
 
   const BackbtnIconStyle = {
-    height: "24px",
+    height: "21px",
     position: "relative",
     top: "2px",
     opacity: hoverValue === "backBtn" ? "0.9" : "0.6"
@@ -81,7 +81,6 @@ function ReportForm(props) {
               type="button"
               style={backBtnStyle}
             >
-              {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
               <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
                 onMouseEnter={() => setHoverValue("backBtn")}
                 onMouseLeave={() => setHoverValue("")} />
@@ -92,7 +91,6 @@ function ReportForm(props) {
 
         <div className="actions" style={panelCloseDiv}>
           <button className="btn-icon close-button" style={backBtnStyle} onClick={props.onClose} type="button">
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
               onMouseEnter={() => setHoverValue("closeIconBtn")}
               onMouseLeave={() => setHoverValue("")} />
@@ -103,7 +101,6 @@ function ReportForm(props) {
       {submitted ? (
         <main className="panel-body report-success" style={reportSuccess}>
           <div className="confirmation">
-            {/* <i className="confirmation-icon exp-ux-check-circle exp-ux-xlarge" style={{fontsize: "48px"}}/> */}
             <img src={SuccessbtnIcon} alt="" style={SuccessbtnIconStyle} />
             <h2 className="confirmation-title type-title" style={confirmationTitle}>Thank you</h2>
           </div>
@@ -115,6 +112,8 @@ function ReportForm(props) {
             }}
             type="button"
             style={reportDoneBtn}
+            onMouseEnter={() => setHoverValue("doneBtn")}
+            onMouseLeave={() => setHoverValue("")}
           >
             Done
           </button>
@@ -134,7 +133,7 @@ function ReportForm(props) {
               });
             }}
           >
-            <div className="form-control radio-group" style={{ marginBottom: "24px" }}>
+            <div className="form-control radio-group" style={formControlLabel}>
               <label style={formLabel} htmlFor="issue">What is the issue you&apos;re seeing?</label>
 
               <div className="radio-input" style={radioInput}>

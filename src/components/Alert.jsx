@@ -10,21 +10,23 @@ import { DangerMode } from '../constants';
  *
  * @author jon.morris
  */
+import '../content/font.css';
 function Alert(props) {
   const IconStyle = {
-    margin: "-6px",
+    margin: "-4px",
     width: "30px"
   }
 
   const Alert = {
-    color: "rgb(94, 93, 93)",
-    marginBottom: "17px"
+    color: "rgb(37, 37, 37)",
+    marginBottom: "17px",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    fontSize : "15px"
   }
   return (
     <div className={`alert alert-${props.type}${props.className ? ` ${props.className}` : ''}`}>
       {props.icon ? (
         <div className="alert-before">
-          {/* <i className={`exp-ux-${props.icon} exp-ux-${props.iconSize}`} /> */}
           <img src={DangerMode} alt="" style={IconStyle} />
         </div>
       ) : null}

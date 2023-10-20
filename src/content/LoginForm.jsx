@@ -1,4 +1,5 @@
 /* eslint-disable  */
+import './font.css';
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -34,13 +35,14 @@ function LoginForm(props) {
     borderLeft: "none",
     borderImage: "initial",
     borderBottom: hoverValue === "username" ? "1px solid black" :
-      (hoverValue === "user_change" && identifier) && "1px solid rgb(60, 152, 199)",
+      (hoverValue === "user_change" && identifier) ? "1px solid rgb(60, 152, 199)" : "1px solid rgb(197, 197, 197)",
     borderRadius: "3px 3px 0px 0px",
-    color: "rgb(79, 77, 77)",
-    fontSize: "inherit",
+    color: "rgb(37, 37, 37)",
+    fontSize: "15px",
     outline: "none",
     padding: "16px 12px 14px",
     width: "90%",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const isDisabled = !identifier || !password;
@@ -63,6 +65,7 @@ function LoginForm(props) {
         "rgb(227,62,56)" :
         "rgb(252, 69, 64)",
     border: "medium",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const passwordDivStyles = {
@@ -72,15 +75,14 @@ function LoginForm(props) {
     borderLeft: "none",
     borderImage: "initial",
     borderBottom: hoverValue === "password" ? "1px solid black" :
-      (hoverValue === "pass_change" && password) && "1px solid rgb(60, 152, 199)",
+      (hoverValue === "pass_change" && password) ? "1px solid rgb(60, 152, 199)" : "1px solid rgb(197, 197, 197)",
     borderRadius: "3px 3px 0px 0px",
     color: "rgb(37, 37, 37)",
-    fontSize: "inherit",
+    fontSize: "15px",
     outline: "none",
     padding: "16px 12px 14px",
     width: "90%",
-    position: "relative",
-    marginBottom: "2px",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const ClosebtnIconStyle = {
@@ -90,7 +92,7 @@ function LoginForm(props) {
   }
 
   const BackbtnIconStyle = {
-    height: "23px",
+    height: "20px",
     opacity: hoverValue === "backIconBtn" ? "0.9" : "0.6",
     position: "relative",
     top: "2px",
@@ -110,7 +112,6 @@ return (
             }}
             type="button"
           >
-            {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
             <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
               onMouseEnter={() => setHoverValue("backIconBtn")}
               onMouseLeave={() => setHoverValue("")} />
@@ -121,7 +122,6 @@ return (
 
       <div className="actions" style={panelActionsStyles}>
         <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
-          {/* <i className="exp-ux-close exp-ux-small" /> */}
           <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
             onMouseLeave={() => setHoverValue("")} />
         </button>
