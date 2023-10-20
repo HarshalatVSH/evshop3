@@ -20,12 +20,14 @@ function BrandMatch(props) {
 
   const pillsSuccessStyle = {
     borderRadius: '30px',
-    fontWeight: 450,
+    fontWeight: 600,
+    fontSize: "15px",
     padding: '3px 16px',
     backgroundColor: props.user ? 'rgb(227, 227, 227)' : "rgb(82, 179, 130)",
     color: 'rgb(45, 44, 44)',
     cursor: "pointer",
-    textDecoration: 'none'
+    textDecoration: 'none',
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const btnProductLink = {

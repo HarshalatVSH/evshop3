@@ -48,8 +48,8 @@ function ProductMatch(props) {
     margin: '18px 0px',
     borderRadius: '3px',
     display: 'block',
-    fontFamily: 'inherit',
-    fontSize: '14px',
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif",
+    fontSize: '16px',
     fontWeight: 600,
     padding: '12px',
     textAlign: 'center',
@@ -75,8 +75,7 @@ function ProductMatch(props) {
   const shopMoreBtn = {
     borderRadius: "5px",
     display: "block",
-    fontFamily: "inherit",
-    fontSize: "14px",
+    fontSize: "15px",
     fontWeight: 600,
     padding: "12px",
     textAlign: "center",
@@ -87,6 +86,7 @@ function ProductMatch(props) {
     margin: "18px 0",
     margin: "6px 0 18px 0",
     textDecoration: "none",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const renderReviewSummary = () => {
@@ -103,7 +103,6 @@ function ProductMatch(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
           <img src={StarIcon} alt="" style={StarIconStyle} />
           {roundedStars}
         </a>
@@ -229,7 +228,7 @@ function ProductMatch(props) {
                     {evIsCheaper? (
                       <div style={containerStyle}>
                         <span style={dashedLineStyle}></span>
-                        <span className="best-price-unavailable" style={textContainerStyle}>$12.45</span>
+                        <span className="best-price-unavailable" style={textContainerStyle}>{`${formattedBestPrice}`}</span>
                       </div>
                     ) : null}
                     Out of Stock
@@ -256,7 +255,7 @@ function ProductMatch(props) {
                 </a>
 
                 <p className="subtext secondary-text small-text" style={subtextStyles}>
-                  {props.brand.discount > 0 ? (
+                  {props.brand.discount > 0  ? (
                     <>
                       Save up to <strong>{props.brand.discount}% off</strong>
                     </>

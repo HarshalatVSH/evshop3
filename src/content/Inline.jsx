@@ -126,7 +126,6 @@ function Inline() {
           target="_blank"
         >
           <div className="average-stars type-title" style={averageStars}>
-            {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
             <img src={StarIcon} alt="" style={StarIconStyle} />
             {roundedStars}
           </div>
@@ -180,7 +179,6 @@ function Inline() {
           onMouseEnter={() => setHoverValue("signInBtn")}
           onMouseLeave={() => setHoverValue("")}
         >
-          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
           <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}
           />
           Sign in for discounts
@@ -198,7 +196,6 @@ function Inline() {
             onMouseEnter={() => setHoverValue("nosaving")}
             onMouseLeave={() => setHoverValue("")}
           >
-            {/* <i className="exp-ux-bolt exp-ux-small" /> */}
             <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
             No savings
           </a>
@@ -215,7 +212,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("nosaving")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
               {evIsCheaper ? (
                 <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
@@ -234,7 +230,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("discount")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
               {evIsCheaper 
                 ? `Buy for ${formattedBestPrice}`

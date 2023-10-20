@@ -1,4 +1,5 @@
 /* eslint-disable  */
+import "./font.css";
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -17,7 +18,7 @@ import {
   PopupMode,
 } from '../constants';
 import { getEVHomeUrl, sendAC } from '../helper';
-import { ExpertVoiceIconStyle, actionStyle, btnReport, closeBtnStyles, panelBodyStyle, panelHeaderStyle, popupStyle, reportIssueStyles, samplepanelStyle, signOutBtn, smallTextStyle, subtextStyle, tertiSmallLinkStyle, tertiaryTextStyles, titleText } from './PopupCSS';
+import { ExpertVoiceIconStyle, actionStyle, btnReport, closeBtnStyles, expertvoiceStyles, panelBodyStyle, panelHeaderStyle, popupStyle, reportIssueStyles, samplepanelStyle, signOutBtn, signedinStyle, smallTextStyle, subtextStyle, tertiSmallLinkStyle, tertiaryTextStyles, titleText } from './PopupCSS';
 
 /**
  * EV Shop Extension Popup
@@ -78,10 +79,12 @@ function Popup(props) {
   const badgeSuccess = {
     backgroundColor: props.notification === NotificationType.ACTIVE ? "rgb(82, 179, 130)" : "rgb(227, 227, 227)",
     borderRadius: "6px",
-    fontWeight: 401,
+    fontWeight: 600,
     height: "22px",
     textAlign: "center",
     width: "22px",
+    color: "rgb(37,37,37)",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
   };
 
   const btnLoginStyles = {
@@ -101,11 +104,12 @@ function Popup(props) {
   };
 
   const typetitle = {
-    fontSize: "17px",
-    fontWeight: "400",
+    fontSize: "18px",
+    fontWeight: "600",
     lineHeight: "24px",
-    color: "rgb(38,40,39)",
-    margin: props.user ? "19px 0px 0px 0px" : "-14px 0px 23px 0px"
+    color: "rgb(54 ,54 ,54)",
+    margin: props.user ? "19px 0px 0px 0px" : "-14px 0px 23px 0px",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
   }
 
   const ClosebtnIconStyle = {
@@ -116,7 +120,6 @@ function Popup(props) {
   return (
     <section className="panel" id="popup" style={popupStyle}>
       <header className="panel-header" style={panelHeaderStyle}>
-        {/* <i className="exp-ux-bolt exp-ux-small ev-logo" /> */}
         <img src={ExpertVoiceIcon} alt="" style={ExpertVoiceIconStyle} />
         <span className="title-text" style={titleText}>Tips</span>
         {props.notification ? (
@@ -131,7 +134,6 @@ function Popup(props) {
             type="button"
             style={closeBtnStyles}
           >
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
               onMouseEnter={() => setHoverValue("closeIconBtn")}
               onMouseLeave={() => setHoverValue("")}
@@ -141,7 +143,7 @@ function Popup(props) {
       </header>
 
       <main className="panel-body" style={panelBodyStyle}>
-       {props.product && props.brand?.active ? (
+      {/* {props.product && props.brand?.active ? (
           <ProductMatch
             brand={props.brand}
             notification={props.notification}
@@ -151,13 +153,13 @@ function Popup(props) {
             user={props.user}
           />
         ) : (
-        props.brand ? (
+        props.brand ? ( */} 
             <BrandMatch
               brand={props.brand}
               sendCtaClickEvent={sendCtaClickEvent}
               user={props.user}
             />
-      ) : (
+      {/*  ) : (  */}
             <>
               <h1 className="type-title" style={typetitle}>No tips for this page</h1>
               <p className="subtext tertiary-text small-text" style={subtextStyle}>
@@ -174,12 +176,12 @@ function Popup(props) {
                 <p className="small-text" style={smallTextStyle}>An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
               </div>
             </>
-          )
-        )} 
+          {/* )
+        )} */}
 
         <div className="learn-more">
           {props.user ? (
-            <p className="tertiary-text small-text" style={{ color: "rgb(142, 137, 137)", fontSize: "12px", fontWeight: "400" }}>
+            <p className="tertiary-text small-text" style={signedinStyle}>
               Signed in as {props.user.firstName} {props.user.lastName}.
               <button
                 className="btn-logout link tertiary-text small-text"
@@ -216,7 +218,7 @@ function Popup(props) {
                 <> </>
                 <a
                   className="link"
-                  style={{ textDecoration: "underline", color: "rgb(117, 117, 117)" }}
+                  style={expertvoiceStyles}
                   href={getEVHomeUrl()}
                   onClick={sendCtaClickEvent(CtaType.EV_HOME, 'learn')}
                   rel="noopener noreferrer"

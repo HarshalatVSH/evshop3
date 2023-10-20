@@ -81,7 +81,6 @@ function ReportForm(props) {
               type="button"
               style={backBtnStyle}
             >
-              {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
               <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
                 onMouseEnter={() => setHoverValue("backBtn")}
                 onMouseLeave={() => setHoverValue("")} />
@@ -92,7 +91,6 @@ function ReportForm(props) {
 
         <div className="actions" style={panelCloseDiv}>
           <button className="btn-icon close-button" style={backBtnStyle} onClick={props.onClose} type="button">
-            {/* <i className="exp-ux-close exp-ux-small" /> */}
             <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle}
               onMouseEnter={() => setHoverValue("closeIconBtn")}
               onMouseLeave={() => setHoverValue("")} />

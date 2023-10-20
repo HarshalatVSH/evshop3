@@ -110,7 +110,6 @@ return (
             }}
             type="button"
           >
-            {/* <i className="exp-ux-chevron exp-ux-medium" /> */}
             <img src={BackbtnIcon} alt="" style={BackbtnIconStyle}
               onMouseEnter={() => setHoverValue("backIconBtn")}
               onMouseLeave={() => setHoverValue("")} />
@@ -121,7 +120,6 @@ return (
 
       <div className="actions" style={panelActionsStyles}>
         <button className="btn-icon close-button" style={closeBtnStyles} onClick={props.onClose} type="button">
-          {/* <i className="exp-ux-close exp-ux-small" /> */}
           <img src={ClosebtnIcon} alt="" style={ClosebtnIconStyle} onMouseEnter={() => setHoverValue("closeIconBtn")}
             onMouseLeave={() => setHoverValue("")} />
         </button>
