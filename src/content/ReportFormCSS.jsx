@@ -1,4 +1,6 @@
 /* eslint-disable  */
+import './font.css';
+
 export const reportPopupStyles = {
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: "3px",
@@ -28,9 +30,11 @@ export const backBtn = {
 export const backBtnStyle = { ...btn, ...backBtn }
 
 export const panelTitle = {
-    color: 'rgb(70, 68, 68)',
-    fontWeight: 401,
+    color: 'rgb(37, 37, 37)',
+    fontWeight: 600,
     margin: '0px 6px',
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    fontSize : "15px"
 };
 
 export const panelCloseDiv = {
@@ -47,9 +51,9 @@ export const panelBody = {
 
 export const formLabel = {
     display: 'block',
-    fontWeight: 401,
+    fontWeight: 600,
     marginBottom: '6px',
-    color: '#444'
+    fontSize: "15px"
 };
 
 export const radioInput = {
@@ -70,14 +74,17 @@ export const radioInputLabel = {
     flex: '1 1 auto',
     fontWeight: 400,
     marginBottom: '0px',
-    color: '#646464'
+    color: 'rgb(37,37,37)',
+    fontSize : "15px"
 };
 
 export const textAreaTitle = {
     display: 'block',
-    fontWeight: 401,
+    fontWeight: 600,
     marginBottom: '6px',
-    color: '#444'
+    color: 'rgb(37,37,37)',
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    fontSize:"15px"
 };
 
 export const textAreaStyle = {
@@ -106,6 +113,7 @@ export const reportSuccess = {
     paddingTop: '0px',
     padding: '18px',
     textAlign: 'center',
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
 };
 
 export const confirmationTitle = {
@@ -127,3 +135,7 @@ export const SuccessbtnIconStyle = {
     height: "45px"
 }
 
+export const formControlLabel = {
+    marginBottom: "24px",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+}

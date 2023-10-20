@@ -1,4 +1,6 @@
 /* eslint-disable  */
+import './font.css';
+
 export const popupStyles = {
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: "3px",
@@ -15,7 +17,7 @@ export const panelHeaderStyles = {
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    padding: "8px",
+    padding: "6px",
 };
 
 export const btnIconStyles = {
@@ -27,9 +29,10 @@ export const btnIconStyles = {
 
 export const titleTextStyles = {
     color: "rgb(37, 37, 37)",
-    fontWeight: 400,
-    margin: "0px 0px -1px",
-    fontSize: "14px"
+    fontWeight: 600,
+    margin: "0px -1px -1px",
+    fontSize: "15px",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
 };
 
 export const panelActionsStyles = {
@@ -46,7 +49,7 @@ export const closeBtnStyles = {
 }
 
 export const panelBody = {
-    padding: "18px",
+    padding: "16px 18px",
     textAlign: "center"
 }
 
@@ -70,22 +73,26 @@ export const passwordLabelStyles = {
 };
 
 export const subTextStyles = {
-    margin: "17px 0px 0px",
-    fontSize: "12px",
+    margin: "18px 0px 1px",
+    fontSize: "13px",
     fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(117, 117, 117)",
-    width: "97%"
+    width: "97%",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
 };
 
 export const signUpLinkStyles = {
     marginLeft: "3px",
     textDecoration: "underline",
     color: "rgb(117, 117, 117)",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
 };
 
 export const FormValidation = {
     color: "rgb(234, 77, 75)",
-    fontSize: "12px",
-    textAlign: "left"
+    fontSize: "13px",
+    textAlign: "left",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    paddingLeft : "12px" 
 }

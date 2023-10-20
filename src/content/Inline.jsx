@@ -12,6 +12,7 @@ import {
   sendAC,
 } from '../helper';
 import { ImageUrlBaseStyle, StarIconStyle, averageStars, grayBtnUrlStyle, inlineStyle, linkStyle, reviewPromptSumm, reviewSummary, tertiSmallLinkStyle } from './InlineCSS';
+import './font.css';
 
 /**
  * Main Inline Script - rendering inline best price label
@@ -35,9 +36,11 @@ function Inline() {
     background: hoverValue === "signInBtn" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
     borderRadius: "3px",
-    fontWeight: "bold",
+    fontWeight: "600",
     cursor: "pointer",
-    border: "medium"
+    border: "medium",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    fontSize : "15px"
   };
 
   const NoSavingBtn = {
@@ -52,11 +55,11 @@ function Inline() {
     background: hoverValue === "nosaving" ? "rgba(227, 223, 223, 0.93)" : "rgb(242, 242, 242)",
     borderRadius: "3px",
     textAlign: "center",
-    fontFamily: "inherit",
     fontSize: "15px",
     padding: "0px 18px 0px 12px",
     width: "unset",
-    fontWeight: 500
+    fontWeight: 600,
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
   };
 
   const DiscountsBtn = {
@@ -69,7 +72,6 @@ function Inline() {
     background: hoverValue === "discount" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: 'rgb(255, 255, 255)',
     borderRadius: '3px',
-    fontFamily: 'inherit',
     fontSize: '15px',
     fontWeight: 600,
     textAlign: 'center',
@@ -77,6 +79,7 @@ function Inline() {
     textDecoration: 'none',
     border: 'none',
     cursor: "pointer",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
   };
 
   useEffect(() => {
@@ -126,7 +129,6 @@ function Inline() {
           target="_blank"
         >
           <div className="average-stars type-title" style={averageStars}>
-            {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
             <img src={StarIcon} alt="" style={StarIconStyle} />
             {roundedStars}
           </div>
@@ -149,7 +151,7 @@ function Inline() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <i className="exp-ux-starFilled exp-ux-small" />
+          <img src={StarIcon} alt="" style={StarIconStyle} />
           <span className="tertiary-text small-text link"
             style={tertiSmallLinkStyle}>
             Leave an expert review
@@ -180,7 +182,6 @@ function Inline() {
           onMouseEnter={() => setHoverValue("signInBtn")}
           onMouseLeave={() => setHoverValue("")}
         >
-          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
           <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}
           />
           Sign in for discounts
@@ -198,7 +199,6 @@ function Inline() {
             onMouseEnter={() => setHoverValue("nosaving")}
             onMouseLeave={() => setHoverValue("")}
           >
-            {/* <i className="exp-ux-bolt exp-ux-small" /> */}
             <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
             No savings
           </a>
@@ -215,7 +215,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("nosaving")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
               {evIsCheaper ? (
                 <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
@@ -234,7 +233,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("discount")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
               {evIsCheaper 
                 ? `Buy for ${formattedBestPrice}`

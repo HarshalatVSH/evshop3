@@ -1,4 +1,6 @@
 /* eslint-disable*/ 
+import './font.css';
+
 export const inlineStyle = {
     display: "flex",
     flexWrap: "wrap",
@@ -16,6 +18,7 @@ export const reviewSummary = {
     color: "inherit",
     outline: "none",
     textDecoration: "none",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
   };
  
 export const averageStars = {
@@ -32,7 +35,6 @@ export const linkStyle = {
     fontWeight: 600,
     textDecoration: "underline",
     fontSize: "13px",
-    fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(77, 77, 77)",
   };
@@ -69,5 +71,7 @@ export  const tertiSmallLinkStyle = {
     fontWeight: 600,
     lineHeight: "18px",
     color: "lightGray",
-    textDecoration: "underline"
+    textDecoration: "underline",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif"
   }
+  
