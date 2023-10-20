@@ -1,4 +1,5 @@
 /* eslint-disable*/
+import "./font.css";
 export const matchDetailsStyles = {
     alignItems: "center",
     display: "flex",
@@ -11,9 +12,11 @@ export const headerAnchorStyle = {
     color: "inherit",
     outline: "none",
     textDecoration: "none",
-    fontWeight: 400,
+    fontWeight: 600,
+    fontSize: "18px",
     margin: "5px 0px 4px 0px",
-    display: "block"
+    display: "block",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
 
 export const imgStyle = {
@@ -33,12 +36,13 @@ export const titleStyle = {
 
 
 export const subtextStyles = {
-    marginTop: "15px",
-    color: "rgb(125, 121, 121)",
-    fontSize: "12px",
-    fontWeight: "498",
+    marginTop: "18px",
+    color: "rgb(99, 96, 96)",
+    fontSize: "13px",
+    fontWeight: "400",
     fontFamily: "inherit",
-    lineHeight: "20px"
+    lineHeight: "18px",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 }
 
 export const btnbrandLinkStyles = {

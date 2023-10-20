@@ -1,4 +1,5 @@
 /* eslint-disable  */
+import "./font.css";
 export const popupStyle = {
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: "3px",
@@ -20,8 +21,9 @@ export const panelHeaderStyle = {
 
 export const titleText = {
     color: "rgb(37, 37, 37)",
-    fontWeight: 401,
+    fontWeight: 600,
     margin: "0px 6px",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
 
 export const actionStyle = {
@@ -52,26 +54,42 @@ export const tertiaryTextStyles = {
     fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(117, 117, 117)",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
+
+export const expertvoiceStyles = { 
+    textDecoration: "underline", 
+    color: "rgb(117, 117, 117)",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
+}
 
 export const reportIssueStyles = {
     margin: "18px 0px 0px",
-    fontSize: "12px",
+    fontSize: "13px",
     fontWeight: 400,
     lineHeight: "18px",
     color: "rgb(142, 137, 137)",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
 
 export const btnReport = {
     textDecoration: "underline",
-    fontSize: "12px",
+    fontSize: "13px",
     fontWeight: "400",
     lineHeight: "18px",
     color: "rgb(117, 117, 117)",
     background: "none",
     border: "none",
-    cursor: "pointer"
+    cursor: "pointer",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
+
+export const  signedinStyle = { 
+    color: "rgb(142, 137, 137)", 
+    fontSize: "12px", 
+    fontWeight: "400",
+     marginTop: "0px"
+}
 
 export const signOutBtn = {
     background: "none",
@@ -91,10 +109,11 @@ export const ExpertVoiceIconStyle = {
 
 export const subtextStyle = {
     marginTop: "18px",
-    color: "rgb(141, 137, 137)",
-    fontSize: "12px",
+    color: "rgb(117, 117, 117)",
+    fontSize: "13px",
     fontWeight: 400,
     lineHeight: "18px",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 }
 
 export const samplepanelStyle = {
@@ -104,11 +123,12 @@ export const samplepanelStyle = {
 }
 
 export const smallTextStyle = {
-    fontSize: "12px",
-    fontWeight: "410",
+    fontSize: "13px",
+    fontWeight: 400,
     lineHeight: "18px",
-    marginTop: "-2px",
-    color: "rgb(102,99,99)"
+    marginTop: "-5px",
+    color: "rgb(74,72,72)",
+    fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 }
 
 export const tertiSmallLinkStyle = {
