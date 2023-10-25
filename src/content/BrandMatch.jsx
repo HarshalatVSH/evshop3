@@ -120,7 +120,6 @@ function BrandMatch(props) {
               <a
                 className="btn btn-primary brand-link"
                 href={cta}
-                // style={btnbrandLinkStyles}
                 style={viewAllBtn}
                 onClick={props.sendCtaClickEvent(ctaType)}
                 rel="noopener noreferrer"

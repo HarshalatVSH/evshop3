@@ -74,7 +74,7 @@ export const averageStarsStyles = {
     fontWeight: 600,
     lineHeight: "24px",
     textDecoration: "none",
-    color: "inherit",
+    color: "rgb(64, 63, 63)",
     fontFamily : "Source Sans Pro , -apple-system, sans-serif"
 };
 
@@ -124,7 +124,7 @@ export const unlockTextStyle = {
 
 export const StarIconStyle = {
     marginRight: "4px",
-    height: "25px",
+    height: "22px",
     width: "20px"
 }
 

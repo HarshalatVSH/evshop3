@@ -203,7 +203,7 @@ function Popup(props) {
                 className="btn btn-primary btn-login"
                 onClick={() => {
                   setMode(PopupMode.LOGIN);
-
+                  setHoverValue("")
                 }}
                 onMouseEnter={() => setHoverValue("signInBtn")}
                 onMouseLeave={() => setHoverValue("")}

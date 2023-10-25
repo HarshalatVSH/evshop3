@@ -28,7 +28,7 @@ export const btnIconStyles = {
 };
 
 export const titleTextStyles = {
-    color: "rgb(37, 37, 37)",
+    color: "rgb(68, 66, 66)",
     fontWeight: 600,
     margin: "0px -1px -1px",
     fontSize: "15px",
@@ -77,7 +77,7 @@ export const subTextStyles = {
     fontSize: "13px",
     fontWeight: 400,
     lineHeight: "18px",
-    color: "rgb(117, 117, 117)",
+    color: "rgb(124, 122, 122)",
     width: "97%",
     fontFamily: "Source Sans Pro , -apple-system, sans-serif",
 };

@@ -56,22 +56,6 @@ function ProductMatch(props) {
     width: '90%',
   };
 
-  const btnStyle = {
-    borderRadius: "3px",
-    display: "block",
-    fontFamily: "inherit",
-    fontSize: "15px",
-    fontWeight: 600,
-    padding: "12px",
-    textAlign: "center",
-    width: "90%",
-    background: hoverValue === "viewOnExpert" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
-    border: "1px solid lightGray",
-    color: "lightGray",
-    margin: "18px 0",
-    margin: "6px 0 18px 0"
-  }
-
   const shopMoreBtn = {
     borderRadius: "5px",
     display: "block",
