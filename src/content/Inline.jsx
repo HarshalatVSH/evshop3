@@ -11,6 +11,8 @@ import {
   isComparablePrice,
   sendAC,
 } from '../helper';
+import { ImageUrlBaseStyle, StarIconStyle, averageStars, grayBtnUrlStyle, inlineStyle, linkStyle, reviewPromptSumm, reviewSummary, tertiSmallLinkStyle } from './InlineCSS';
+import './font.css';
 
 /**
  * Main Inline Script - rendering inline best price label
@@ -34,9 +36,11 @@ function Inline() {
     background: hoverValue === "signInBtn" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: "rgb(255, 255, 255)",
     borderRadius: "3px",
-    fontWeight: "bold",
+    fontWeight: "600",
     cursor: "pointer",
-    border: "medium"
+    border: "medium",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
+    fontSize : "15px"
   };
 
   const NoSavingBtn = {
@@ -48,55 +52,15 @@ function Inline() {
     color: "rgb(117, 117, 117)",
     outline: "none",
     textDecoration: "none",
-    // background: "rgb(242, 242, 242)",
     background: hoverValue === "nosaving" ? "rgba(227, 223, 223, 0.93)" : "rgb(242, 242, 242)",
     borderRadius: "3px",
     textAlign: "center",
-    fontFamily: "inherit",
     fontSize: "15px",
     padding: "0px 18px 0px 12px",
     width: "unset",
-    fontWeight: 500
-  };
-
-  const inlineStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "6px 18px",
-    margin: "18px 0px",
-  };
-
-
-  const reviewSummary = {
-    height: "40px",
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    border: "none",
-    color: "inherit",
-    outline: "none",
-    textDecoration: "none",
-  };
-
-  const averageStars = {
-    fontSize: "18px",
     fontWeight: 600,
-    lineHeight: "24px",
-    alignItems: "center",
-    display: "inline-flex",
-    marginRight: "8px",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
   };
-
-  const linkStyle = {
-    lineHeight: "19px",
-    fontWeight: 600,
-    textDecoration: "underline",
-    fontSize: "13px",
-    fontWeight: 400,
-    lineHeight: "18px",
-    color: "rgb(77, 77, 77)",
-  };
-
 
   const DiscountsBtn = {
     alignItems: 'center',
@@ -108,50 +72,15 @@ function Inline() {
     background: hoverValue === "discount" ? "rgb(227, 62, 56)" : "rgb(252, 69, 64)",
     color: 'rgb(255, 255, 255)',
     borderRadius: '3px',
-    fontFamily: 'inherit',
     fontSize: '15px',
     fontWeight: 600,
     textAlign: 'center',
     outline: 'none',
     textDecoration: 'none',
     border: 'none',
-    cursor: "pointer"
+    cursor: "pointer",
+    fontFamily: "Source Sans Pro , -apple-system, sans-serif",
   };
-
-  const ImageUrlBaseStyle = {
-    marginRight: "12px",
-    height: "20px",
-    width: "20px"
-  }
-
-  const grayBtnUrlStyle = {
-    marginRight: "12px",
-    height: "20px",
-    width: "20px",
-    opacity: 0.7
-  }
-
-  const StarIconStyle = {
-    marginRight: "4px",
-    height: "25px",
-    width: "20px"
-  }
-  
-  const reviewPrompt = {
-    color: "lightGray",
-    marginRight: " 8px"
-  }
-
-  const reviewPromptSumm = { ...reviewSummary, ...reviewPrompt }
-
-  const tertiSmallLinkStyle = {
-    lineHeight: "19px",
-    fontSize: "13px",
-    fontWeight: 600,
-    lineHeight: "18px",
-    color: "lightGray",
-    textDecoration: "underline"
-  }
 
   useEffect(() => {
     // Bind the message listener to respond to the background worker
@@ -200,7 +129,6 @@ function Inline() {
           target="_blank"
         >
           <div className="average-stars type-title" style={averageStars}>
-            {/* <i className="exp-ux-starFilled exp-ux-small" /> */}
             <img src={StarIcon} alt="" style={StarIconStyle} />
             {roundedStars}
           </div>
@@ -223,7 +151,7 @@ function Inline() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <i className="exp-ux-starFilled exp-ux-small" />
+          <img src={StarIcon} alt="" style={StarIconStyle} />
           <span className="tertiary-text small-text link"
             style={tertiSmallLinkStyle}>
             Leave an expert review
@@ -254,7 +182,6 @@ function Inline() {
           onMouseEnter={() => setHoverValue("signInBtn")}
           onMouseLeave={() => setHoverValue("")}
         >
-          {/* <i className="exp-ux-bolt exp-ux-small" /> */}
           <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle}
           />
           Sign in for discounts
@@ -272,7 +199,6 @@ function Inline() {
             onMouseEnter={() => setHoverValue("nosaving")}
             onMouseLeave={() => setHoverValue("")}
           >
-            {/* <i className="exp-ux-bolt exp-ux-small" /> */}
             <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
             No savings
           </a>
@@ -289,7 +215,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("nosaving")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={grayIconImg} alt="" style={grayBtnUrlStyle} />
               {evIsCheaper ? (
                 <span className="best-price-unavailable">{`${formattedBestPrice}`}</span>
@@ -308,7 +233,6 @@ function Inline() {
               onMouseEnter={() => setHoverValue("discount")}
               onMouseLeave={() => setHoverValue("")}
             >
-              {/* <i className="exp-ux-bolt exp-ux-small" /> */}
               <img src={ImageUrlBase} alt="" style={ImageUrlBaseStyle} />
               {evIsCheaper 
                 ? `Buy for ${formattedBestPrice}`

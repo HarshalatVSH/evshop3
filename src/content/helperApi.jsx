@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 export const sendEvent = (action, data = {}) => {
   fetch(`https://www.expertvoice.com/xapi/ac/pub/1.0/event`, {
     method: "POST",
@@ -46,6 +47,22 @@ export const loadContext = async (pageData) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    throw error; // Re-throw the error so that it can be handled in your component
+    throw error; 
   }
+};
+
+export const signInForm = async (identifier, password) => {
+    const response = await fetch(`https://www.expertvoice.com/sign-on/service/sign-in`, {
+      method: "POST",
+      body: `identifier=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+
+    if (response) {
+      const data = await response.json();
+      return data;
+    }
 };
