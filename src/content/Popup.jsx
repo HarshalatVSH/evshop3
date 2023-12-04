@@ -1,11 +1,11 @@
-/* eslint-disable no-nested-ternary,react/jsx-no-useless-fragment */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable*/
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-import BrandMatch from './BrandMatch';
-import LoginForm from './LoginForm';
-import ReportForm from './ReportForm';
-import ProductMatch from './ProductMatch';
+import BrandMatch from "./BrandMatch";
+import LoginForm from "./LoginForm";
+import ReportForm from "./ReportForm";
+import ProductMatch from "./ProductMatch";
 
 import {
   AnalyticEvent,
@@ -13,8 +13,8 @@ import {
   MessageType,
   NotificationType,
   PopupMode,
-} from '../constants';
-import { getEVHomeUrl, sendAC } from '../helper';
+} from "../constants";
+import { getEVHomeUrl, sendAC } from "../helper";
 
 /**
  * EV Shop Extension Popup
@@ -32,9 +32,9 @@ function Popup(props) {
       return true;
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   });
 
@@ -53,21 +53,20 @@ function Popup(props) {
 
   if (mode === PopupMode.REPORT) {
     return (
-      <ReportForm
-        onClose={props.onClose}
-        onFinish={() => setMode(null)}
-      />
+      <ReportForm onClose={props.onClose} onFinish={() => setMode(null)} />
     );
   }
 
-  const sendCtaClickEvent = (type = CtaType.BRAND, source = 'button') => () => {
-    sendAC(AnalyticEvent.CTA_CLICK, {
-      brand: props.brand || null,
-      product: props.product || null,
-      source,
-      type,
-    });
-  };
+  const sendCtaClickEvent =
+    (type = CtaType.BRAND, source = "button") =>
+    () => {
+      sendAC(AnalyticEvent.CTA_CLICK, {
+        brand: props.brand || null,
+        product: props.product || null,
+        source,
+        type,
+      });
+    };
 
   return (
     <section className="panel" id="popup">
@@ -75,7 +74,15 @@ function Popup(props) {
         <i className="exp-ux-bolt exp-ux-small ev-logo" />
         <span className="title-text">Tips</span>
         {props.notification ? (
-          <div className={`badge badge-${props.notification === NotificationType.ACTIVE ? 'success' : 'secondary'}`}>1</div>
+          <div
+            className={`badge badge-${
+              props.notification === NotificationType.ACTIVE
+                ? "success"
+                : "secondary"
+            }`}
+          >
+            1
+          </div>
         ) : null}
 
         <div className="actions">
@@ -99,30 +106,31 @@ function Popup(props) {
             sendCtaClickEvent={sendCtaClickEvent}
             user={props.user}
           />
+        ) : props.brand ? (
+          <BrandMatch
+            brand={props.brand}
+            sendCtaClickEvent={sendCtaClickEvent}
+            user={props.user}
+          />
         ) : (
-          props.brand ? (
-            <BrandMatch
-              brand={props.brand}
-              sendCtaClickEvent={sendCtaClickEvent}
-              user={props.user}
-            />
-          ) : (
-            <>
-              <h1 className="type-title">No tips for this page</h1>
-              <p className="subtext tertiary-text small-text">
-                As you browse Amazon.com, we&apos;ll automatically look for
-                brands that may offer you exclusive discounts on ExpertVoice.
+          <>
+            <h1 className="type-title">No tips for this page</h1>
+            <p className="subtext tertiary-text small-text">
+              As you browse Amazon.com, we&apos;ll automatically look for brands
+              that may offer you exclusive discounts on ExpertVoice.
+            </p>
+            <div className="sample-panel">
+              <img
+                alt="Example"
+                className="sample-image"
+                src={browser.runtime.getURL("assets/images/preview.png")}
+              />
+              <p className="small-text">
+                An alert will let you know when there may be a relevant offer on
+                ExpertVoice.
               </p>
-              <div className="sample-panel">
-                <img
-                  alt="Example"
-                  className="sample-image"
-                  src={chrome.runtime.getURL('assets/images/preview.png')}
-                />
-                <p className="small-text">An alert will let you know when there may be a relevant offer on ExpertVoice.</p>
-              </div>
-            </>
-          )
+            </div>
+          </>
         )}
 
         <div className="learn-more">
@@ -159,7 +167,7 @@ function Popup(props) {
                 <a
                   className="link"
                   href={getEVHomeUrl()}
-                  onClick={sendCtaClickEvent(CtaType.EV_HOME, 'learn')}
+                  onClick={sendCtaClickEvent(CtaType.EV_HOME, "learn")}
                   rel="noopener noreferrer"
                   target="_blank"
                 >

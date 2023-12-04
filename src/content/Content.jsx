@@ -18,7 +18,7 @@ function Content() {
       return;
     }
 
-    const { user: u, ...c } = await chrome.runtime.sendMessage({
+    const { user: u, ...c } = await browser.runtime.sendMessage({
       type: MessageType.CONTEXT,
       data: pageData,
     });
@@ -64,9 +64,9 @@ function Content() {
       return true;
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   }, [context, resetContext, user]);
 

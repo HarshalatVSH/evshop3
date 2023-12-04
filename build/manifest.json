@@ -43,14 +43,34 @@
     }
   ],
   "background": {
-    "service_worker": "worker.min.js"
+    "scripts": [
+      "worker.min.js"
+    ]
   },
   "host_permissions": [
-    "*://*.expertvoice.com/"
+    "*://*.expertvoice.com/*"
   ],
   "permissions": [
     "activeTab",
     "cookies",
     "storage"
-  ]
+  ],
+  "optional_host_permissions": [
+    "https://www.expertvoice.com/*",
+    "https://www.amazon.com/*"
+  ],
+  "optional_permissions": [
+    "https://www.expertvoice.com/*",
+    "activeTab",
+    "storage",
+    "tabs",
+    "pkcs11",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://www.expertvoice.com https://www.amazon.com; connect-src https://* data: blob: filesystem:; object-src 'self'"
+  }
 }

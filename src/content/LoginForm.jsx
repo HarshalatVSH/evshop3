@@ -1,17 +1,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-import { AnalyticEvent, MessageType } from '../constants';
-import { sendAC } from '../helper';
-import { ErrorAlert } from '../components/Alert';
+import { AnalyticEvent, MessageType } from "../constants";
+import { sendAC } from "../helper";
+import { ErrorAlert } from "../components/Alert";
 
 const Errors = {
-  'signIn.invalid': 'Oops. this account information was not recognized.',
-  'signIn.locked': 'Looks like it\'s time to change your password. Give it a quick update and try logging in again.',
-  'signIn.unauthorized': 'Uh oh, the account information you entered is incorrect.',
-  'signIn.restricted': 'Uh oh, looks like your access to ExpertVoice has been disabled. Contact your store manager or HR department to find out why.',
-  'signIn.serviceError': 'Sorry, we can\'t log you in right now. Please come back in a few minutes and try again.',
+  "signIn.invalid": "Oops. this account information was not recognized.",
+  "signIn.locked":
+    "Looks like it's time to change your password. Give it a quick update and try logging in again.",
+  "signIn.unauthorized":
+    "Uh oh, the account information you entered is incorrect.",
+  "signIn.restricted":
+    "Uh oh, looks like your access to ExpertVoice has been disabled. Contact your store manager or HR department to find out why.",
+  "signIn.serviceError":
+    "Sorry, we can't log you in right now. Please come back in a few minutes and try again.",
 };
 
 /**
@@ -19,9 +23,9 @@ const Errors = {
  */
 function LoginForm(props) {
   const [error, setError] = useState(null);
-  const [identifier, setIdentifier] = useState('');
+  const [identifier, setIdentifier] = useState("");
   const [interactions, setInteractions] = useState({});
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   return (
@@ -61,8 +65,11 @@ function LoginForm(props) {
             setError(null);
             setSubmitting(true);
 
-            const res = await chrome.runtime
-              .sendMessage({ identifier, password, type: MessageType.LOGIN });
+            const res = await browser.runtime.sendMessage({
+              identifier,
+              password,
+              type: MessageType.LOGIN,
+            });
             setSubmitting(false);
 
             if (res?.error) {
@@ -76,7 +83,7 @@ function LoginForm(props) {
         >
           {error ? (
             <ErrorAlert className="form-error">
-              {Errors[error] || 'Oops. Something went wrong. Please try again.'}
+              {Errors[error] || "Oops. Something went wrong. Please try again."}
             </ErrorAlert>
           ) : null}
 

@@ -1,8 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-import { AnalyticEvent, MessageType, NotificationType, PopupMode } from '../constants';
-import { sendAC, getNotificationType } from '../helper';
-import Popup from './Popup';
+import {
+  AnalyticEvent,
+  MessageType,
+  NotificationType,
+  PopupMode,
+} from "../constants";
+import { sendAC, getNotificationType } from "../helper";
+import Popup from "./Popup";
 
 /**
  * Main Overlay Script - controlling toggle button and popup
@@ -32,7 +37,7 @@ function Overlay() {
       sendAC(AnalyticEvent.OPEN, {
         brand: context.brand || null,
         product: context.product || null,
-        source: 'auto',
+        source: "auto",
       });
     } else if (openRequested.current) {
       // An open was requested prior to the context being loaded (extension icon click). Open it.
@@ -41,7 +46,7 @@ function Overlay() {
       sendAC(AnalyticEvent.OPEN, {
         brand: context.brand || null,
         product: context.product || null,
-        source: 'action',
+        source: "action",
       });
     }
 
@@ -64,7 +69,7 @@ function Overlay() {
           sendAC(AnalyticEvent.OPEN, {
             brand: context.brand || null,
             product: context.product || null,
-            source: 'action',
+            source: "action",
           });
         } else {
           // Context hasn't loaded yet. Set a flag letting it know it should open when it comes.
@@ -76,9 +81,9 @@ function Overlay() {
       }
     };
 
-    chrome.runtime.onMessage.addListener(listener);
+    browser.runtime.onMessage.addListener(listener);
     return () => {
-      chrome.runtime.onMessage.removeListener(listener);
+      browser.runtime.onMessage.removeListener(listener);
     };
   }, [context]);
 
@@ -91,15 +96,14 @@ function Overlay() {
       {notification ? (
         <button
           className={`toggle-button${
-            notification === NotificationType.ACTIVE ? ' rewarded' : ''}${
-            open ? ' hidden' : ''}${
-            !open && visible ? ' visible' : ''}`}
+            notification === NotificationType.ACTIVE ? " rewarded" : ""
+          }${open ? " hidden" : ""}${!open && visible ? " visible" : ""}`}
           onClick={() => {
             setOpen(true);
             sendAC(AnalyticEvent.OPEN, {
               brand: context.brand || null,
               product: context.product || null,
-              source: 'content',
+              source: "content",
             });
           }}
           type="button"
@@ -118,17 +122,23 @@ function Overlay() {
             sendAC(AnalyticEvent.CLOSE, {
               brand: context.brand || null,
               product: context.product || null,
-              source: 'content',
+              source: "content",
             });
           }}
           onLogin={async (u) => {
             setUser(u);
-            await chrome.runtime.sendMessage({ type: MessageType.RESET, user: u });
+            await browser.runtime.sendMessage({
+              type: MessageType.RESET,
+              user: u,
+            });
           }}
           onLogout={async () => {
             setUser(null);
-            await chrome.runtime.sendMessage({ type: MessageType.LOGOUT });
-            await chrome.runtime.sendMessage({ type: MessageType.RESET, user: null });
+            await browser.runtime.sendMessage({ type: MessageType.LOGOUT });
+            await browser.runtime.sendMessage({
+              type: MessageType.RESET,
+              user: null,
+            });
           }}
           product={context.product}
           page={context.page}

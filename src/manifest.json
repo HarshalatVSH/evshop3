@@ -18,21 +18,39 @@
       "js": ["content.min.js"]
     }
   ],
-  "web_accessible_resources": [{
-    "resources": [
-      "assets/fonts/experticity-ux.ttf",
-      "assets/fonts/source-sans-pro-v18-300.ttf",
-      "assets/fonts/source-sans-pro-v18-400.ttf",
-      "assets/fonts/source-sans-pro-v18-600.ttf",
-      "assets/images/preview.png"
-    ],
-    "matches": ["https://*.amazon.com/*", "https://*.amazon.ca/*"]
-  }],
-  "background": {
-    "service_worker": "worker.min.js"
-  },
-  "host_permissions": [
-    "*://*.expertvoice.com/"
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/fonts/experticity-ux.ttf",
+        "assets/fonts/source-sans-pro-v18-300.ttf",
+        "assets/fonts/source-sans-pro-v18-400.ttf",
+        "assets/fonts/source-sans-pro-v18-600.ttf",
+        "assets/images/preview.png"
+      ],
+      "matches": ["https://*.amazon.com/*", "https://*.amazon.ca/*"]
+    }
   ],
-  "permissions": ["activeTab", "cookies", "storage"]
+  "background": {
+    "scripts": ["worker.min.js"]
+  },
+  "host_permissions": ["*://*.expertvoice.com/*"],
+  "permissions": ["activeTab", "cookies", "storage"],
+  "optional_host_permissions": [
+    "https://www.expertvoice.com/*",
+    "https://www.amazon.com/*"
+  ],
+  "optional_permissions": [
+    "https://www.expertvoice.com/*",
+    "activeTab",
+    "storage",
+    "tabs",
+    "pkcs11",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://www.expertvoice.com https://www.amazon.com; connect-src https://* data: blob: filesystem:; object-src 'self'"
+  }
 }
